@@ -1,6 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+
+<link  href="http://fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script> <!-- 16 KB -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>Inicio | Eden Blue</title>
@@ -15,8 +19,18 @@
 <link href="_css/mediaquery-desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:630px)" />
 </head>
 
-<body class="fondo">
-	<div>
+<body>
+<div class="background">
+<div class="fotorama"
+	   data-nav="false"
+       data-width="100%"
+       data-height="100%"
+       data-fit="cover">
+    <img src="http://s.fotorama.io/1.jpg">
+    <img src="http://s.fotorama.io/2.jpg">
+  </div>
+  </div>
+<div>
 	<div class="lenguaje">
     	<div class="lenguaje-btn">ESP</div><div class="lenguaje-btn">ENG</div>
         </div>
@@ -56,7 +70,8 @@
       </div>    
       <div class="borde-inferior">
          
-       	<div class="boton-index"><img src="_img/boton-08.png" width="21" height="21" /></div>             
+       	<div id="boton1" class="boton-index"><img src="_img/boton-08.png" width="21" height="21" /></div>
+        <div class="boton-index2"><img src="_img/boton-08-2.png" width="21" height="21" /></div>             
        </div>      
       </div>	
   </div>
@@ -72,3 +87,18 @@
 
 </body>
 </html>
+<script>
+$(document).ready(function(){
+	$(".boton-index2").hide();
+  $(".boton-index").click(function(){
+	$(this).hide();  
+	$(".boton-index2").show();
+    $("#content").animate({bottom:'370px'});
+  });
+  $(".boton-index2").click(function(){
+	$(this).hide();  
+	$(".boton-index").show();
+    $("#content").animate({bottom:'0px'});
+  });
+});
+</script>
