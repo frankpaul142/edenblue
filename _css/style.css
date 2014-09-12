@@ -2,10 +2,10 @@
 /* CSS Document */
 @font-face {
     font-family:satisfy;
-    src:url(http://seraexcelente.com/edenblue/_font/Satisfy-Regular.woff);}
+    src:url(../_font/Satisfy-Regular.woff);}
 @font-face {
 	font-family:quattro; 
-    src:url(http://seraexcelente.com/edenblue/_font/roboto-regular-webfont.woff);}
+    src:url(../_font/roboto-regular-webfont.woff);}
 .menu-lateral ul {
 	list-style-type: none;
     margin: 0;
@@ -16,7 +16,7 @@
 	}
 .menu-lateral ul li:hover {
 	color:#C30;
-	list-style-image:url(http://seraexcelente.com/edenblue/_img/li-cursor-01.png);
+	list-style-image:url(../_img/li-cursor-01.png);
 	cursor:pointer;
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
@@ -26,7 +26,7 @@
 	}	
 .fondo {
 	background-color:#333;
-	background-image:url(http://seraexcelente.com/edenblue/_img/fondo.jpg);
+	background-image:url(../_img/fondo.jpg);
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -39,7 +39,7 @@
 	
 	}
 .fondo2 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/fondo2.jpg);
+	background-image:url(../_img/fondo2.jpg);
 	background-repeat: no-repeat;
    -webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -51,7 +51,7 @@
 	margin:0px;
 	}
 .fondo3 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/fondo3.jpg);
+	background-image:url(../_img/fondo3.jpg);
 	background-repeat: no-repeat;
     -webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -63,7 +63,7 @@
 	margin:0px;
 	}
 .fondo4 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/fondo4.jpeg);
+	background-image:url(../_img/fondo4.jpeg);
 	background-repeat: no-repeat;
    -webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -74,7 +74,7 @@
 	margin:0px;
 	}	
 .fondo5 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/fondo5.jpg);
+	background-image:url(../_img/fondo5.jpg);
 	background-repeat: no-repeat;
     -webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -186,7 +186,7 @@
 	cursor:pointer;
 	}
 .m1 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-01.png);
+	background-image:url(../_img/600pxmenu2/menu600px-01.png);
 	width:32px;
 	height:29px;
 	-webkit-transition: all ease 0.3s;
@@ -198,10 +198,10 @@
 	margin-left:0px;
 	}
 .m1:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-06.png);
+	background-image:url(../_img/600pxmenu2/menu600px-06.png);
 	}	
 .m2 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-02.png);
+	background-image:url(../_img/600pxmenu2/menu600px-02.png);
 	width:176px;
 	height:29px;
 	-webkit-transition: all ease 0.3s;
@@ -213,10 +213,10 @@
 	margin-left:2px;
 	}
 .m2:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-07.png);
+	background-image:url(../_img/600pxmenu2/menu600px-07.png);
 	}		
 .m3 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-03.png);
+	background-image:url(../_img/600pxmenu2/menu600px-03.png);
 	width:176px;
 	height:29px;
 	-webkit-transition: all ease 0.3s;
@@ -228,10 +228,10 @@
 	margin-left:2px;
 	}
 .m3:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-08.png);
+	background-image:url(../_img/600pxmenu2/menu600px-08.png);
 	}	
 .m4 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-04.png);
+	background-image:url(../_img/600pxmenu2/menu600px-04.png);
 	width:176px;
 	height:29px;
 	-webkit-transition: all ease 0.3s;
@@ -243,10 +243,10 @@
 	margin-left:2px;
 	}
 .m4:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-09.png);
+	background-image:url(../_img/600pxmenu2/menu600px-09.png);
 	}	
 .m5 {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-05.png);
+	background-image:url(../_img/600pxmenu2/menu600px-05.png);
 	width:32px;
 	height:29px;
 	-webkit-transition: all ease 0.3s;
@@ -258,7 +258,7 @@
 	margin-left:2px;
 	}
 .m5:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/600pxmenu2/menu600px-10.png);
+	background-image:url(../_img/600pxmenu2/menu600px-10.png);
 	}	
 .cont1 {
 	margin-top:2px;
@@ -538,7 +538,7 @@
 	letter-spacing:1px;
 	}
 .boton {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -556,7 +556,7 @@
 	cursor:pointer;
 	}
 .boton:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -565,7 +565,7 @@
 	cursor:pointer;
 	}
 	.boton-index {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -583,7 +583,7 @@
 	cursor:pointer;
 	}
 .boton-index:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -593,7 +593,7 @@
 	}	
 		
 .boton-excur {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -610,7 +610,7 @@
 	cursor:pointer;
 	}
 .boton-excur:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -619,7 +619,7 @@
 	cursor:pointer;
 	}
 .boton-hab {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -637,7 +637,7 @@
 	cursor:pointer;
 	}
 .boton-hab:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -647,7 +647,7 @@
 	}
 	
 .boton-serv {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -665,7 +665,7 @@
 	cursor:pointer;
 	}
 .boton-serv:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/boton-08.png);
+	background-image:url(../_img/boton-08.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -798,6 +798,7 @@
 	margin-right:auto;
 	width:250px;
 	height:200px;
+
 	}
 .reserv-numhab {
 	width:100%;
@@ -1124,7 +1125,7 @@
 	}	
 		
 .facebook {
-	background-image:url(http://seraexcelente.com/edenblue/_img/facebookc.png);
+	background-image:url(../_img/facebookc.png);
 	width:50px;
 	height:50px;
 	-webkit-transition: all ease 0.3s;
@@ -1135,7 +1136,7 @@
 	float:left;
 	}
 .facebook:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/facebookc.png);
+	background-image:url(../_img/facebookc.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -1144,7 +1145,7 @@
 	cursor:pointer;	
 	}	
 .instagram {
-	background-image:url(http://seraexcelente.com/edenblue/_img/instagramc.png);
+	background-image:url(../_img/instagramc.png);
 	width:50px;
 	height:50px;
 	-webkit-transition: all ease 0.3s;
@@ -1155,7 +1156,7 @@
 	float:left;
 	}
 .instagram:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/instagramc.png);
+	background-image:url(../_img/instagramc.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
@@ -1164,7 +1165,7 @@
 	cursor:pointer;	
 	}
 .twitter {
-	background-image:url(http://seraexcelente.com/edenblue/_img/twitterc.png);
+	background-image:url(../_img/twitterc.png);
 	width:50px;
 	height:50px;
 	-webkit-transition: all ease 0.3s;
@@ -1175,7 +1176,7 @@
 	float:left;
 	}
 .twitter:hover {
-	background-image:url(http://seraexcelente.com/edenblue/_img/twitterc.png);
+	background-image:url(../_img/twitterc.png);
 	-webkit-transform:rotate(360deg);
 	-moz-transform:rotate(360deg);
 	-o-transform:rotate(360deg);
