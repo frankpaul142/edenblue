@@ -1,0 +1,163 @@
+@charset "utf-8";
+/*index*/
+#content {
+	width:100%;
+	height:auto;
+	}
+.menu {
+	width:100%;
+	}	
+.m2 {
+	background-position: center center;
+	width: 21.5%;}	
+.m3 {
+	background-position: center center;
+	width: 25.5%;}	
+.m4 {
+	background-position: center center;
+	width: 24.5%;}		
+.cont1 {
+	width:100%;
+	height: 285px;}
+.borde-inferior {
+	width:100%;
+	}
+.breadcrumbs {
+	width:90%;
+	}	
+.menu-lateral ul {
+	padding:15px;
+	font-size: 10px;
+	}	
+.boton-index {
+	left:92%;
+	}	
+.texto {
+width: 90%;
+height: auto;
+}		
+/*excursiones*/
+.cont1-excur {
+	width:100%;
+	height:590px;
+	}
+.texto-excur-cont {
+	width:87%;
+	}
+.galeria-excur {
+	width:200px;
+	padding-top: 250px;
+	}	
+.boton-excur {
+	left:92%;
+	}	
+.boton-vergal {
+	margin-right: 0px;
+	}	
+/*habitaciones*/	
+.cont1-hab {
+	width:100%;
+	height:425px;
+	}
+.boton-hab	{
+	left:92%;
+	}
+.texto-hab-cont {
+	font-size:11px;
+	}	
+/*servicios*/	
+.cont1-serv {
+	width: 100%;
+	height:650px
+	}
+.cont-serv {
+	width: 100%;
+	height: 625px;
+	margin-top: 10px;
+	}	
+.serv1 {
+	float: right;
+	width: 100%;
+	height: 200px;	
+	}	
+.serv-img {
+	margin-left: auto;
+	margin-right: auto;
+	background-color:none;
+	}
+.serv-tit {
+	width: 100%;
+	}	
+.serv-txt {
+	width: 100%;
+	}
+.boton-serv {
+	left: 92%;
+	bottom: 4px;
+	}
+.menu-lateral{
+	width: 97%;
+	height: 25px;
+	border-right:none;
+	border-bottom: thin inset #CCC;
+	}	
+.menu-lateral ul{
+	padding: 0px;
+	}
+.menu-lateral ul li:hover{
+	list-style-image:none;
+	}	
+li {
+	width: 33%;
+	float: left;
+	text-align: center;
+}		
+/*reservaciones*/
+.login{
+	float:left;
+	width:75%;
+	margin:0;}
+.btn-login{
+	width:50%;}	
+.btn-regis{
+	width:50%;}	
+.lenguaje{
+	width:25%;
+	background-color:none;
+	margin:0;}		
+.lenguaje-btn{
+	width:50%;}		
+.cont1-reserv{
+	width:100%;}
+.fondodeg {
+	width: 100%;
+	}
+.reserv-total{
+	width:100%;
+	}
+.reserv-btn{
+	width:100%;
+	}
+.reserv-in{
+	width:49%;}
+.reserv-in-txt{
+	width:79%;}
+.reserv-in-btn{
+	width:20%;}	
+.reserv-out{
+	width:49%;}
+.reserv-out-txt{
+	width:79%;}
+.reserv-out-btn{
+	width:20%;}		
+/*registro*/
+.footer-reg {
+	margin-top:25px;
+}
+/*reservaciones*/
+.footer-reserv {
+	margin-top:0;
+}
+/*login*/
+.login-btn {
+width: 100%;

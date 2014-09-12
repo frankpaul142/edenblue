@@ -1,0 +1,94 @@
+@charset "utf-8";
+/*index*/
+#content {
+	width:400px;
+	height:auto;
+	}
+.menu {
+	width:400px;
+	}	
+.m2 {
+	background-position: center center;
+	width: 109px;}	
+.m3 {
+	background-position: center center;
+	width: 109px;}	
+.m4 {
+	background-position: center center;
+	width: 109px;}		
+.cont1 {
+	width:400px;
+	height: 250px;}
+.breadcrumbs {
+	width:180px;}
+.menu-lateral ul {
+	padding:25px;}	
+.borde-inferior {
+	width:400px;
+	position:relative;}	
+.boton {
+	left: 300px;}
+.boton-index {
+	left: 375px;}	
+/*excursiones*/
+.cont1-excur {
+	width:400px;
+	height:425px;
+	}
+.texto-excur-cont {
+	width:350px;
+	}
+.galeria-excur {
+	width:400px;
+	padding-top: 230px;}
+.boton-excur {
+	position: relative;
+	left: 44%;
+	top: 45px;
+	}			
+/*habitaciones*/
+.cont1-hab {
+	width: 400px;
+height: 380px;
+}	
+.boton-hab {
+	left: 377px;
+	}
+/*servicios*/
+.cont1-serv {
+	width: 400px;
+	height:625px
+	}
+.cont-serv {
+	width: 250px;
+	height: 625px;
+	}	
+.serv1 {
+	float: right;
+	width: 250px;
+	height: 200px;
+	}	
+.serv-img {
+	margin-left: auto;
+	margin-right: auto;
+}
+.serv-tit {
+	width: 245px;
+}	
+.serv-txt {
+	width: 245px;
+}
+.boton-serv {
+	left: 377px;}
+/*registro*/
+.footer-reg {
+margin-top: 30%;
+}	
+/*registro*/
+.footer-reg {
+	margin-top:25px;
+}
+/*reservaciones*/
+.footer-reserv {
+	margin-top:0;
+}
