@@ -869,12 +869,12 @@
 	height:25px;
 	margin-top:2px;}
 .reserv-tipohab-bot-ninos {
-	width:50%;
+	width:48%;
 	height:25px;
 	float:left;
 	}	
 .reserv-tipohab-bot-ninos-txt {
-	width:70%;
+	width:65%;
 	height:25px;
 	float:left;
 	background-color:#fff;
@@ -899,7 +899,7 @@
 	float:right;
 	}
 .reserv-tipohab-bot-adult-txt {
-	width:70%;
+	width:65%;
 	height:25px;
 	float:left;
 	background-color:#fff;
@@ -920,7 +920,8 @@
 	}	
 .subtot {
 	width:250px;
-	height:60px;}
+	height:60px;
+	margin-top: 20px;}
 .subtot-cont{
 	width:80px;
 	height:60px;
