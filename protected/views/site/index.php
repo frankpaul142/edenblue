@@ -1,20 +1,38 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle = Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<div class="logo">
+    <img src="<?php echo Yii::app()->request->getBaseUrl(true); ?>/images/logo-01.png" width="154" height="112" /></div>
+<div class="menu">
+    <div class="m1"></div>
+    <div class="m2"></div>
+    <div class="m3"></div>
+    <div class="m4"></div>
+    <div class="m5"></div>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+</div>
+<div class="contenidos">
+    <div class="cont1">
+        <div class="breadcrumbs">Home  /  Hostería  /  Entorno</div>
+        <div class="menu-lateral">
+            <ul>
+                <li><a>INFRAESTRUCURA</a></li>
+                <li><a>ENTORNO</a></li>
+                <li><a>SERVICIOS</a></li>
+            </ul>
+        </div>
+        <div class="texto">
+            <div class="texto-tit">Entorno</div>
+            <div class="texto-subtit"><a>COSTA ECUATORIANA</a></div>
+            <div class="texto-cont"><a>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</a>
+            </div>
+        </div>
+    </div>    
+    <div class="borde-inferior">
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+       	<div class="boton-index"><img src="<?php echo Yii::app()->request->getBaseUrl(true); ?>/images/boton-08.png" width="21" height="21" /></div>             
+    </div>      
+</div>	

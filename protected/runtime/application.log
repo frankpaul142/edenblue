@@ -1,0 +1,90 @@
+2014/09/12 17:10:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/mediaquery-phone.css"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/mediaquery-...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/css/mediaquery-phone.css
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:10:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/mediaquery-phone2.css"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/mediaquery-...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/css/mediaquery-phone2.css
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:10:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/style.css"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/style.css')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/css/style.css
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:10:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/mediaquery-desktop.css"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/mediaquery-...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/css/mediaquery-desktop.css
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:10:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/mediaquery-tablet.css"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/mediaquery-...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/css/mediaquery-tablet.css
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:15:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_img/facebookc.png"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_img/facebookc....')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_img/facebookc.png
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:15:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_img/twitterc.png"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_img/twitterc.p...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_img/twitterc.png
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:15:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_img/fondo.jpg"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_img/fondo.jpg')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_img/fondo.jpg
+HTTP_REFERER=http://localhost/edenblue/css/style.css
+---
+2014/09/12 17:15:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_img/instagramc.png"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_img/instagramc...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_img/instagramc.png
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/12 17:15:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_font/roboto-regular-webfont.woff"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_font/roboto-re...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_font/roboto-regular-webfont.woff
+HTTP_REFERER=http://localhost/edenblue/
+---
