@@ -15,6 +15,15 @@
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/mediaquery-desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:630px)" />
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+        <link  href="//fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"/> <!-- 3 KB -->
+        <script src="//fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+        
+        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
     </head>
 
     <body class="fondo">

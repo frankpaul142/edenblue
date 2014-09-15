@@ -2,6 +2,7 @@
 /* CSS Document */
 @font-face {
 	font-family: satisfy;
+<<<<<<< HEAD
 	src: url(../_font/Satisfy-Regular.woff);
 }
 @font-face {
@@ -12,6 +13,14 @@
 position: relative;
 z-index: 999;
 	}
+=======
+	src: url(../fonts/Satisfy-Regular.woff);
+}
+@font-face {
+	font-family: quattro;
+	src: url(../fonts/roboto-regular-webfont.woff);
+}
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 body {
 	margin: 0;
 	width: auto;
@@ -26,7 +35,11 @@ body {
 }
 .menu-lateral ul li:hover {
 	color: #C30;
+<<<<<<< HEAD
 	list-style-image: url(../_img/li-cursor-01.png);
+=======
+	list-style-image: url(../images/li-cursor-01.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	cursor: pointer;
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
@@ -36,7 +49,11 @@ body {
 }
 .fondo {
 	background-color: #333;
+<<<<<<< HEAD
 	background-image: url(../_img/fondo.jpg);
+=======
+	background-image: url(../images/fondo.jpg);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -47,7 +64,11 @@ body {
 	margin: 0px;
 }
 .fondo2 {
+<<<<<<< HEAD
 	background-image: url(../_img/fondo2.jpg);
+=======
+	background-image: url(../images/fondo2.jpg);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -59,7 +80,11 @@ body {
 	margin: 0px;
 }
 .fondo3 {
+<<<<<<< HEAD
 	background-image: url(../_img/fondo3.jpg);
+=======
+	background-image: url(../images/fondo3.jpg);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -71,7 +96,11 @@ body {
 	margin: 0px;
 }
 .fondo4 {
+<<<<<<< HEAD
 	background-image: url(../_img/fondo4.jpeg);
+=======
+	background-image: url(../images/fondo4.jpeg);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -82,7 +111,11 @@ body {
 	margin: 0px;
 }
 .fondo5 {
+<<<<<<< HEAD
 	background-image: url(../_img/fondo5.jpg);
+=======
+	background-image: url(../images/fondo5.jpg);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -180,8 +213,11 @@ body {
 	-ms-transition: all ease 0.3s;
 	transition: all ease 0.3s;
 	position:relative;
+<<<<<<< HEAD
 	bottom:0%;
 	
+=======
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	
 	
 }
@@ -203,7 +239,11 @@ body {
 	cursor: pointer;
 }
 .m1 {
+<<<<<<< HEAD
 	background-image: url(../_img/600pxmenu2/menu600px-01.png);
+=======
+	background-image: url(../images/600pxmenu2/menu600px-01.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 32px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -215,10 +255,17 @@ body {
 	margin-left: 0px;
 }
 .m1:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/600pxmenu2/menu600px-06.png);
 }
 .m2 {
 	background-image: url(../_img/600pxmenu2/menu600px-02.png);
+=======
+	background-image: url(../images/600pxmenu2/menu600px-06.png);
+}
+.m2 {
+	background-image: url(../images/600pxmenu2/menu600px-02.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 176px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -230,10 +277,17 @@ body {
 	margin-left: 2px;
 }
 .m2:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/600pxmenu2/menu600px-07.png);
 }
 .m3 {
 	background-image: url(../_img/600pxmenu2/menu600px-03.png);
+=======
+	background-image: url(../images/600pxmenu2/menu600px-07.png);
+}
+.m3 {
+	background-image: url(../images/600pxmenu2/menu600px-03.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 176px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -245,10 +299,17 @@ body {
 	margin-left: 2px;
 }
 .m3:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/600pxmenu2/menu600px-08.png);
 }
 .m4 {
 	background-image: url(../_img/600pxmenu2/menu600px-04.png);
+=======
+	background-image: url(../images/600pxmenu2/menu600px-08.png);
+}
+.m4 {
+	background-image: url(../images/600pxmenu2/menu600px-04.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 176px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -260,10 +321,17 @@ body {
 	margin-left: 2px;
 }
 .m4:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/600pxmenu2/menu600px-09.png);
 }
 .m5 {
 	background-image: url(../_img/600pxmenu2/menu600px-05.png);
+=======
+	background-image: url(../images/600pxmenu2/menu600px-09.png);
+}
+.m5 {
+	background-image: url(../images/600pxmenu2/menu600px-05.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 32px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -275,7 +343,11 @@ body {
 	margin-left: 2px;
 }
 .m5:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/600pxmenu2/menu600px-10.png);
+=======
+	background-image: url(../images/600pxmenu2/menu600px-10.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 }
 .cont1 {
 	margin-top: 2px;
@@ -326,7 +398,11 @@ body {
 	height: auto;
 }
 .borde-inferior {
+<<<<<<< HEAD
 	background-image: url(../_img/borde-07.png);
+=======
+	background-image: url(../images/borde-07.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	background-size: 100% 80%;
 	background-repeat: no-repeat;
 	margin-left: auto;
@@ -551,7 +627,11 @@ body {
 	letter-spacing: 1px;
 }
 .boton {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -568,7 +648,11 @@ body {
 	cursor: pointer;
 }
 .boton:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -577,7 +661,11 @@ body {
 	cursor: pointer;
 }
 .boton-index {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -594,7 +682,11 @@ body {
 	cursor: pointer;
 }
 .boton-index:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -603,7 +695,11 @@ body {
 	cursor: pointer;
 }
 .boton-index2 {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08-2.png);
+=======
+	background-image: url(../images/boton-08-2.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -621,7 +717,11 @@ body {
 	
 }
 .boton-index2:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08-2.png);
+=======
+	background-image: url(../images/boton-08-2.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -631,7 +731,11 @@ body {
 }
 
 .boton-excur {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -648,7 +752,11 @@ body {
 	cursor: pointer;
 }
 .boton-excur:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -657,7 +765,11 @@ body {
 	cursor: pointer;
 }
 .boton-hab {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -674,7 +786,11 @@ body {
 	cursor: pointer;
 }
 .boton-hab:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -683,7 +799,11 @@ body {
 	cursor: pointer;
 }
 .boton-serv {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -700,7 +820,11 @@ body {
 	cursor: pointer;
 }
 .boton-serv:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/boton-08.png);
+=======
+	background-image: url(../images/boton-08.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -1171,7 +1295,11 @@ body {
 	font-family: quattro;
 }
 .facebook {
+<<<<<<< HEAD
 	background-image: url(../_img/facebookc.png);
+=======
+	background-image: url(../images/facebookc.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 50px;
 	height: 50px;
 	-webkit-transition: all ease 0.3s;
@@ -1182,7 +1310,11 @@ body {
 	float: left;
 }
 .facebook:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/facebookc.png);
+=======
+	background-image: url(../images/facebookc.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -1191,7 +1323,11 @@ body {
 	cursor: pointer;
 }
 .instagram {
+<<<<<<< HEAD
 	background-image: url(../_img/instagramc.png);
+=======
+	background-image: url(../images/instagramc.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 50px;
 	height: 50px;
 	-webkit-transition: all ease 0.3s;
@@ -1202,7 +1338,11 @@ body {
 	float: left;
 }
 .instagram:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/instagramc.png);
+=======
+	background-image: url(../images/instagramc.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -1211,7 +1351,11 @@ body {
 	cursor: pointer;
 }
 .twitter {
+<<<<<<< HEAD
 	background-image: url(../_img/twitterc.png);
+=======
+	background-image: url(../images/twitterc.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	width: 50px;
 	height: 50px;
 	-webkit-transition: all ease 0.3s;
@@ -1222,7 +1366,11 @@ body {
 	float: left;
 }
 .twitter:hover {
+<<<<<<< HEAD
 	background-image: url(../_img/twitterc.png);
+=======
+	background-image: url(../images/twitterc.png);
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -1233,7 +1381,11 @@ body {
 .fotorama img {
 	width: 100% !important;
 }
+<<<<<<< HEAD
 img.fotorama__img {
+=======
+img.fotorama_images {
+>>>>>>> f216bc8c29c646dee0840ad9d16548302e80a1e1
 	left: 0px !important;
 }
 .background {
