@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+
+<link  href="http://fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script> <!-- 16 KB -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Inicio | Eden Blue</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<!-- Phone -->
+<link href="_css/mediaquery-phone.css" rel="stylesheet" type="text/css" media="only screen and (max-width:310px)" />
+<!-- Phone2 -->
+<link href="_css/mediaquery-phone2.css" rel="stylesheet" type="text/css" media="only screen and (min-width:311px) and (max-width:416px)" />
+<!-- Tablet -->
+<link href="_css/mediaquery-tablet.css" rel="stylesheet" type="text/css" media="only screen and (min-width:417px) and (max-width:630px)" />
+<!-- Desktop -->
+<link href="_css/mediaquery-desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:630px)" />
+</head>
+
+<body>
+<div class="background">
+<div class="fotorama"
+	   data-nav="false"
+       data-width="100%"
+       data-height="100%"
+       data-fit="cover">
+    <img src="http://s.fotorama.io/1.jpg">
+    <img src="http://s.fotorama.io/2.jpg">
+  </div>
+  </div>
+<div class="top">
+	<div class="lenguaje">
+    	<div class="lenguaje-btn">ESP</div><div class="lenguaje-btn">ENG</div>
+        </div>
+    <div class="log-in">
+    	<div class="btn-login">INICIA SESIÓN</div>
+        <div class="btn-regis">REGÍSTRATE</div>    
+    </div>
+  	
+    </div>
+  	<div id="content">
+      <div class="logo">
+      <img src="_img/logo-01.png" width="154" height="112" /></div>
+      <div class="menu">
+      <div class="m1"></div>
+      <div class="m2"></div>
+      <div class="m3"></div>
+      <div class="m4"></div>
+      <div class="m5"></div>
+      
+    </div>
+      <div class="contenidos">
+      <div class="cont1">
+          <div class="breadcrumbs">Home  /  Hostería  /  Entorno</div>
+          <div class="menu-lateral">
+          <ul>
+          <li><a>INFRAESTRUCURA</a></li>
+          <li><a>ENTORNO</a></li>
+          <li><a>SERVICIOS</a></li>
+          </ul>
+          </div>
+          <div class="texto">
+              <div class="texto-tit">Entorno</div>
+              <div class="texto-subtit"><a>COSTA ECUATORIANA</a></div>
+              <div class="texto-cont"><a>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</a>
+</div>
+          </div>
+      </div>    
+      <div class="borde-inferior">
+         
+       	<div id="boton1" class="boton-index"><img src="_img/boton-08.png" width="21" height="21" /></div>
+        <div class="boton-index2"><img src="_img/boton-08-2.png" width="21" height="21" /></div>             
+       </div>      
+      </div>	
+  </div>
+  <div class="footer">
+      <div class="social-cont">
+        <div class="facebook"></div>
+          <div class="instagram"></div>         
+          <div class="twitter"></div>    		  
+      </div>
+      <div class="copyright">Todos los derechos reservados 2014 - Share - Quito - Ecuador</div>
+  </div>    
+    
+
+</body>
+</html>
+<script>
+var x = '370px';
+$(document).ready(function(){
+	$(".boton-index2").hide();
+  $(".boton-index").click(function(){
+	$(this).hide();  
+	$(".boton-index2").show();
+    $("#content").animate({bottom:x},'fast');
+	$(".top").animate({top:'-25px'},'fast');
+  });
+  $(".boton-index2").click(function(){
+	$(this).hide();  
+	$(".boton-index").show();
+    $("#content").animate({bottom:'0px'},'fast');
+	$(".top").animate({top:'0px'},'fast');
+  });
+  function checkPosition()
+{
+   if ($(window).width() > 630)
+    {
+        alert ("hola");
+    } 
+}
+});
+</script>
