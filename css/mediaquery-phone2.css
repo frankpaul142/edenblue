@@ -31,7 +31,7 @@
 	}	
 /*index*/	
 .boton-index {
-	background-image: url(../_img/boton-08.png);
+	background-image: url(../images/boton-08.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -48,7 +48,7 @@
 	cursor: pointer;
 }
 .boton-index:hover {
-	background-image: url(../_img/boton-08.png);
+	background-image: url(../images/boton-08.png);
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
@@ -57,7 +57,7 @@
 	cursor: pointer;
 }	
 .boton-index2 {
-	background-image: url(../_img/boton-08-2.png);
+	background-image: url(../images/boton-08-2.png);
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-o-transition: all ease 0.3s;
@@ -75,7 +75,7 @@
 	
 }
 .boton-index2:hover {
-	background-image: url(../_img/boton-08-2.png);
+	background-image: url(../images/boton-08-2.png);
 	-webkit-transform: rotate(360deg);
 	-moz-transform: rotate(360deg);
 	-o-transform: rotate(360deg);
