@@ -114,5 +114,10 @@ class SiteController extends Controller {
         }
         echo CJSON::encode($return);
     }
+    
+    public function actionLoadTypeRooms() {
+        $rooms=TypeRoom::model()->findAll();
+        echo CJSON::encode($rooms);
+    }
 
 }

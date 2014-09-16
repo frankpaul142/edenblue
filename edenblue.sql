@@ -1,10 +1,8 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     12/09/2014 17:32:55                          */
+/* Created on:     16/09/2014 11:39:30                          */
 /*==============================================================*/
 
-
-drop table if exists excursion;
 
 drop table if exists photo;
 
@@ -16,19 +14,9 @@ drop table if exists rooms_booked;
 
 drop table if exists service;
 
-drop table if exists user;
+drop table if exists type_room;
 
-/*==============================================================*/
-/* Table: excursion                                             */
-/*==============================================================*/
-create table excursion
-(
-   id                   int not null auto_increment,
-   title                varchar(200) not null,
-   description          text not null,
-   status               enum('ACTIVE','INACTIVE') not null,
-   primary key (id)
-);
+drop table if exists user;
 
 /*==============================================================*/
 /* Table: photo                                                 */
@@ -36,9 +24,8 @@ create table excursion
 create table photo
 (
    id                   int not null auto_increment,
-   room_id              int,
+   type_room_id         int,
    service_id           int,
-   excursion_id         int,
    source               varchar(255) not null,
    status               enum('ACTIVE','INACTIVE') not null,
    primary key (id)
@@ -66,10 +53,10 @@ create table reservation
 create table room
 (
    id                   int not null auto_increment,
-   type                 enum('SIMPLE','DOBLE') not null,
-   description          varchar(255),
+   type_id              int not null,
    number               int not null,
    status               enum('VACANT','BOOKED','OCUPPIED','INACTIVE') not null,
+   price                float(8,2) not null,
    primary key (id)
 );
 
@@ -89,9 +76,20 @@ create table rooms_booked
 create table service
 (
    id                   int not null auto_increment,
-   title                varchar(200) not null,
+   title                varchar(250) not null,
    description          text,
    status               enum('ACTIVE','INACTIVE') not null,
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: type_room                                             */
+/*==============================================================*/
+create table type_room
+(
+   id                   int not null auto_increment,
+   name                 varchar(20) not null,
+   description          text,
    primary key (id)
 );
 
@@ -112,17 +110,17 @@ create table user
    primary key (id)
 );
 
-alter table photo add constraint fk_gallery_excursion foreign key (excursion_id)
-      references excursion (id) on delete restrict on update restrict;
-
-alter table photo add constraint fk_gallery_room foreign key (room_id)
-      references room (id) on delete restrict on update restrict;
+alter table photo add constraint fk_gallery_room foreign key (type_room_id)
+      references type_room (id) on delete restrict on update restrict;
 
 alter table photo add constraint fk_gallery_service foreign key (service_id)
       references service (id) on delete restrict on update restrict;
 
 alter table reservation add constraint fk_books foreign key (user_id)
       references user (id) on delete restrict on update restrict;
+
+alter table room add constraint fk_type_of_room foreign key (type_id)
+      references type_room (id) on delete restrict on update restrict;
 
 alter table rooms_booked add constraint fk_rooms_booked foreign key (reservation_id)
       references reservation (id) on delete restrict on update restrict;

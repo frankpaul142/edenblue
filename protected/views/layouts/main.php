@@ -29,7 +29,7 @@
         <div class="background">
             <div class="fotorama"
                  data-auto="false"
-                 data-nav="false"
+                 data-nav="thumbs"
                  data-width="100%"
                  data-height="100%"
                  data-fit="cover">

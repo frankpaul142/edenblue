@@ -6,10 +6,9 @@ app.config(function ($routeSegmentProvider) {
             when('/reservar', 'reservar').
             when('/hosteria', 'hosteria').
             when('/hosteria/infraestructura', 'hosteria.infraestructura').
-            when('/hosteria/infraestructura/habitaciones', 'hosteria.infraestructura.habitaciones').
             when('/hosteria/entorno', 'hosteria.entorno').
-            when('/hosteria/servicios', 'hosteria.servicios').
-            when('/excursiones', 'excursiones').
+            when('/hosteria/habitaciones', 'hosteria.habitaciones').
+            when('/servicios', 'servicios').
             when('/ubicacion', 'ubicacion').
             when('/login', 'login').
             when('/registro', 'registro').
@@ -27,24 +26,18 @@ app.config(function ($routeSegmentProvider) {
                 templateUrl: 'templates/hosteria/_infraestructura.html',
                 controller: 'infraestructuraController'
             }).
-            within().
-            segment('habitaciones', {
-                templateUrl: 'templates/hosteria/infraestructura/_habitaciones.html',
-                controller: 'habitacionesController'
-            }).
-            up().
             segment('entorno', {
                 templateUrl: 'templates/hosteria/_entorno.html',
                 controller: 'entornoController'
             }).
-            segment('servicios', {
-                templateUrl: 'templates/hosteria/_servicios.html',
-                controller: 'serviciosController'
+            segment('habitaciones', {
+                templateUrl: 'templates/hosteria/_habitaciones.html',
+                controller: 'habitacionesController'
             }).
             up().
-            segment('excursiones', {
-                templateUrl: 'templates/_excursiones.html',
-                controller: 'excursionesController'
+            segment('servicios', {
+                templateUrl: 'templates/_servicios.html',
+                controller: 'serviciosController'
             }).
             segment('ubicacion', {
                 templateUrl: 'templates/_ubicacion.html',
@@ -82,32 +75,34 @@ app.controller('infraestructuraController', function ($scope) {
         {img: 'images/fondo.jpg'}
     ]);
 });
-app.controller('habitacionesController', function () {
-
-});
 app.controller('entornoController', function ($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
     fotorama.load([
         {img: 'images/fondo.jpg'}
     ]);
 });
+app.controller('habitacionesController', function ($scope,$http) {
+    $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
+    $http.get('site/loadTypeRooms').success(function (response) {
+        $scope.rooms = response;
+        /*fotorama.destroy();
+        $scope.services.forEach(function (service) {
+            fotorama.push({img: 'images/' + service.photos[0].source});
+        });*/
+    });
+});
+
 app.controller('serviciosController', function ($scope, $http) {
-    $scope.$parent.breadcrumbs = 'Hostería / Servicios';
+    //$scope.$parent.breadcrumbs = 'Hostería / Servicios';
     $http.get('site/loadServices').success(function (response) {
         $scope.services = response;
         fotorama.destroy();
         $scope.services.forEach(function (service) {
+            if(typeof service.photos[0].source !== 'undefined'){
             fotorama.push({img: 'images/' + service.photos[0].source});
+        }
         });
     });
-
-});
-
-app.controller('excursionesController', function () {
-    toggleGallery();
-    fotorama.load([
-        {img: 'images/fondo3.jpg'}
-    ]);
 });
 
 app.controller('ubicacionController', function () {
