@@ -94,11 +94,12 @@ app.controller('habitacionesController', function ($scope,$http) {
 
 app.controller('serviciosController', function ($scope, $http) {
     //$scope.$parent.breadcrumbs = 'Hostería / Servicios';
+    toggleGallery();
     $http.get('site/loadServices').success(function (response) {
         $scope.services = response;
         fotorama.destroy();
         $scope.services.forEach(function (service) {
-            if(typeof service.photos[0].source !== 'undefined'){
+            if(typeof service.photos[0] !== 'undefined'){
             fotorama.push({img: 'images/' + service.photos[0].source});
         }
         });
