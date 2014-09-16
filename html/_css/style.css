@@ -8,6 +8,10 @@
 	font-family: quattro;
 	src: url(../_font/roboto-regular-webfont.woff);
 }
+.top {
+position: relative;
+z-index: 999;
+	}
 body {
 	margin: 0;
 	width: auto;
@@ -167,7 +171,7 @@ body {
 #content {
 	padding-top: 25px;
 	width: 600px;
-	height: 450px;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;/*background-color:#CCC*/
 	-webkit-transition: all ease 0.3s;
@@ -176,8 +180,7 @@ body {
 	-ms-transition: all ease 0.3s;
 	transition: all ease 0.3s;
 	position:relative;
-	
-	
+	bottom:0%;
 }
 .logo {
 	margin-left: auto;
@@ -1247,3 +1250,17 @@ img.fotorama__img {
 	-ms-transition: all ease 0.3s;
 	transition: all ease 0.3s;
 	}
+.fotorama__stage.fotorama__pointer{width: 100%;
+height: 100% !important;
+position: absolute !important;
+}
+.fotorama__wrap{
+	position:static !important;}
+.fotorama__stage{
+	height:100% !important;
+	position:absolute !important;}	
+.fotorama__nav-wrap {
+position: absolute;
+top: 15%;
+opacity: 0.8;
+}	

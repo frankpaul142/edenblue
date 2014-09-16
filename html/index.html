@@ -22,7 +22,7 @@
 <body>
 <div class="background">
 <div class="fotorama"
-	   data-nav="false"
+	   data-nav="thumbs"
        data-width="100%"
        data-height="100%"
        data-fit="cover">
@@ -30,7 +30,7 @@
     <img src="http://s.fotorama.io/2.jpg">
   </div>
   </div>
-<div>
+<div class="top">
 	<div class="lenguaje">
     	<div class="lenguaje-btn">ESP</div><div class="lenguaje-btn">ENG</div>
         </div>
@@ -88,17 +88,31 @@
 </body>
 </html>
 <script>
+var x = '370px';
 $(document).ready(function(){
+	$(".fotorama__nav-wrap").hide();
 	$(".boton-index2").hide();
   $(".boton-index").click(function(){
 	$(this).hide();  
 	$(".boton-index2").show();
-    $("#content").animate({bottom:'370px'});
+    $("#content").animate({bottom:x},'fast');
+	$(".top").animate({top:'-25px'},'fast');
+	$(".fotorama__nav-wrap").fadeIn();
   });
   $(".boton-index2").click(function(){
+	$(".top").animate({top:'0px'},'fast');
 	$(this).hide();  
 	$(".boton-index").show();
-    $("#content").animate({bottom:'0px'});
+    $("#content").animate({bottom:'0px'},'fast');
+	$(".fotorama__nav-wrap").fadeOut();
+	
   });
+  function checkPosition()
+{
+   if ($(window).width() > 630)
+    {
+        alert ("hola");
+    } 
+}
 });
 </script>
