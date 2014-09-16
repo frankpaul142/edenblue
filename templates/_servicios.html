@@ -1,9 +1,14 @@
 <div class="cont1-excur">
-    <div class="breadcrumbs">Servicios /</div>
+    <div class="breadcrumbs">{{ breadcrumbs }}</div>
     <div class="texto-excur-cont">
-        <ul ng-repeat="service in services">
-            <li>{{ service.title}}</li>
-        </ul>
+        <div app-view-segment="1">
+            <ul ng-repeat="service in services">
+                <li><a href="#servicios/{{ service.title}}">{{ service.title}}</a></li>
+            </ul>
+            <ul ng-repeat="service in services2">
+                <li>{{ service.title}}</li>
+            </ul>
+        </div>
     </div>
 </div>
 <div class="borde-inferior">
