@@ -113,7 +113,7 @@ app.controller('serviciosController', function ($scope, $http) {
                 $scope.services2.push(s);
             }
         });
-        services=$scope.services;
+        services = $scope.services;
         fotorama.destroy();
         $scope.services.forEach(function (service) {
             if (typeof service.photos[0] !== 'undefined') {
@@ -123,9 +123,33 @@ app.controller('serviciosController', function ($scope, $http) {
         toggleGallery();
     });
 });
-app.controller('servicioController', function ($scope, $routeParams) {
+app.controller('servicioController', function ($scope, $routeParams, $http) {
     $scope.$parent.breadcrumbs = 'Servicios / ' + $routeParams.name;
-    $scope.service=services.indexOf($routeParams.name);
+    if (typeof services === 'undefined') {
+        $http.get('site/loadServices').success(function (response) {
+            services = [];
+            response.forEach(function (s) {
+                if (s.description !== null) {
+                    services.push(s);
+                }
+            });
+            services.forEach(function (service) {
+                if (service.title === $routeParams.name) {
+                    $scope.service = service;
+                    return;
+                }
+            });
+        });
+    }
+    else {
+        services.forEach(function (service) {
+            if (service.title === $routeParams.name) {
+                $scope.service = service;
+                return;
+            }
+        });
+    }
+    
 });
 
 app.controller('ubicacionController', function () {
@@ -170,4 +194,3 @@ function toggleGallery() {
         $(".fotorama__nav-wrap").fadeOut();
     });
 }
-
