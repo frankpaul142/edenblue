@@ -280,7 +280,7 @@ body {
 	margin-right: auto;
 	background-color: #fff;
 	width: 600px;
-	height: 200px;
+	height: auto;
 }
 .cont1-hab {
 	margin-top: 2px;
@@ -1230,6 +1230,9 @@ body {
 .fotorama img {
 	width: 100% !important;
 }
+img.fotorama__img {
+	left: 0px !important;
+}
 img.fotorama_images {
 	left: 0px !important;
 }
@@ -1257,6 +1260,7 @@ position: absolute !important;
 .fotorama__wrap{
 	position:static !important;}
 .fotorama__stage{
+	width:100% !important;
 	height:100% !important;
 	position:absolute !important;}	
 .fotorama__nav-wrap {
