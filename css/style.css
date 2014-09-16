@@ -16,6 +16,7 @@ body {
 	margin: 0;
 	width: auto;
 	height: 0;
+	
 	}
 .menu-lateral ul {
 	list-style-type: none;
@@ -1272,5 +1273,54 @@ top: 15%;
 opacity: 0.8;
 }	
 .overlay{
-	overflow: overlay;
+	overflow: auto;
 	height: 197px;}
+a:-webkit-any-link {
+color: #000;
+text-decoration:none;
+cursor: auto;
+}
+scrollbar {  
+    width: 12px;  
+}  
+  
+scrollbar-thumb {  
+    background-color: #ef4425;
+	transition:all 0.5s;  
+}   
+scrollbar-thumb:hover {  
+    background-color: #009bdf;	
+	}		
+::-webkit-scrollbar {  
+    width: 12px;  
+}  
+  
+::-webkit-scrollbar-thumb {  
+    background-color: #ef4425;
+	transition:all 0.5s;  
+}   
+::-webkit-scrollbar-thumb:hover {  
+    background-color: #009bdf;	
+	}
+::-ms-scrollbar {  
+    width: 12px;  
+}  
+  
+::-ms-scrollbar-thumb {  
+    background-color: #ef4425;
+	transition:all 0.5s;  
+}   
+::-ms-scrollbar-thumb:hover {  
+    background-color: #009bdf;	
+	}	
+::-moz-scrollbar {  
+    width: 12px;  
+}  
+  
+::-moz-scrollbar-thumb {  
+    background-color: #ef4425;
+	transition:all 0.5s;  
+}   
+::-moz-scrollbar-thumb:hover {  
+    background-color: #009bdf;	
+	}		
