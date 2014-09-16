@@ -6,6 +6,7 @@ app.config(function ($routeSegmentProvider) {
             when('/reservar', 'reservar').
             when('/hosteria', 'hosteria').
             when('/hosteria/infraestructura', 'hosteria.infraestructura').
+            when('/hosteria/infraestructura/habitaciones', 'hosteria.infraestructura.habitaciones').
             when('/hosteria/entorno', 'hosteria.entorno').
             when('/hosteria/servicios', 'hosteria.servicios').
             when('/excursiones', 'excursiones').
@@ -26,6 +27,12 @@ app.config(function ($routeSegmentProvider) {
                 templateUrl: 'templates/hosteria/_infraestructura.html',
                 controller: 'infraestructuraController'
             }).
+            within().
+            segment('habitaciones', {
+                templateUrl: 'templates/hosteria/infraestructura/_habitaciones.html',
+                controller: 'habitacionesController'
+            }).
+            up().
             segment('entorno', {
                 templateUrl: 'templates/hosteria/_entorno.html',
                 controller: 'entornoController'
@@ -75,6 +82,9 @@ app.controller('infraestructuraController', function ($scope) {
         {img: 'images/fondo.jpg'}
     ]);
 });
+app.controller('habitacionesController', function () {
+    
+});
 app.controller('entornoController', function ($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
     fotorama.load([
@@ -86,7 +96,7 @@ app.controller('serviciosController', function ($scope, $http) {
     $http.get('site/loadServices').success(function (response) {
         $scope.services = response;
         fotorama.destroy();
-        $scope.services.forEach(function(service) {
+        $scope.services.forEach(function (service) {
             fotorama.push({img: 'images/' + service.photos[0].source});
         });
     });
@@ -101,16 +111,14 @@ app.controller('excursionesController', function () {
 });
 
 app.controller('ubicacionController', function () {
-var map;
-function initialize() {
-  var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(-34.397, 150.644)
-  };
-  map = new google.maps.Map(document.getElementById('map'),mapOptions);
-  console.log(map);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
+    var mapDiv = document.getElementById('map');
+    var catalunya = new google.maps.LatLng(41.652393, 1.691895);
+    var options = {
+        center: catalunya,
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var mapa = new google.maps.Map(mapDiv, options);
 });
 
 app.controller('loginController', function () {

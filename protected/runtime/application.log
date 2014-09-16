@@ -516,3 +516,93 @@ Stack trace:
 REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
 HTTP_REFERER=http://localhost/edenblue/
 ---
+2014/09/16 09:44:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 09:44:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 09:48:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 09:50:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 09:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 09:52:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 10:31:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos%5B0%5D.source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 10:35:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_img/boton-08.png"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_img/boton-08.p...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_img/boton-08.png
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 10:35:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "_img/boton-08.png"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('_img/boton-08.p...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/_img/boton-08.png
+HTTP_REFERER=http://localhost/edenblue/
+---
+2014/09/16 10:51:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/{{ service.photos[0].source }}"' in C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('images/{{ servi...')
+#1 C:\Program Files (x86)\Zend\Apache2\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\Program Files (x86)\Zend\Apache2\htdocs\edenblue\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/edenblue/images/%7B%7B%20service.photos[0].source%20%7D%7D
+HTTP_REFERER=http://localhost/edenblue/
+---
