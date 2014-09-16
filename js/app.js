@@ -75,18 +75,15 @@ app.controller('reservarController', function () {
 
 app.controller('hosteriaController', function () {
     toggleGallery();
+    fotorama.load([
+        {img: 'images/fondo.jpg'}
+    ]);
 });
 app.controller('infraestructuraController', function ($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Infraestructura';
-    fotorama.load([
-        {img: 'images/fondo.jpg'}
-    ]);
 });
 app.controller('entornoController', function ($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
-    fotorama.load([
-        {img: 'images/fondo.jpg'}
-    ]);
 });
 app.controller('habitacionesController', function ($scope, $http) {
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
@@ -153,6 +150,9 @@ app.controller('servicioController', function ($scope, $routeParams, $http) {
 });
 
 app.controller('ubicacionController', function () {
+    fotorama.load([
+        {html: '<div id="map" style="height:100%"></div>'}
+    ]);
     var mapDiv = document.getElementById('map');
     var catalunya = new google.maps.LatLng(41.652393, 1.691895);
     var options = {
@@ -161,6 +161,7 @@ app.controller('ubicacionController', function () {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var mapa = new google.maps.Map(mapDiv, options);
+    toggleGallery();
 });
 
 app.controller('loginController', function () {
