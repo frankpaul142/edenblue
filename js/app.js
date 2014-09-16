@@ -83,7 +83,7 @@ app.controller('infraestructuraController', function ($scope) {
     ]);
 });
 app.controller('habitacionesController', function () {
-    
+
 });
 app.controller('entornoController', function ($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
@@ -135,15 +135,21 @@ app.controller('registroController', function () {
 
 function toggleGallery() {
     $(".boton-index2").hide();
+    $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function () {
         $(this).hide();
         $(".boton-index2").show();
-        $("#content").animate({bottom: '370px'});
+        var height=$("#content").height();
+        $("#content").animate({bottom: height-65}, 'fast');
+        $(".top").animate({top: '-25px'}, 'fast');
+        $(".fotorama__nav-wrap").fadeIn();
     });
     $(".boton-index2").click(function () {
+        $(".top").animate({top: '0px'}, 'fast');
         $(this).hide();
         $(".boton-index").show();
-        $("#content").animate({bottom: '0px'});
+        $("#content").animate({bottom: '0px'}, 'fast');
+        $(".fotorama__nav-wrap").fadeOut();
     });
 }
 

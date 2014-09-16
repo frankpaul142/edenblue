@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="top">
             <div class="lenguaje">
                 <div class="lenguaje-btn">ESP</div><div class="lenguaje-btn">ENG</div>
             </div>
@@ -44,7 +44,6 @@
                 <a href="#login"><div class="btn-login">INICIA SESIÓN</div></a>
                 <a href="#registro"><div class="btn-regis">REGÍSTRATE</div></a>
             </div>
-
         </div>
         <div id="content">
             <?php echo $content; ?>
