@@ -282,6 +282,9 @@ body {
 	background-color: #fff;
 	width: 600px;
 	height: auto;
+	-webkit-transition: all 2s; /* For Safari 3.1 to 6.0 */
+    transition: all  2s;
+	tran
 }
 .cont1-hab {
 	margin-top: 2px;
@@ -297,7 +300,7 @@ body {
 	margin-right: auto;
 	background-color: #fff;
 	width: 600px;
-	height: 350px;
+	height: 325px;
 }
 .cont1-serv {
 	margin-top: 2px;
@@ -1279,7 +1282,7 @@ opacity: 0.8;
 	overflow: auto;
 	height: 197px;}
 a:-webkit-any-link {
-color: #929292;
+color: #009bdf;
 text-decoration:none;
 cursor: auto;
 }
@@ -1327,3 +1330,24 @@ scrollbar-thumb:hover {
 ::-moz-scrollbar-thumb:hover {  
     background-color: #009bdf;	
 	}		
+ul.ng-scope {
+    font-family: quattro;
+    line-height: 2em;
+    color: #929292;
+    list-style-type: none;
+    margin: 0;
+}
+ul.ng-scope:hover {
+    list-style-image: url(../images/li-cursor-01.png);
+}	
+p.ng-binding{
+	font-family: quattro;
+	font-size: 14px;}
+.cont1-ubicacion{
+	font-family: quattro;
+	font-size: 12px;
+	padding:15px;
+	height:auto;
+	background-color: white;
+	line-height: 15px;
+	text-align: justify;}	
