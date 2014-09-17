@@ -83,17 +83,18 @@ app.controller('habitacionesController', function ($scope, $http) {
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
     $http.get('site/loadTypeRooms').success(function (response) {
         $scope.rooms = response;
-        rooms=$scope.rooms;
-        $scope.gallery=[];
+        rooms = $scope.rooms;
+        $scope.gallery = [];
         $scope.rooms.forEach(function (room) {
             if (room.photos[0] != null) {
                 $scope.gallery.push(true);
             }
-            else{
+            else {
                 $scope.gallery.push(false);
             }
         });
     });
+    viewGallery();
 });
 
 app.controller('serviciosController', function ($scope, $http) {
@@ -178,6 +179,19 @@ function toggleGallery(nav) {
     });
 }
 
+function viewGallery(){
+    console.log('view gallery');
+    $('.boton-vermas').click(function () {
+        console.log('ver galeria');
+        $(this).hide();
+        $(".boton-index2").show();
+        var height = $("#content").height();
+        $("#content").animate({bottom: height - 65}, 'fast');
+        $(".top").animate({top: '-25px'}, 'fast');
+        //$(".fotorama__nav-wrap").fadeIn();
+    });
+}
+
 var interval;
 function loadMap() {
     if (document.getElementById('map') !== null) {
@@ -194,6 +208,7 @@ function loadMap() {
 }
 
 $(document).ready(function () {
+    $('.tooltip').tooltipster();
     interval = setInterval(loadMap, 1000);
     $fotoramaDiv = $('.fotorama').fotorama();
     fotorama = $fotoramaDiv.data('fotorama');
