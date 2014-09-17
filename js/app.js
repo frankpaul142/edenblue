@@ -103,7 +103,7 @@ app.controller('habitacionesController', function ($scope, $http) {
                 room.photos.forEach(function (photo) {
                     fotoramag.push({img: 'images/' + photo.source});
                 });
-                gallery = true;
+                galleryRoom = true;
                 return;
             }
         });
