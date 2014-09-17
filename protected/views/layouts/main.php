@@ -21,6 +21,8 @@
         <link  href="//fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"/> <!-- 3 KB -->
         <script src="//fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <link  href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/css/tooltipster.min.css" rel="stylesheet"/>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/js/jquery.tooltipster.min.js"></script>
 
     </head>
 
