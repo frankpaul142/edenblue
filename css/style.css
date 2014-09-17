@@ -1343,8 +1343,11 @@ ul.ng-scope:hover {
 p.ng-binding{
 	font-family: quattro;
 	font-size: 14px;}
-.ubicacion{
+.cont1-ubicacion{
 	font-family: quattro;
 	font-size: 12px;
 	padding:15px;
-	height:auto;}	
+	height:auto;
+	background-color: white;
+	line-height: 15px;
+	text-align: justify;}	
