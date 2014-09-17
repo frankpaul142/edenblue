@@ -64,7 +64,8 @@ var $fotoramaDiv;
 var fotorama;
 var rooms;
 var services;
-var gallery;
+var galleryRoom;
+var galleryService;
 
 app.controller('reservarController', function () {
     checkGallery();
@@ -84,31 +85,14 @@ app.controller('entornoController', function ($scope) {
 });
 app.controller('habitacionesController', function ($scope, $http) {
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
-    $scope.gallery = [];
     if (typeof rooms === 'undefined') {
         $http.get('site/loadTypeRooms').success(function (response) {
             $scope.rooms = response;
             rooms = $scope.rooms;
-            $scope.rooms.forEach(function (room) {
-                if (room.photos[0] != null) {
-                    $scope.gallery.push(true);
-                }
-                else {
-                    $scope.gallery.push(false);
-                }
-            });
         });
     }
     else {
         $scope.rooms = rooms;
-        $scope.rooms.forEach(function (room) {
-            if (room.photos[0] != null) {
-                $scope.gallery.push(true);
-            }
-            else {
-                $scope.gallery.push(false);
-            }
-        });
     }
     $scope.viewGallery = function (id) {
         rooms.forEach(function (room) {
@@ -119,7 +103,7 @@ app.controller('habitacionesController', function ($scope, $http) {
                 room.photos.forEach(function (photo) {
                     fotoramag.push({img: 'images/' + photo.source});
                 });
-                gallery=true;
+                gallery = true;
                 return;
             }
         });
@@ -139,11 +123,11 @@ app.controller('serviciosController', function ($scope, $http) {
         $scope.services = [];
         $scope.services2 = [];
         response.forEach(function (s) {
-            if (s.description !== null) {
-                $scope.services.push(s);
+            if (s.description === null && s.photos[0] == null) {
+                $scope.services2.push(s);
             }
             else {
-                $scope.services2.push(s);
+                $scope.services.push(s);
             }
         });
         services = $scope.services;
@@ -176,7 +160,25 @@ app.controller('servicioController', function ($scope, $routeParams, $http) {
             }
         });
     }
-
+    $scope.viewGallery = function (id) {
+        services.forEach(function (service) {
+            if (service.id == id) {
+                fotorama.splice(2, 1, {html: '<div id="fotoramag" data-auto="false" data-nav="thumbs" data-width="100%" data-height="100%" data-fit="cover"></div>'});
+                var $fotoramagDiv = $('#fotoramag').fotorama();
+                var fotoramag = $fotoramagDiv.data('fotorama');
+                service.photos.forEach(function (photo) {
+                    fotoramag.push({img: 'images/' + photo.source});
+                });
+                galleryService = true;
+                return;
+            }
+        });
+        $('.boton-index').hide();
+        $(".boton-index2").show();
+        var height = $("#content").height();
+        $("#content").animate({bottom: height - 65}, 'fast');
+        $(".top").animate({top: '-25px'}, 'fast');
+    }
 });
 
 app.controller('ubicacionController', function () {
@@ -233,9 +235,13 @@ function loadMap() {
 }
 
 function checkGallery() {
-    if(gallery){
-        fotorama.splice(1,1,{img: 'images/fondo.jpg'});
-        gallery=false;
+    if (galleryRoom) {
+        fotorama.splice(1, 1, {img: 'images/fondo.jpg'});
+        galleryRoom = false;
+    }
+    if (galleryService) {
+        fotorama.splice(2, 1, {img: 'images/fondo2.jpg'});
+        galleryService = false;
     }
 }
 
@@ -256,5 +262,5 @@ $(document).ready(function () {
         click: false,
         swipe: false
     });
-    gallery=false;
+    gallery = false;
 });

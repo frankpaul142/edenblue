@@ -4,6 +4,6 @@
         <div class="texto-hab-cont">
             <p>{{ room.description}}</p>
         </div>
-        <div class="boton-vermas" ng-if="gallery[$index]" ng-click="viewGallery(room.id)">Ver galería</div>
+        <div class="boton-vermas" ng-if="room.photos[0] != null" ng-click="viewGallery(room.id)">Ver galería</div>
     </div>
 </div>
