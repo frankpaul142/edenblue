@@ -367,11 +367,10 @@ body {
 .texto-hab1 {
 	float: right;
 	/* background-color: #06F; */
-	width: 99%;
-	height: 194px;
+	width: 100%;
+	height: auto;
 	text-align: center;
-	
-	
+	min-height: 248px;	
 }
 .texto-hab2 {
 	float: right;
@@ -1244,6 +1243,7 @@ body {
 }
 img.fotorama__img {
 	left: 0px !important;
+	top: 0px !important;
 }
 img.fotorama_images {
 	left: 0px !important;
@@ -1283,7 +1283,7 @@ opacity: 0.8;
 .overlay{
 	overflow: auto;
 	height: auto;
-	max-height: 200px;
+	max-height: 250px;
 	overflow: auto;}
 a:-webkit-any-link {
 color: #009bdf;
