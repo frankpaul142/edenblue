@@ -64,12 +64,15 @@ var $fotoramaDiv;
 var fotorama;
 var rooms;
 var services;
+var gallery;
 
 app.controller('reservarController', function () {
+    checkGallery();
     fotorama.show(0);
 });
 
 app.controller('hosteriaController', function () {
+    checkGallery();
     toggleGallery(false);
     fotorama.show(1);
 });
@@ -81,10 +84,23 @@ app.controller('entornoController', function ($scope) {
 });
 app.controller('habitacionesController', function ($scope, $http) {
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
-    $http.get('site/loadTypeRooms').success(function (response) {
-        $scope.rooms = response;
-        rooms = $scope.rooms;
-        $scope.gallery = [];
+    $scope.gallery = [];
+    if (typeof rooms === 'undefined') {
+        $http.get('site/loadTypeRooms').success(function (response) {
+            $scope.rooms = response;
+            rooms = $scope.rooms;
+            $scope.rooms.forEach(function (room) {
+                if (room.photos[0] != null) {
+                    $scope.gallery.push(true);
+                }
+                else {
+                    $scope.gallery.push(false);
+                }
+            });
+        });
+    }
+    else {
+        $scope.rooms = rooms;
         $scope.rooms.forEach(function (room) {
             if (room.photos[0] != null) {
                 $scope.gallery.push(true);
@@ -93,11 +109,30 @@ app.controller('habitacionesController', function ($scope, $http) {
                 $scope.gallery.push(false);
             }
         });
-    });
-    viewGallery();
+    }
+    $scope.viewGallery = function (id) {
+        rooms.forEach(function (room) {
+            if (room.id == id) {
+                fotorama.splice(1, 1, {html: '<div id="fotoramag" data-auto="false" data-nav="thumbs" data-width="100%" data-height="100%" data-fit="cover"></div>'});
+                var $fotoramagDiv = $('#fotoramag').fotorama();
+                var fotoramag = $fotoramagDiv.data('fotorama');
+                room.photos.forEach(function (photo) {
+                    fotoramag.push({img: 'images/' + photo.source});
+                });
+                gallery=true;
+                return;
+            }
+        });
+        $('.boton-index').hide();
+        $(".boton-index2").show();
+        var height = $("#content").height();
+        $("#content").animate({bottom: height - 65}, 'fast');
+        $(".top").animate({top: '-25px'}, 'fast');
+    }
 });
 
 app.controller('serviciosController', function ($scope, $http) {
+    checkGallery();
     fotorama.show(2);
     $scope.breadcrumbs = 'Servicios / ';
     $http.get('site/loadServices').success(function (response) {
@@ -145,14 +180,17 @@ app.controller('servicioController', function ($scope, $routeParams, $http) {
 });
 
 app.controller('ubicacionController', function () {
+    checkGallery();
     fotorama.show(3);
     toggleGallery(false);
 });
 
 app.controller('loginController', function () {
+    checkGallery();
     fotorama.show(4);
 });
 app.controller('registroController', function () {
+    checkGallery();
     fotorama.show(5);
 });
 
@@ -179,19 +217,6 @@ function toggleGallery(nav) {
     });
 }
 
-function viewGallery(){
-    console.log('view gallery');
-    $('.boton-vermas').click(function () {
-        console.log('ver galeria');
-        $(this).hide();
-        $(".boton-index2").show();
-        var height = $("#content").height();
-        $("#content").animate({bottom: height - 65}, 'fast');
-        $(".top").animate({top: '-25px'}, 'fast');
-        //$(".fotorama__nav-wrap").fadeIn();
-    });
-}
-
 var interval;
 function loadMap() {
     if (document.getElementById('map') !== null) {
@@ -204,6 +229,13 @@ function loadMap() {
         };
         var mapa = new google.maps.Map(mapDiv, options);
         clearInterval(interval);
+    }
+}
+
+function checkGallery() {
+    if(gallery){
+        fotorama.splice(1,1,{img: 'images/fondo.jpg'});
+        gallery=false;
     }
 }
 
@@ -224,4 +256,5 @@ $(document).ready(function () {
         click: false,
         swipe: false
     });
+    gallery=false;
 });
