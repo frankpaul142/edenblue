@@ -60,18 +60,18 @@ app.config(function ($routeSegmentProvider) {
             });
 });
 
-var $fotoramaDiv = $('.fotorama').fotorama();
-var fotorama = $fotoramaDiv.data('fotorama');
+var $fotoramaDiv;
+var fotorama;
+var rooms;
+var services;
 
 app.controller('reservarController', function () {
-    fotorama.load([
-        {img: 'images/fondo5.jpg'}
-    ]);
+    fotorama.show(0);
 });
 
 app.controller('hosteriaController', function () {
-    toggleGallery();
-    fotorama.show(0);
+    toggleGallery(false);
+    fotorama.show(1);
 });
 app.controller('infraestructuraController', function ($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Infraestructura';
@@ -83,16 +83,21 @@ app.controller('habitacionesController', function ($scope, $http) {
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
     $http.get('site/loadTypeRooms').success(function (response) {
         $scope.rooms = response;
-        /*fotorama.destroy();
-         $scope.services.forEach(function (service) {
-         fotorama.push({img: 'images/' + service.photos[0].source});
-         });*/
+        rooms=$scope.rooms;
+        $scope.gallery=[];
+        $scope.rooms.forEach(function (room) {
+            if (room.photos[0] != null) {
+                $scope.gallery.push(true);
+            }
+            else{
+                $scope.gallery.push(false);
+            }
+        });
     });
 });
 
-var services;
 app.controller('serviciosController', function ($scope, $http) {
-    fotorama.show(1);
+    fotorama.show(2);
     $scope.breadcrumbs = 'Servicios / ';
     $http.get('site/loadServices').success(function (response) {
         $scope.services = [];
@@ -106,13 +111,7 @@ app.controller('serviciosController', function ($scope, $http) {
             }
         });
         services = $scope.services;
-        /*fotorama.destroy();
-         $scope.services.forEach(function (service) {
-         if (typeof service.photos[0] !== 'undefined') {
-         fotorama.push({img: 'images/' + service.photos[0].source});
-         }
-         });*/
-        toggleGallery();
+        toggleGallery(false);
     });
 });
 app.controller('servicioController', function ($scope, $routeParams, $http) {
@@ -145,24 +144,19 @@ app.controller('servicioController', function ($scope, $routeParams, $http) {
 });
 
 app.controller('ubicacionController', function () {
-    fotorama.show(2);
-
-    toggleGallery();
+    fotorama.show(3);
+    toggleGallery(false);
 });
 
 app.controller('loginController', function () {
-    fotorama.load([
-        {img: 'images/fondo2.jpg'}
-    ]);
+    fotorama.show(4);
 });
 app.controller('registroController', function () {
-    fotorama.load([
-        {img: 'images/fondo5.jpg'}
-    ]);
+    fotorama.show(5);
 });
 
 
-function toggleGallery() {
+function toggleGallery(nav) {
     $(".boton-index2").hide();
     $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function () {
@@ -171,7 +165,9 @@ function toggleGallery() {
         var height = $("#content").height();
         $("#content").animate({bottom: height - 65}, 'fast');
         $(".top").animate({top: '-25px'}, 'fast');
-        $(".fotorama__nav-wrap").fadeIn();
+        if (nav) {
+            $(".fotorama__nav-wrap").fadeIn();
+        }
     });
     $(".boton-index2").click(function () {
         $(".top").animate({top: '0px'}, 'fast');
@@ -182,17 +178,9 @@ function toggleGallery() {
     });
 }
 
-$(document).ready(function () {
-    fotorama.load([
-        {img: 'images/fondo.jpg'},
-        {img: 'images/fondo2.jpg'},
-        {html: '<div id="map" style="height:100%"></div>'}
-    ]).setOptions({
-        arrows: false,
-        click: false,
-        swipe: false
-    });
-    $('.fotorama').on('fotorama:show', function (e, fotorama, extra) {
+var interval;
+function loadMap() {
+    if (document.getElementById('map') !== null) {
         var mapDiv = document.getElementById('map');
         var catalunya = new google.maps.LatLng(41.652393, 1.691895);
         var options = {
@@ -201,6 +189,24 @@ $(document).ready(function () {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var mapa = new google.maps.Map(mapDiv, options);
-    });
+        clearInterval(interval);
+    }
+}
 
+$(document).ready(function () {
+    interval = setInterval(loadMap, 1000);
+    $fotoramaDiv = $('.fotorama').fotorama();
+    fotorama = $fotoramaDiv.data('fotorama');
+    fotorama.load([
+        {img: 'images/fondo5.jpg'},
+        {img: 'images/fondo.jpg'},
+        {img: 'images/fondo2.jpg'},
+        {html: '<div id="map" style="height:100%"></div>'},
+        {img: 'images/fondo2.jpg'},
+        {img: 'images/fondo5.jpg'}
+    ]).setOptions({
+        arrows: false,
+        click: false,
+        swipe: false
+    });
 });

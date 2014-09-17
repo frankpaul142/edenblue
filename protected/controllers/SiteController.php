@@ -98,26 +98,40 @@ class SiteController extends Controller {
 
     public function actionLoadServices() {
         $services = Service::model()->findAll(array("condition" => "status='ACTIVE'"));
-        $return=[];
-        $service=[];
-        $photos=[];
-        foreach ($services as $i=>$s) {
-            $service['id']=$s->id;
-            $service['title']=$s->title;
-            $service['description']=$s->description;
-            $service['photos']=[];
-            foreach ($s->photos as $photo){
-                $photos['source']=$photo->source;
+        $return = [];
+        $service = [];
+        $photos = [];
+        foreach ($services as $i => $s) {
+            $service['id'] = $s->id;
+            $service['title'] = $s->title;
+            $service['description'] = $s->description;
+            $service['photos'] = [];
+            foreach ($s->photos as $photo) {
+                $photos['source'] = $photo->source;
                 array_push($service['photos'], $photos);
             }
-            array_push($return,$service);
+            array_push($return, $service);
         }
         echo CJSON::encode($return);
     }
-    
+
     public function actionLoadTypeRooms() {
-        $rooms=TypeRoom::model()->findAll();
-        echo CJSON::encode($rooms);
+        $rooms = TypeRoom::model()->findAll();
+        $return = [];
+        $room = [];
+        $photos = [];
+        foreach ($rooms as $i => $r) {
+            $room['id'] = $r->id;
+            $room['name'] = $r->name;
+            $room['description'] = $r->description;
+            $room['photos'] = [];
+            foreach ($r->photos as $photo) {
+                $photos['source'] = $photo->source;
+                array_push($room['photos'], $photos);
+            }
+            array_push($return, $room);
+        }
+        echo CJSON::encode($return);
     }
 
 }
