@@ -21,8 +21,6 @@
         <link  href="//fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"/> <!-- 3 KB -->
         <script src="//fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-        <link  href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/css/tooltipster.min.css" rel="stylesheet"/>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/js/jquery.tooltipster.min.js"></script>
 
     </head>
 
@@ -31,7 +29,7 @@
         <div class="background">
             <div class="fotorama"
                  data-auto="false"
-                 data-nav="thumbs"
+                 data-nav="false"
                  data-width="100%"
                  data-height="100%"
                  data-fit="cover">
@@ -43,8 +41,8 @@
                 <div class="lenguaje-btn">ESP</div><div class="lenguaje-btn">ENG</div>
             </div>
             <div class="log-in">
-                <a href="#login"><div class="btn-login">INICIA SESIÓN</div></a>
-                <a href="#registro"><div class="btn-regis">REGÍSTRATE</div></a>
+                <a href="#login"><div class="btn-login m6">INICIA SESIÓN</div></a>
+                <a href="#registro"><div class="btn-regis m7">REGÍSTRATE</div></a>
             </div>
         </div>
         <div id="content">

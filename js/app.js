@@ -75,7 +75,7 @@ app.controller('reservarController', function() {
 
 app.controller('hosteriaController', function() {
     checkGallery();
-    toggleGallery(false);
+    toggleGallery();
     fotorama.show(1);
     activeMenu(2);
 });
@@ -140,7 +140,7 @@ app.controller('serviciosController', function($scope, $http) {
             }
         });
         services = $scope.services;
-        toggleGallery(false);
+        toggleGallery();
     });
 });
 app.controller('servicioController', function($scope, $routeParams, $http) {
@@ -201,22 +201,22 @@ app.controller('ubicacionController', function() {
     checkGallery();
     fotorama.show(3);
     activeMenu(4);
-    toggleGallery(false);
+    toggleGallery();
 });
 
 app.controller('loginController', function() {
     checkGallery();
     fotorama.show(4);
-    activeMenu(5);
+    activeMenu(6);
 });
 app.controller('registroController', function() {
     checkGallery();
     fotorama.show(5);
-    activeMenu(6);
+    activeMenu(7);
 });
 
 
-function toggleGallery(nav) {
+function toggleGallery() {
     $(".boton-index2").hide();
     $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function() {
@@ -229,9 +229,6 @@ function toggleGallery(nav) {
         $(".top").animate({
             top: '-25px'
         }, 'fast');
-        if (nav) {
-            $(".fotorama__nav-wrap").fadeIn();
-        }
     });
     $(".boton-index2").click(function() {
         $(".top").animate({
@@ -278,7 +275,7 @@ function checkGallery() {
 }
 
 function activeMenu(num) {
-    for (var i = 1; i <= 6; i++) {
+    for (var i = 1; i <= 7; i++) {
         if (i == num) {
             $('.m' + i).addClass('hover-menu' + i);
         } else {
@@ -288,7 +285,6 @@ function activeMenu(num) {
 }
 
 $(document).ready(function() {
-    $('.tooltip').tooltipster();
     interval = setInterval(loadMap, 1000);
     $fotoramaDiv = $('.fotorama').fotorama();
     fotorama = $fotoramaDiv.data('fotorama');
