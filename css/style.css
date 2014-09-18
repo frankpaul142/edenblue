@@ -201,7 +201,7 @@ body {
 	cursor: pointer;
 }
 .m1 {
-	background-image: url(../images/600pxmenu2/menu600px-01.png);
+	background-image: url(../images/600pxmenu2/menu600px-06.png);
 	width: 32px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -213,7 +213,7 @@ body {
 	margin-left: 0px;
 }
 .m1:hover {
-	background-image: url(../images/600pxmenu2/menu600px-06.png);
+	background-image: url(../images/600pxmenu2/menu600px-01.png);
 }
 .m2 {
 	background-image: url(../images/600pxmenu2/menu600px-02.png);
@@ -261,7 +261,7 @@ body {
 	background-image: url(../images/600pxmenu2/menu600px-09.png);
 }
 .m5 {
-	background-image: url(../images/600pxmenu2/menu600px-05.png);
+	background-image: url(../images/600pxmenu2/menu600px-10.png);
 	width: 32px;
 	height: 29px;
 	-webkit-transition: all ease 0.3s;
@@ -273,7 +273,7 @@ body {
 	margin-left: 2px;
 }
 .m5:hover {
-	background-image: url(../images/600pxmenu2/menu600px-10.png);
+	background-image: url(../images/600pxmenu2/menu600px-05.png);
 }
 .cont1 {
 	margin-top: 2px;
@@ -1358,8 +1358,12 @@ p.ng-binding{
 	text-align: justify;}	
 .fotorama__thumb-border{
 	border-color: #FFFFFF !important;}	
-.hover-menu1{background-image: url(../images/600pxmenu2/menu600px-06.png);}
+.hover-menu1{background-image: url(../images/600pxmenu2/menu600px-01.png);}
 .hover-menu2{background-image: url(../images/600pxmenu2/menu600px-07.png);}
 .hover-menu3{background-image: url(../images/600pxmenu2/menu600px-08.png);} 
 .hover-menu4{background-image: url(../images/600pxmenu2/menu600px-09.png);}
-.hover-menu5{background-image: url(../images/600pxmenu2/menu600px-10.png);}	
+.hover-menu5{background-image: url(../images/600pxmenu2/menu600px-05.png);}	
+.hover-menu6{background-color: #f79221;color: #FFF;}
+.hover-menu7{background-color: #009bdf;color: #FFF;}
+.hover-menu8{background-color: #fff;color: #000;}
+.hover-menu9{background-color: #fff;color: #000;}
