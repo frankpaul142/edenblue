@@ -18,7 +18,7 @@
 	width: 109px;}		
 .cont1 {
 	width:400px;
-	height: 190px;}
+	height: auto;}
 .breadcrumbs {
 	width:180px;}
 .menu-lateral ul {
@@ -87,13 +87,13 @@
 padding-bottom: 0px;
 	}
 .texto-cont {
-font-size: 9px;
+font-size: 14px;
 letter-spacing: 0px;	}	
 
 /*excursiones*/
 .cont1-excur {
 	width:400px;
-	height:425px;
+	height:auto;
 	}
 .texto-excur-cont {
 	width:350px;
@@ -152,3 +152,7 @@ margin-top: 30%;
 .footer-reserv {
 	margin-top:0;
 }
+.reserv-in-txt {
+width: 115px;}
+.reserv-out-txt {
+width: 115px;}

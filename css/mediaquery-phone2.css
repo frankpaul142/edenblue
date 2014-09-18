@@ -18,7 +18,7 @@
 	width: 25.5%;}		
 .cont1 {
 	width:100%;
-	height:200px;}
+	height:auto;}
 .borde-inferior {
 	width:100%;
 	}
@@ -91,12 +91,22 @@ height: auto;
 padding-bottom: 0px;
 	}
 .texto-cont {
-font-size: 9px;
+font-size: 14px;
+padding: 20px;
 	}
+.reserv-out-txt {
+height:auto;}	
+.texto-tit{
+	height:80px;}
+.menu-lateral ul il{
+	text-align:center;
+	width:33%;
+	float:left;}	
+
 /*excursiones*/
 .cont1-excur {
 	width:100%;
-	height:480px;
+	height:auto;
 	}
 .texto-excur-cont {
 	width:87%;
@@ -121,7 +131,10 @@ font-size: 9px;
 	}
 .texto-hab-cont {
 	font-size:11px;
+	padding: 10px;
 	}	
+.texto-hab1{
+	padding-top: 20px;}	
 /*servicios*/	
 .cont1-serv {
 	width: 100%;
@@ -157,6 +170,7 @@ font-size: 9px;
 	height: 25px;
 	border-right:none;
 	border-bottom: thin inset #CCC;
+	float:none;
 	}	
 .menu-lateral ul{
 	padding: 0px;
@@ -166,8 +180,8 @@ font-size: 9px;
 	}	
 li {
 	width: 33%;
-	float: left;
 	text-align: center;
+	float:left;
 }		
 /*registro*/
 .footer-reg {
