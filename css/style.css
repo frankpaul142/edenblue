@@ -228,9 +228,14 @@ body {
 	float: left;
 	margin-left: 2px;
 	background-repeat: no-repeat;
-}
+	color: rgb(255, 255, 255);
+	font-family: quattro;
+	font-size: 11px;
+	line-height: 30px;
+	}
 .m2:hover {
 	background-image: url(../images/600pxmenu2/menu600px-07.png); background-repeat: no-repeat;
+	color: rgb(37, 37, 37)
 }
 .m3 {
 	background-image: url(../images/600pxmenu2/menu600px-03.png);
@@ -244,9 +249,14 @@ body {
 	float: left;
 	margin-left: 2px;
 	background-repeat: no-repeat;
-}
+	color: rgb(255, 255, 255);
+	font-family: quattro;
+	font-size: 11px;
+	line-height: 30px;
+	}
 .m3:hover {
 	background-image: url(../images/600pxmenu2/menu600px-08.png); background-repeat: no-repeat;
+	color: rgb(37, 37, 37);
 }
 .m4 {
 	background-image: url(../images/600pxmenu2/menu600px-04.png);
@@ -260,9 +270,14 @@ body {
 	float: left;
 	margin-left: 2px;
 	background-repeat: no-repeat;
-}
+	color: rgb(255, 255, 255);
+	font-family: quattro;
+	font-size: 11px;
+	line-height: 30px;
+	}
 .m4:hover {
 	background-image: url(../images/600pxmenu2/menu600px-09.png);background-repeat: no-repeat;
+	color: rgb(37, 37, 37);
 }
 .m5 {
 	background-image: url(../images/600pxmenu2/menu600px-10.png);
