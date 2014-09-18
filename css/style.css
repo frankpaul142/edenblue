@@ -1279,7 +1279,6 @@ position: absolute !important;
 .fotorama__nav-wrap {
 position: absolute;
 top: 15%;
-opacity: 0.8;
 }	
 .overlay{
 	overflow: auto;
@@ -1357,3 +1356,10 @@ p.ng-binding{
 	background-color: white;
 	line-height: 15px;
 	text-align: justify;}	
+.fotorama__thumb-border{
+	border-color: #FFFFFF !important;}	
+.hover-menu1{background-image: url(../images/600pxmenu2/menu600px-06.png);}
+.hover-menu2{background-image: url(../images/600pxmenu2/menu600px-07.png);}
+.hover-menu3{background-image: url(../images/600pxmenu2/menu600px-08.png);} 
+.hover-menu4{background-image: url(../images/600pxmenu2/menu600px-09.png);}
+.hover-menu5{background-image: url(../images/600pxmenu2/menu600px-10.png);}	
