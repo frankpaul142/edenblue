@@ -1240,6 +1240,7 @@ body {
 }
 .fotorama img {
 	width: 100% !important;
+	height: 100% !important;
 }
 img.fotorama__img {
 	left: 0px !important;
