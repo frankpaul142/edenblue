@@ -1379,9 +1379,9 @@ p.ng-binding{
 .fotorama__thumb-border{
 	border-color: #FFFFFF !important;}	
 .hover-menu1{background-image: url(../images/600pxmenu2/menu600px-01.png);background-repeat: no-repeat;}
-.hover-menu2{background-image: url(../images/600pxmenu2/menu600px-07.png);background-repeat: no-repeat;}
-.hover-menu3{background-image: url(../images/600pxmenu2/menu600px-08.png);background-repeat: no-repeat;} 
-.hover-menu4{background-image: url(../images/600pxmenu2/menu600px-09.png);background-repeat: no-repeat;}
+.hover-menu2{background-image: url(../images/600pxmenu2/menu600px-07.png);background-repeat: no-repeat;color: rgb(37, 37, 37);}
+.hover-menu3{background-image: url(../images/600pxmenu2/menu600px-08.png);background-repeat: no-repeat;color: rgb(37, 37, 37);} 
+.hover-menu4{background-image: url(../images/600pxmenu2/menu600px-09.png);background-repeat: no-repeat;color: rgb(37, 37, 37);}
 .hover-menu5{background-image: url(../images/600pxmenu2/menu600px-05.png);background-repeat: no-repeat;}	
 .hover-menu6{background-color: #f79221;color: #FFF;}
 .hover-menu7{background-color: #009bdf;color: #FFF;}
