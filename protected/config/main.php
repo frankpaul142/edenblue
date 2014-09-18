@@ -8,8 +8,8 @@ return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'EdenBlue',
     'timeZone' => 'America/Guayaquil',
-    'language' => 'es',
-    'sourceLanguage' => 'es',
+    'language' => 'en',
+    'sourceLanguage' => '00',
     // preloading 'log' component
     'preload' => array('log'),
     // autoloading model and component classes
@@ -73,6 +73,9 @@ return array(
               ),
              */
             ),
+        ),
+        'messages'=>array(
+            'class'=>'CDbMessageSource'
         ),
     ),
     // application-level parameters that can be accessed

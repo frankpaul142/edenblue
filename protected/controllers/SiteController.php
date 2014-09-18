@@ -103,8 +103,10 @@ class SiteController extends Controller {
         $photos = [];
         foreach ($services as $i => $s) {
             $service['id'] = $s->id;
-            $service['title'] = $s->title;
-            $service['description'] = $s->description;
+            $n='service_'.$s->title.'_title';
+            $d='service_'.$s->title.'_description';
+            $service['title'] = Yii::t('services',$n);
+            $service['description'] = Yii::t('services',$d);
             $service['photos'] = [];
             foreach ($s->photos as $photo) {
                 $photos['source'] = $photo->source;
@@ -122,8 +124,10 @@ class SiteController extends Controller {
         $photos = [];
         foreach ($rooms as $i => $r) {
             $room['id'] = $r->id;
-            $room['name'] = $r->name;
-            $room['description'] = $r->description;
+            $n='room_'.$r->name.'_name';
+            $d='room_'.$r->name.'_description';
+            $room['name']=Yii::t('rooms',$n);
+            $room['description']=Yii::t('rooms',$d);
             $room['photos'] = [];
             foreach ($r->photos as $photo) {
                 $photos['source'] = $photo->source;
@@ -132,6 +136,40 @@ class SiteController extends Controller {
             array_push($return, $room);
         }
         echo CJSON::encode($return);
+    }
+
+    public function actionTranslate()
+    {
+        $rooms = TypeRoom::model()->findAll();
+        $sqlsm="";
+        $sqlm="";
+        $i=0;
+        foreach ($rooms as $r) {
+            $sqlsm.="insert into `sourcemessage` values (".$i.",'rooms','room_".htmlentities($r->name, ENT_QUOTES,'UTF-8')."_name');<br>";
+            $sqlm.="insert into `message` values (".$i.",'es','".htmlentities($r->name, ENT_QUOTES,'UTF-8')."');<br>";
+            $sqlm.="insert into `message` values (".$i++.",'en','');<br>";
+            $sqlsm.="insert into `sourcemessage` values (".$i.",'rooms','room_".htmlentities($r->name, ENT_QUOTES,'UTF-8')."_description');<br>";
+            $sqlm.="insert into `message` values (".$i.",'es','".htmlentities($r->description, ENT_QUOTES,'UTF-8')."');<br>";
+            $sqlm.="insert into `message` values (".$i++.",'en','');<br>";
+        }
+        echo $sqlsm;
+        echo $sqlm;
+        echo "<br>";
+        $services = Service::model()->findAll();
+        $sqlsm="";
+        $sqlm="";
+        foreach ($services as $s) {
+            $sqlsm.="insert into `sourcemessage` values (".$i.",'services','service_".htmlentities($s->title, ENT_QUOTES,'UTF-8')."_title');<br>";
+            $sqlm.="insert into `message` values (".$i.",'es','".htmlentities($s->title, ENT_QUOTES,'UTF-8')."');<br>";
+            $sqlm.="insert into `message` values (".$i++.",'en','');<br>";
+            if(!is_null($s->description)){
+                $sqlsm.="insert into `sourcemessage` values (".$i.",'services','service_".htmlentities($s->title, ENT_QUOTES,'UTF-8')."_description');<br>";
+                $sqlm.="insert into `message` values (".$i.",'es','".htmlentities($s->description, ENT_QUOTES,'UTF-8')."');<br>";
+                $sqlm.="insert into `message` values (".$i++.",'en','');<br>";
+            }
+        }
+        echo $sqlsm;
+        echo $sqlm;
     }
 
 }

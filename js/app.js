@@ -133,7 +133,7 @@ app.controller('serviciosController', function($scope, $http) {
         $scope.services = [];
         $scope.services2 = [];
         response.forEach(function(s) {
-            if (s.description === null && s.photos[0] == null) {
+            if ((s.description == null || s.description.substr(0, 8) == "service_") && s.photos[0] == null) {
                 $scope.services2.push(s);
             } else {
                 $scope.services.push(s);
@@ -149,9 +149,7 @@ app.controller('servicioController', function($scope, $routeParams, $http) {
         $http.get('site/loadServices').success(function(response) {
             services = [];
             response.forEach(function(s) {
-                if (s.description !== null) {
-                    services.push(s);
-                }
+                services.push(s);
             });
             services.forEach(function(service) {
                 if (service.title === $routeParams.name) {
