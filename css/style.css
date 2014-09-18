@@ -211,9 +211,10 @@ body {
 	transition: all ease 0.3s;
 	float: left;
 	margin-left: 0px;
+	background-repeat: no-repeat;
 }
 .m1:hover {
-	background-image: url(../images/600pxmenu2/menu600px-01.png);
+	background-image: url(../images/600pxmenu2/menu600px-01.png); background-repeat: no-repeat;
 }
 .m2 {
 	background-image: url(../images/600pxmenu2/menu600px-02.png);
@@ -226,9 +227,10 @@ body {
 	transition: all ease 0.3s;
 	float: left;
 	margin-left: 2px;
+	background-repeat: no-repeat;
 }
 .m2:hover {
-	background-image: url(../images/600pxmenu2/menu600px-07.png);
+	background-image: url(../images/600pxmenu2/menu600px-07.png); background-repeat: no-repeat;
 }
 .m3 {
 	background-image: url(../images/600pxmenu2/menu600px-03.png);
@@ -241,9 +243,10 @@ body {
 	transition: all ease 0.3s;
 	float: left;
 	margin-left: 2px;
+	background-repeat: no-repeat;
 }
 .m3:hover {
-	background-image: url(../images/600pxmenu2/menu600px-08.png);
+	background-image: url(../images/600pxmenu2/menu600px-08.png); background-repeat: no-repeat;
 }
 .m4 {
 	background-image: url(../images/600pxmenu2/menu600px-04.png);
@@ -256,9 +259,10 @@ body {
 	transition: all ease 0.3s;
 	float: left;
 	margin-left: 2px;
+	background-repeat: no-repeat;
 }
 .m4:hover {
-	background-image: url(../images/600pxmenu2/menu600px-09.png);
+	background-image: url(../images/600pxmenu2/menu600px-09.png);background-repeat: no-repeat;
 }
 .m5 {
 	background-image: url(../images/600pxmenu2/menu600px-10.png);
@@ -271,9 +275,10 @@ body {
 	transition: all ease 0.3s;
 	float: left;
 	margin-left: 2px;
+	background-repeat: no-repeat;
 }
 .m5:hover {
-	background-image: url(../images/600pxmenu2/menu600px-05.png);
+	background-image: url(../images/600pxmenu2/menu600px-05.png); background-repeat: no-repeat;
 }
 .cont1 {
 	margin-top: 2px;
@@ -1358,11 +1363,11 @@ p.ng-binding{
 	text-align: justify;}	
 .fotorama__thumb-border{
 	border-color: #FFFFFF !important;}	
-.hover-menu1{background-image: url(../images/600pxmenu2/menu600px-01.png);}
-.hover-menu2{background-image: url(../images/600pxmenu2/menu600px-07.png);}
-.hover-menu3{background-image: url(../images/600pxmenu2/menu600px-08.png);} 
-.hover-menu4{background-image: url(../images/600pxmenu2/menu600px-09.png);}
-.hover-menu5{background-image: url(../images/600pxmenu2/menu600px-05.png);}	
+.hover-menu1{background-image: url(../images/600pxmenu2/menu600px-01.png);background-repeat: no-repeat;}
+.hover-menu2{background-image: url(../images/600pxmenu2/menu600px-07.png);background-repeat: no-repeat;}
+.hover-menu3{background-image: url(../images/600pxmenu2/menu600px-08.png);background-repeat: no-repeat;} 
+.hover-menu4{background-image: url(../images/600pxmenu2/menu600px-09.png);background-repeat: no-repeat;}
+.hover-menu5{background-image: url(../images/600pxmenu2/menu600px-05.png);background-repeat: no-repeat;}	
 .hover-menu6{background-color: #f79221;color: #FFF;}
 .hover-menu7{background-color: #009bdf;color: #FFF;}
 .hover-menu8{background-color: #fff;color: #000;}
