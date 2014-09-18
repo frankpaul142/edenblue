@@ -8,6 +8,9 @@
 	font-family: quattro;
 	src: url(../fonts/roboto-regular-webfont.woff);
 }
+.texto-excur-cont ul p{
+	margin: 0px;
+	}
 .top {
 position: relative;
 z-index: 999;
@@ -16,7 +19,6 @@ body {
 	margin: 0;
 	width: auto;
 	height: 0;
-	
 	}
 .menu-lateral ul {
 	list-style-type: none;
@@ -803,7 +805,7 @@ body {
 	float: left;
 }
 .reserv-in-txt {
-	width: 119px;
+	width: 118px;
 	float: left;
 	height: 25px;
 	background-color: #FFF;
@@ -835,7 +837,7 @@ body {
 	margin-left: 2px;
 }
 .reserv-out-txt {
-	width: 119px;
+	width: 118px;
 	float: left;
 	height: 25px;
 	background-color: #FFF;
