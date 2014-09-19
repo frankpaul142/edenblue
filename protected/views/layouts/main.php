@@ -1,4 +1,7 @@
-<?php /* @var $this Controller */ ?>
+<?php /* @var $this Controller */
+$currentLang = Yii::app()->language;
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -38,7 +41,21 @@
 
         <div class="top">
             <div class="lenguaje">
-                <div class="lenguaje-btn">ESP</div><div class="lenguaje-btn">ENG</div>
+            
+                <div class="lenguaje-btn<?php if($currentLang=='es') echo ' hover-menu8'; ?>" id="es">ESP</div>
+                <div class="lenguaje-btn<?php if($currentLang=='en') echo ' hover-menu9'; ?>" id="en">ENG</div>
+            <?php /*echo CHtml::beginForm('site/setLanguage','post', array('id'=>'langForm'));
+                $classEsp="lenguaje-btn";
+                $classEng="lenguaje-btn";
+                if($currentLang=='es'){
+                    $classEsp.=" hover-menu8";
+                }
+                elseif ($currentLang=='en') {
+                    $classEng.=" hover-menu9";
+                }
+                echo CHtml::submitButton('ESP', array('class'=>$classEsp, 'name'=>'language', 'value'=>'es'));
+                echo CHtml::submitButton('ENG', array('class'=>$classEng, 'name'=>'language', 'value'=>'en'));
+            echo CHtml::endForm();*/ ?>
             </div>
             <div class="log-in">
                 <a href="#login"><div class="btn-login m6">INICIA SESIÓN</div></a>

@@ -172,4 +172,11 @@ class SiteController extends Controller {
         echo $sqlm;
     }
 
+    public function actionSetLanguage()
+    {
+        if (isset($_POST['language']))
+            Yii::app()->user->setState('applicationLanguage',$_POST['language']);
+        $this->redirect($_POST['url']);
+    }
+
 }

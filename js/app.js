@@ -246,13 +246,19 @@ var interval;
 function loadMap() {
     if (document.getElementById('map') !== null) {
         var mapDiv = document.getElementById('map');
-        var catalunya = new google.maps.LatLng(41.652393, 1.691895);
+        var latlong = new google.maps.LatLng(0.287006, -80.030862);
+        var centerll = new google.maps.LatLng(0.224522, -79.901086);
         var options = {
-            center: catalunya,
-            zoom: 8,
+            center: centerll,
+            zoom: 11,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var mapa = new google.maps.Map(mapDiv, options);
+        var marker = new google.maps.Marker({
+            position: latlong,
+            map: mapa,
+            title: 'EdenBlue'
+        });
         clearInterval(interval);
     }
 }
@@ -304,4 +310,13 @@ $(document).ready(function() {
         swipe: false
     });
     gallery = false;
+
+    $('.lenguaje-btn').click(function() {
+        console.log($(this).attr('id'));
+        var form = $('<form action="site/setLanguage" method="post">' +
+            '<input type="hidden" name="language" value="' + $(this).attr('id') + '" />' +
+            '<input type="hidden" name="url" value="' + document.URL + '" />' +
+            '</form>');
+        $(form).submit();
+    });
 });
