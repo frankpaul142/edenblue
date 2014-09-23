@@ -138,6 +138,13 @@ class SiteController extends Controller {
         echo CJSON::encode($return);
     }
 
+    public function actionSetLanguage()
+    {
+        if (isset($_POST['language']))
+            Yii::app()->user->setState('applicationLanguage',$_POST['language']);
+        $this->redirect($_POST['url']);
+    }
+
     public function actionTranslate()
     {
         $rooms = TypeRoom::model()->findAll();
@@ -170,13 +177,6 @@ class SiteController extends Controller {
         }
         echo $sqlsm;
         echo $sqlm;
-    }
-
-    public function actionSetLanguage()
-    {
-        if (isset($_POST['language']))
-            Yii::app()->user->setState('applicationLanguage',$_POST['language']);
-        $this->redirect($_POST['url']);
     }
 
 }
