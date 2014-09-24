@@ -8,9 +8,14 @@
 	font-family: quattro;
 	src: url(../fonts/roboto-regular-webfont.woff);
 }
+
 .texto-excur-cont ul p{
 	margin: 0px;
 	}
+.menu-lateral a {
+    color: #009bdf;
+    text-decoration: none;
+}	
 .top {
 position: relative;
 z-index: 999;
@@ -222,6 +227,7 @@ body {
 	float: left;
 	margin-left: 0px;
 	background-repeat: no-repeat;
+	cursor:pointer;
 }
 .m1:hover {
 	background-image: url(../images/600pxmenu2/menu600px-01.png); background-repeat: no-repeat;
@@ -242,6 +248,7 @@ body {
 	font-family: quattro;
 	font-size: 14px;
 	line-height: 30px;
+	cursor:pointer;
 	}
 .m2:hover {
 	background-image: url(../images/600pxmenu2/menu600px-07.png); background-repeat: no-repeat;
@@ -263,6 +270,7 @@ body {
 	font-family: quattro;
 	font-size: 14px;
 	line-height: 30px;
+	cursor:pointer;
 	}
 .m3:hover {
 	background-image: url(../images/600pxmenu2/menu600px-08.png); background-repeat: no-repeat;
@@ -284,6 +292,7 @@ body {
 	font-family: quattro;
 	font-size: 14px;
 	line-height: 30px;
+	cursor:pointer;
 	}
 .m4:hover {
 	background-image: url(../images/600pxmenu2/menu600px-09.png);background-repeat: no-repeat;
@@ -301,6 +310,7 @@ body {
 	float: left;
 	margin-left: 2px;
 	background-repeat: no-repeat;
+	cursor:pointer;
 }
 .m5:hover {
 	background-image: url(../images/600pxmenu2/menu600px-05.png); background-repeat: no-repeat;
@@ -1317,10 +1327,25 @@ top: 15%;
 a:-webkit-any-link {
 color: #009bdf;
 text-decoration:none;
-cursor: auto;
+cursor:pointer;
+}
+a:-moz-any-link {
+color: #009bdf;
+text-decoration:none;
+cursor:pointer;
+}
+a:-ms-any-link {
+color: #009bdf;
+text-decoration:none;
+cursor:pointer;
+}
+a:any-link {
+color: #009bdf;
+text-decoration:none;
+cursor:pointer;
 }
 scrollbar {  
-    width: 12px;  
+    width: 5px;  
 }  
   
 scrollbar-thumb {  
@@ -1342,7 +1367,7 @@ scrollbar-thumb:hover {
     background-color: #009bdf;	
 	}
 ::-ms-scrollbar {  
-    width: 12px;  
+    width: 5px;  
 }  
   
 ::-ms-scrollbar-thumb {  
@@ -1353,7 +1378,7 @@ scrollbar-thumb:hover {
     background-color: #009bdf;	
 	}	
 ::-moz-scrollbar {  
-    width: 12px;  
+    width: 5px;  
 }  
   
 ::-moz-scrollbar-thumb {  
