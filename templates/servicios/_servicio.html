@@ -1,5 +1,7 @@
 <div>
+	<div class="gradtop2"></div>
     <div class="texto-tit">{{ service.title }}</div>
     <div class="overlay" ng-if="service.description.substr(0,8)!='service_'"><p style="white-space: pre-line;">{{ service.description }}</p></div>
     <div class="boton-vermas" ng-if="service.photos[0] != null" ng-click="viewGallery(service.id)">Ver galería</div>
+    <div class="gradbot2"></div>
 </div>
