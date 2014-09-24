@@ -1428,7 +1428,7 @@ p.ng-binding{
 .gradbot {
     position: absolute;  
     background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));  
-    height: 8%;  width: 63%;
+    height: 6%;  width: 63%;
     bottom: 16%;
     right: 3%;
 }
