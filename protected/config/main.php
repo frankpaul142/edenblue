@@ -49,11 +49,11 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=edenblue',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
+          'connectionString' => 'mysql:host=166.63.0.204;dbname=webcont_edenblue',
+			'emulatePrepare' => true,
+			'username' => 'webcont_dba',
+			'password' => 'lN_Q*PR]FN[E',
+			'charset' => 'utf8',    
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
