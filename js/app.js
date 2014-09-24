@@ -8,6 +8,7 @@ app.config(function($routeSegmentProvider) {
     when('/hosteria/infraestructura', 'hosteria.infraestructura').
     when('/hosteria/entorno', 'hosteria.entorno').
     when('/hosteria/habitaciones', 'hosteria.habitaciones').
+    when('/hosteria/habitaciones/:id', 'hosteria.habitaciones').
     when('/servicios', 'servicios').
     when('/servicios/:name', 'servicios.servicio').
     when('/ubicacion', 'ubicacion').
@@ -81,19 +82,33 @@ app.controller('hosteriaController', function() {
 });
 app.controller('infraestructuraController', function($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Infraestructura';
+    $scope.$parent.ancla = '';
 });
 app.controller('entornoController', function($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
+    $scope.$parent.ancla = '';
 });
-app.controller('habitacionesController', function($scope, $http) {
+app.controller('habitacionesController', function($scope, $http, $routeParams, $location, $anchorScroll, $sce) {
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
+    var html = '<div class="anchor-select">';
     if (typeof rooms === 'undefined') {
         $http.get('site/loadTypeRooms').success(function(response) {
             $scope.rooms = response;
             rooms = $scope.rooms;
+            rooms.forEach(function(room) {
+                html += '<a href="#hosteria/habitaciones#' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
+            });
+            html += '</div>'
+            $scope.$parent.ancla = $sce.trustAsHtml(html);
         });
     } else {
+        console.log('ya cargado rooms');
         $scope.rooms = rooms;
+        rooms.forEach(function(room) {
+            html += '<a href="#hosteria/habitaciones#' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
+        });
+        html += '</div>'
+        $scope.$parent.ancla = $sce.trustAsHtml(html);
     }
     $scope.viewGallery = function(id) {
         rooms.forEach(function(room) {
@@ -121,7 +136,7 @@ app.controller('habitacionesController', function($scope, $http) {
         $(".top").animate({
             top: '-25px'
         }, 'fast');
-    }
+    };
 });
 
 app.controller('serviciosController', function($scope, $http) {
