@@ -66,5 +66,6 @@ $currentLang = Yii::app()->language;
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.3.0/angular-route-segment.min.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
+        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/directives.js"></script>
     </body>
 </html>

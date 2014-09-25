@@ -25,9 +25,8 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index');
+        $user= new User;
+        $this->render('index', array('user'=>$user));
     }
 
     /**
@@ -94,6 +93,11 @@ class SiteController extends Controller {
     public function actionLogout() {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
+    }
+
+    public function actionSignup()
+    {
+        echo 'Signup';
     }
 
     public function actionLoadServices() {

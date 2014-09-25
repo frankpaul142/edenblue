@@ -1,4 +1,4 @@
-var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment']);
+var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment', 'myApp.directives']);
 
 app.config(function($routeSegmentProvider) {
     $routeSegmentProvider.
@@ -226,10 +226,14 @@ app.controller('loginController', function() {
     fotorama.show(4);
     activeMenu(6);
 });
+
 app.controller('registroController', function() {
     checkGallery();
     fotorama.show(5);
     activeMenu(7);
+});
+app.controller('registro', function(){
+    
 });
 
 

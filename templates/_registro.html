@@ -2,18 +2,30 @@
     <div class="login-tit">REGISTRO</div>
     <div class="fondodeg-reg">
         <div class="login-field-reg">
-            <form method="post">
-                <p class="txt"><input type="text" name="name" value="" placeholder="Nombre"></p>
-                <p class="txt"><input type="text" name="email" value="" placeholder="Email"></p>
-                <p class="txt"><input type="text" name="tel" value="" placeholder="Tel&eacute;fono"></p>
-                <p class="txt"><input type="text" name="date" value="" placeholder="Fecha de nacimiento"></p>
-                <p class="txt"><input type="password" name="password" value="" placeholder="Contrase&ntilde;a"></p>
-                <p class="txt"><input type="password" name="password" value="" placeholder="Confirmar contrase&ntilde;a"></p>
-
+            <form method="post" action="site/signup" name="fRegistro" ng-controller="registro" novalidate>
+                <p class="txt">
+                    <input type="text" name="name" ng-model="name" placeholder="Nombre Apellido" required />
+                    <span style="color:red" ng-show="fRegistro.name.$dirty && fRegistro.name.$invalid">*</span>
+                </p>
+                <p class="txt">
+                    <input type="email" name="email" ng-model="email" placeholder="Email" required />
+                    <span style="color:red" ng-show="fRegistro.email.$dirty && fRegistro.email.$invalid">*</span>
+                </p>
+                <p class="txt">
+                    <input type="tel" name="tel" value="" placeholder="Tel&eacute;fono" />
+                </p>
+                <p class="txt">
+                    <input type="password" id="password" name="password" ng-model="password" placeholder="Contrase&ntilde;a" required ng-minlength="5" />
+                    <span style="color:red" ng-show="fRegistro.password.$dirty && fRegistro.password.$invalid">*</span>
+                </p>
+                <p class="txt">
+                    <input type="password" id="password2" name="password2" ng-model="password2" placeholder="Confirmar contrase&ntilde;a" required pw-check="password" />
+                    <span style="color:red" ng-show="fRegistro.password2.$dirty && fRegistro.password2.$invalid">*</span>
+                </p>
+                <div class="login-btn">
+                    <input type="submit" value="&#8226;  Reg&iacute;strate   &#8226;" ng-disabled="fRegistro.$invalid" />
+                </div>
             </form>
         </div>
-        <div class="login-btn">&#8226;  Reg&iacute;strate   &#8226;</div>
-
-
     </div>
 </div>
