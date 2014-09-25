@@ -426,11 +426,12 @@ body {
 .texto-hab-tit {
 	/*background-color:#0F0;*/
 	padding-right: 20px;
-	height: 40px;
+	height: 50px;
 	font-family: satisfy;
 	color: #009bdf;
 	text-align: center;
 	font-size: 30px;
+	line-height: 50px;
 }
 .excur-tit {
 	font-size: 25px;
@@ -1467,11 +1468,12 @@ p.ng-binding{
     margin-right: 3px;
     transition: all 0.2s;
     cursor: pointer;
+	box-shadow: 2px 2px 1px -1px #666 inset;
 }
 .anchor:hover {
     background-color: white;
     color: #009bdf;
-    box-shadow: 1px 1px 3px -1px #000;
+    box-shadow: 1px 1px 0px -1px #000;
 }
 .anchor:active {
     background-color: rgb(247, 146, 33);
