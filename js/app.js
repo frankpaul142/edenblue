@@ -12,6 +12,7 @@ app.config(function($routeSegmentProvider) {
     when('/servicios', 'servicios').
     when('/servicios/:name', 'servicios.servicio').
     when('/ubicacion', 'ubicacion').
+    when('/contacto', 'contacto').
     when('/login', 'login').
     when('/registro', 'registro').
     when('/cuenta', 'cuenta').
@@ -51,6 +52,10 @@ app.config(function($routeSegmentProvider) {
     segment('ubicacion', {
         templateUrl: 'templates/_ubicacion.html',
         controller: 'ubicacionController'
+    }).
+    segment('contacto', {
+        templateUrl: 'templates/_contacto.html',
+        controller: 'contactoController'
     }).
     segment('login', {
         templateUrl: 'templates/_login.html',
@@ -226,15 +231,21 @@ app.controller('ubicacionController', function() {
     toggleGallery();
 });
 
-app.controller('loginController', function() {
+app.controller('contactoController', function() {
     checkGallery();
     fotorama.show(4);
+    activeMenu(5);
+});
+
+app.controller('loginController', function() {
+    checkGallery();
+    fotorama.show(5);
     activeMenu(6);
 });
 
 app.controller('registroController', function() {
     checkGallery();
-    fotorama.show(5);
+    fotorama.show(6);
     activeMenu(7);
 });
 app.controller('registro', function(){
@@ -243,7 +254,7 @@ app.controller('registro', function(){
 
 app.controller('cuentaController', function() {
     checkGallery();
-    fotorama.show(4);
+    fotorama.show(5);
     activeMenu(6);
 });
 
@@ -334,6 +345,8 @@ $(document).ready(function() {
         img: 'images/fondo2.jpg'
     }, {
         html: '<div id="map" style="height:100%"></div>'
+    }, {
+        img: 'images/fondo3.jpg'
     }, {
         img: 'images/fondo2.jpg'
     }, {

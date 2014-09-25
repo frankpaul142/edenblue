@@ -14,7 +14,7 @@ $this->pageTitle = Yii::app()->name;
     <a href="#hosteria"><div class="m2">Hostería</div></a>
     <a href="#servicios"><div class="m3">Servicios</div></a>
     <a href="#ubicacion"><div class="m4">Ubicación</div></a>
-    <a href="#"><div class="m5"></div></a>
+    <a href="#contacto"><div class="m5"></div></a>
 
 </div>
 <div class="contenidos">
