@@ -1,5 +1,7 @@
 <div class="overlay">
-	<div ng-show="loading">Cargando...</div>
+	<div ng-show="loading">
+		<div class="spinner"></div>
+	</div>
     <div class="texto-hab1" ng-repeat="room in rooms">
         <div class="texto-hab-tit" id="{{room.id}}">{{ room.name}}</div>
         <div class="texto-hab-cont">

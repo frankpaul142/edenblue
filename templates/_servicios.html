@@ -1,10 +1,15 @@
 <div class="cont1-excur">
-    <div class="breadcrumbs"><a href="#servicios" ng-bind="breadcrumbs"></a></div>
+    <div class="breadcrumbs">
+        <a href="#servicios" ng-bind="breadcrumbs"></a>
+    </div>
     <div class="texto-excur-cont">
-        <div ng-show="loading">Cargando...</div>
+        <div ng-show="loading">
+            <div class="spinner"></div>
+        </div>
         <div app-view-segment="1">
             <ul ng-repeat="service in services">
-                <p><a href="#servicios/{{ service.title}}">{{ service.title}}</a></p>
+                <p><a href="#servicios/{{ service.title}}">{{ service.title}}</a>
+                </p>
             </ul>
             <ul ng-repeat="service in services2">
                 <p>{{ service.title}}</p>
@@ -13,6 +18,10 @@
     </div>
 </div>
 <div class="borde-inferior">
-    <div class="boton-index"><img src="images/boton-08.png" width="21" height="21" /></div>
-    <div class="boton-index2"><img src="images/boton-08-2.png" width="21" height="21" /></div>
+    <div class="boton-index">
+        <img src="images/boton-08.png" width="21" height="21" />
+    </div>
+    <div class="boton-index2">
+        <img src="images/boton-08-2.png" width="21" height="21" />
+    </div>
 </div>

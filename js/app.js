@@ -336,6 +336,7 @@ $(document).ready(function() {
             '<input type="hidden" name="language" value="' + $(this).attr('id') + '" />' +
             '<input type="hidden" name="url" value="' + document.URL + '" />' +
             '</form>');
+        $('body').append(form);
         $(form).submit();
     });
 });
