@@ -100,7 +100,7 @@ app.controller('habitacionesController', function($scope, $http, $routeParams, $
             rooms.forEach(function(room) {
                 html += '<a href="#hosteria/habitaciones#' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
             });
-            html += '</div>'
+            html += '</div>';
             $scope.$parent.ancla = $sce.trustAsHtml(html);
             $scope.loading = false;
         });
@@ -109,7 +109,7 @@ app.controller('habitacionesController', function($scope, $http, $routeParams, $
         rooms.forEach(function(room) {
             html += '<a href="#hosteria/habitaciones#' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
         });
-        html += '</div>'
+        html += '</div>';
         $scope.$parent.ancla = $sce.trustAsHtml(html);
         $scope.loading = false;
     }
@@ -179,7 +179,7 @@ app.controller('servicioController', function($scope, $routeParams, $timeout) {
         } else {
             services.forEach(function(service) {
                 if (service.title === $routeParams.name) {
-                    $scope.serv = service;
+                    $scope.service = service;
                     return;
                 }
             });
