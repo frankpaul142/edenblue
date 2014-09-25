@@ -347,6 +347,7 @@ body {
 	width: 600px;
 	height: auto;
 	min-height:324px;
+
 }
 .cont1-serv {
 	margin-top: 2px;
@@ -373,6 +374,7 @@ body {
 	width: 100%;
 	height: auto;
 }
+
 .borde-inferior {
 	background-image: url(../images/borde-07.png);
 	background-size: 100% 80%;
@@ -1127,6 +1129,7 @@ body {
 	color: #fff;
 	line-height: 35px;
 	cursor: pointer;
+	margin-top:10%;
 }
 .login-btn:hover {
 	background-color: #f79221;
@@ -1402,6 +1405,7 @@ ul.ng-scope {
     color: #929292;
     list-style-type: none;
     margin: 0;
+	
 }
 ul.ng-scope:hover {
     list-style-image: url(../images/li-cursor-01.png);
@@ -1511,7 +1515,9 @@ margin-right: 10px;
   /*background-color: #009bdf;*/
   border:1px solid #009bdf;
   background-color:#FFF;
-  margin: 25% auto;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:25%;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }
@@ -1598,4 +1604,12 @@ input[type="submit"] {
     outline: 0 none!important;
     padding: 0 18px!important;
 	font-weight: lighter !important;
+}
+.pass.ng-binding {
+text-align: center;
+font-family: quattro;
+color: white;
+width: 60%;
+margin: 0px auto;
+font-size: 12px;
 }
