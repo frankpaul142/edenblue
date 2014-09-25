@@ -1426,7 +1426,15 @@ p.ng-binding{
 	height:auto;
 	background-color: white;
 	line-height: 15px;
-	text-align: justify;}		
+	text-align: justify;}
+.cont1-contacto{
+	font-family: quattro;
+	font-size: 12px;
+	padding:15px;
+	height:auto;
+	background-color: white;
+	line-height: 15px;
+	text-align: justify;}				
 .fotorama__thumb-border{
 	border-color: #FFFFFF !important;}	
 .hover-menu1{background-image: url(../images/600pxmenu2/menu600px-01.png);background-repeat: no-repeat;}
@@ -1575,4 +1583,19 @@ background: rgba(12, 12, 12,0.6);
 border: 1px solid;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 border-radius: 2px;
+}
+/*botonlogin*/
+input[type="submit"] {
+  
+    background: none !important;
+   	border-radius: 16px!important;
+    border-style: solid!important;
+    border-width: 0!important;
+    color: #fff!important;
+    cursor: pointer!important;
+    font-size: 21px!important;
+    height: 100%!important;
+    outline: 0 none!important;
+    padding: 0 18px!important;
+	font-weight: lighter !important;
 }
