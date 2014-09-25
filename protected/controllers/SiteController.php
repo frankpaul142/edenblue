@@ -81,7 +81,7 @@ class SiteController extends Controller {
             if ($model->validate() && $model->login())
                 $this->redirect(Yii::app()->user->returnUrl);
             else
-                $this->redirect(Yii::app()->user->returnUrl.'?error=1');
+                $this->redirect(Yii::app()->user->returnUrl.'#login/error');
         }
         // display the login form
         //$this->render('login', array('model' => $model));
