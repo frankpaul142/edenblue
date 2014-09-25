@@ -121,4 +121,9 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+	public function validatePassword($password) {
+        return hash("sha256",$password) === $this->password;
+    }
 }

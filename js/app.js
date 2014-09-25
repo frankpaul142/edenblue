@@ -14,6 +14,7 @@ app.config(function($routeSegmentProvider) {
     when('/ubicacion', 'ubicacion').
     when('/login', 'login').
     when('/registro', 'registro').
+    when('/cuenta', 'cuenta').
     segment('reservar', {
         templateUrl: 'templates/_reservar.html',
         controller: 'reservarController'
@@ -58,6 +59,10 @@ app.config(function($routeSegmentProvider) {
     segment('registro', {
         templateUrl: 'templates/_registro.html',
         controller: 'registroController'
+    }).
+    segment('cuenta', {
+        templateUrl: 'templates/_cuenta.html',
+        controller: 'cuentaController'
     });
 });
 
@@ -234,6 +239,12 @@ app.controller('registroController', function() {
 });
 app.controller('registro', function(){
     
+});
+
+app.controller('cuentaController', function() {
+    checkGallery();
+    fotorama.show(4);
+    activeMenu(6);
 });
 
 

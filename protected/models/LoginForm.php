@@ -15,13 +15,13 @@ class LoginForm extends CFormModel
 
 	/**
 	 * Declares the validation rules.
-	 * The rules state that username and password are required,
+	 * The rules state that email and password are required,
 	 * and password needs to be authenticated.
 	 */
 	public function rules()
 	{
 		return array(
-			// username and password are required
+			// email and password are required
 			array('username, password', 'required'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
@@ -50,12 +50,12 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+				$this->addError('password','Incorrect email or password.');
 		}
 	}
 
 	/**
-	 * Logs in the user using the given username and password in the model.
+	 * Logs in the user using the given email and password in the model.
 	 * @return boolean whether login is successful
 	 */
 	public function login()

@@ -25,8 +25,7 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $user= new User;
-        $this->render('index', array('user'=>$user));
+        $this->render('index');
     }
 
     /**
@@ -70,21 +69,22 @@ class SiteController extends Controller {
     public function actionLogin() {
         $model = new LoginForm;
 
-        // if it is ajax validation request
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-
         // collect user input data
-        if (isset($_POST['LoginForm'])) {
-            $model->attributes = $_POST['LoginForm'];
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            $model->username = $_POST['email'];
+            $model->password = $_POST['password'];
+            if(isset($_POST['remember_me']))
+                $model->rememberMe = 1;
+            else
+                $model->rememberMe = 0;
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())
                 $this->redirect(Yii::app()->user->returnUrl);
+            else
+                $this->redirect(Yii::app()->user->returnUrl.'?error=1');
         }
         // display the login form
-        $this->render('login', array('model' => $model));
+        //$this->render('login', array('model' => $model));
     }
 
     /**
@@ -97,7 +97,26 @@ class SiteController extends Controller {
 
     public function actionSignup()
     {
-        echo 'Signup';
+        $user= new User;
+        if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])){
+            if($_POST['password']===$_POST['password2']){
+                $user->name=$_POST['name'];
+                $user->lastname=$_POST['lastname'];
+                $user->email=$_POST['email'];
+                $user->password=hash("sha256", $_POST['password']);
+                if(isset($_POST['tel'])){
+                    $user->phone=$_POST['tel'];
+                }
+                $user->creation_date=date("Y-m-d H:i:s");
+                $user->status='ACTIVE';
+                if($user->save()){
+                    $this->redirect(Yii::app()->request->baseUrl);
+                }
+                else{
+                    echo print_r($user->getErrors());
+                }
+            }
+        }
     }
 
     public function actionLoadServices() {

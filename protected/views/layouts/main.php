@@ -45,8 +45,13 @@ $currentLang = Yii::app()->language;
                 <div class="lenguaje-btn<?php if($currentLang=='en') echo ' hover-menu9'; ?>" id="en">ENG</div>
             </div>
             <div class="log-in">
+                <?php if (!isset(Yii::app()->user->id)) { ?>
                 <a href="#login"><div class="btn-login m6">INICIA SESIÓN</div></a>
                 <a href="#registro"><div class="btn-regis m7">REGÍSTRATE</div></a>
+                <?php } else { ?>
+                <a href="#cuenta"><div class="btn-login m6"><?php echo Yii::app()->user->name; ?></div></a>
+                <a href="<?php echo Yii::app()->request->baseUrl; ?>/site/logout"><div class="btn-regis">CERRAR SESIÓN</div></a>
+                <?php } ?>
             </div>
         </div>
         <div id="content">

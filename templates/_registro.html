@@ -4,8 +4,12 @@
         <div class="login-field-reg">
             <form method="post" action="site/signup" name="fRegistro" ng-controller="registro" novalidate>
                 <p class="txt">
-                    <input type="text" name="name" ng-model="name" placeholder="Nombre Apellido" required />
+                    <input type="text" name="name" ng-model="name" placeholder="Nombre" required ng-minlength="2" />
                     <span style="color:red" ng-show="fRegistro.name.$dirty && fRegistro.name.$invalid">*</span>
+                </p>
+                <p class="txt">
+                    <input type="text" name="lastname" ng-model="lastname" placeholder="Apellido" required ng-minlength="2" />
+                    <span style="color:red" ng-show="fRegistro.lastname.$dirty && fRegistro.lastname.$invalid">*</span>
                 </p>
                 <p class="txt">
                     <input type="email" name="email" ng-model="email" placeholder="Email" required />

@@ -2,20 +2,31 @@
     <div class="login-tit">LOG IN</div>
     <div class="fondodeg">
         <div class="login-field">
-            <form method="post" action="index.html">
-                <p class="txt"><input type="text" name="login" value="" placeholder="Email" /></p>
-                <p class="txt"><input type="password" name="password" value="" placeholder="Contrase&ntilde;a" /></p>
+            <form method="post" action="site/login" name="fLogin">
+                <p class="txt">
+                    <input type="email" name="email" ng-model="email" placeholder="Email" required />
+                    <span style="color:red" ng-show="fLogin.email.$dirty && fLogin.email.$invalid">*</span>
+                </p>
+                <p class="txt">
+                    <input type="password" name="password" ng-model="password" placeholder="Contrase&ntilde;a" required />
+                    <span style="color:red" ng-show="fLogin.password.$dirty && fLogin.password.$invalid">*</span>
+                </p>
                 <p class="txt">
                     <label>
-                        <input type="checkbox" name="remember_me" id="remember_me" />
-                        Recordar en este equipo
+                        <input type="checkbox" name="remember_me" id="remember_me" />Recordar en este equipo
                     </label>
                 </p>
+                <div class="login-btn">
+                    <input type="submit" value="&#8226; Ingresar &#8226;" />
+                </div>
             </form>
         </div>
         <div class="pass"></div>
-        <div class="login-btn">&#8226;  Ingresar   &#8226;</div>
-        <p class="linea"><div class="txt">¿No es socio de EdenBlue?</div></p>
-        <a href="#registro"><div class="login-btn">&#8226;  Reg&iacute;strate   &#8226;</div></a>
+        <p class="linea">
+            <div class="txt">¿No está registrado en EdenBlue?</div>
+        </p>
+        <a href="#registro">
+            <div class="login-btn">&#8226; Reg&iacute;strate &#8226;</div>
+        </a>
     </div>
 </div>
