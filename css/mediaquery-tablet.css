@@ -156,3 +156,10 @@ margin-top: 30%;
 width: 115px;}
 .reserv-out-txt {
 width: 115px;}
+/*habitaciones*/
+.anchor-select {
+	display: block;
+	width: 25%;
+	left: 4%;
+	top: 57%;
+	}

@@ -203,3 +203,11 @@ li {
 	width:79%;}
 .reserv-out-btn{
 	width:20%;}	
+	/*habitaciones*/
+.anchor-select {
+	display:none;}	
+.gradbot{
+	bottom: 15%;
+	width: 100%;}	
+/*footer*/
+.footer{position: static;}	
