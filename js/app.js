@@ -1,6 +1,6 @@
 var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment', 'myApp.directives']);
 
-app.config(function($routeSegmentProvider) {
+app.config(function($routeSegmentProvider, $routeProvider) {
     $routeSegmentProvider.
     when('/', 'hosteria').
     when('/reservar', 'reservar').
@@ -14,8 +14,10 @@ app.config(function($routeSegmentProvider) {
     when('/ubicacion', 'ubicacion').
     when('/contacto', 'contacto').
     when('/login', 'login').
+    when('/login/:error', 'login').
     when('/registro', 'registro').
     when('/cuenta', 'cuenta').
+    //otherwise('hosteria').
     segment('reservar', {
         templateUrl: 'templates/_reservar.html',
         controller: 'reservarController'
@@ -69,6 +71,7 @@ app.config(function($routeSegmentProvider) {
         templateUrl: 'templates/_cuenta.html',
         controller: 'cuentaController'
     });
+    $routeProvider.otherwise({redirectTo: '/'}); 
 });
 
 var $fotoramaDiv;
@@ -183,6 +186,7 @@ app.controller('serviciosController', function($scope, $http) {
 app.controller('servicioController', function($scope, $routeParams, $timeout) {
     $scope.$parent.breadcrumbs = 'Servicios / ' + $routeParams.name;
     serv();
+
     function serv() {
         if (typeof services === 'undefined') {
             $timeout(serv, 500);
@@ -237,10 +241,13 @@ app.controller('contactoController', function() {
     activeMenu(5);
 });
 
-app.controller('loginController', function() {
+app.controller('loginController', function($scope, $routeParams) {
     checkGallery();
     fotorama.show(5);
     activeMenu(6);
+    if (typeof $routeParams.error !== 'undefined') {
+        $scope.errors = 'Combinación de Email y Contraseña incorrecta';
+    }
 });
 
 app.controller('registroController', function() {
@@ -248,8 +255,8 @@ app.controller('registroController', function() {
     fotorama.show(6);
     activeMenu(7);
 });
-app.controller('registro', function(){
-    
+app.controller('registro', function() {
+
 });
 
 app.controller('cuentaController', function() {
