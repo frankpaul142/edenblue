@@ -100,21 +100,38 @@ class SiteController extends Controller {
         $user= new User;
         if(isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])){
             if($_POST['password']===$_POST['password2']){
-                $user->name=$_POST['name'];
-                $user->lastname=$_POST['lastname'];
                 $user->email=$_POST['email'];
-                $user->password=hash("sha256", $_POST['password']);
-                if(isset($_POST['tel'])){
-                    $user->phone=$_POST['tel'];
-                }
-                $user->creation_date=date("Y-m-d H:i:s");
-                $user->status='ACTIVE';
-                if($user->save()){
-                    $this->redirect(Yii::app()->request->baseUrl);
+                $aux = User::model()->find('email=?', array($user->email));
+                if($aux === NULL){
+                    $user->name=$_POST['name'];
+                    $user->lastname=$_POST['lastname'];
+                    $user->password=hash("sha256", $_POST['password']);
+                    if(isset($_POST['tel'])){
+                        $user->phone=$_POST['tel'];
+                    }
+                    $user->creation_date=date("Y-m-d H:i:s");
+                    $user->status='ACTIVE';
+                    if($user->save()){
+                        $model = new LoginForm;
+                        $model->username=$user->email;
+                        $model->password=$_POST['password'];
+                        if($model->login()){
+                            $this->redirect(Yii::app()->request->baseUrl);
+                        }
+                        else{
+                            $this->redirect(Yii::app()->request->baseUrl.'#registro/errorlogin');
+                        }
+                    }
+                    else{
+                        $this->redirect(Yii::app()->request->baseUrl.'#registro/error');
+                    }
                 }
                 else{
-                    echo print_r($user->getErrors());
+                    $this->redirect(Yii::app()->request->baseUrl.'#registro/yaexiste');
                 }
+            }
+            else{
+                $this->redirect(Yii::app()->request->baseUrl.'#registro/nocoinciden');
             }
         }
     }

@@ -16,8 +16,8 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     when('/login', 'login').
     when('/login/:error', 'login').
     when('/registro', 'registro').
+    when('/registro/:error', 'registro').
     when('/cuenta', 'cuenta').
-    //otherwise('hosteria').
     segment('reservar', {
         templateUrl: 'templates/_reservar.html',
         controller: 'reservarController'
@@ -250,10 +250,24 @@ app.controller('loginController', function($scope, $routeParams) {
     }
 });
 
-app.controller('registroController', function() {
+app.controller('registroController', function($scope, $routeParams) {
     checkGallery();
     fotorama.show(6);
     activeMenu(7);
+    if (typeof $routeParams.error !== 'undefined') {
+        switch($routeParams.error){
+            case 'nocoinciden':
+                $scope.errors = 'No coinciden las contraseñas';
+                break;
+            case 'yaexiste':
+                $scope.errors = 'Ya existe un usuario con ese email registrado';
+                break;
+            case 'errorlogin':
+            case 'error':
+                $scope.errors = 'Se produjo un error, inténtelo de nuevo por favor.';
+                break;
+        }
+    }
 });
 app.controller('registro', function() {
 
