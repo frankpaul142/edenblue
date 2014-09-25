@@ -1451,7 +1451,7 @@ p.ng-binding{
     width: 65%;
     height: 7%;
     right: 0%;
-    display: -webkit-box;
+    display: flex;
 }
 .anchor {
     margin-top: 8px;
@@ -1461,7 +1461,7 @@ p.ng-binding{
     color: #fff;
     padding: 2px;
     font-family: quattro;
-    font-size: 10px;
+    font-size: 8px;
     text-align: center;
     border-radius: 5px;
     line-height: 15px;
@@ -1513,4 +1513,54 @@ margin-right: 10px;
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
+}
+
+/*txt-invalid*/
+
+span.ng-hide {}
+.txt .ng-invalid.ng-invalid-email {
+    /* color: rgb(255, 255, 255); */
+    border: 1px red inset;
+	margin: -3px;
+padding: 0 10px;
+width: 200px;
+height: 30px;
+color: #fff;
+background: rgba(12, 12, 12,0.6);
+border: 1px solid;
+border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+border-radius: 2px;;
+}
+.txt .ng-invalid-minlength {
+    border: 1px red inset;
+}
+.txt .ng-invalid-pwmatch {
+    border: 1px red inset;
+}
+.txt .ng-invalid-required {
+    border: 1px red inset;
+	margin: -3px;
+padding: 0 10px;
+width: 200px;
+height: 30px;
+color: #fff;
+background: rgba(12, 12, 12,0.6);
+border: 1px solid;
+border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+border-radius: 2px;
+}
+
+input[type="tel"] {
+    margin: -3px;  padding: 0 10px;  width: 200px;  height: 30px;  color: #fff;  background: rgba(12, 12, 12,0.6);  border: 1px solid;  border-color: #c4c4c4 #d1d1d1 #d4d4d4;  border-radius: 2px;
+}
+input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email {
+margin: -3px;
+padding: 0 10px;
+width: 200px;
+height: 30px;
+color: #fff;
+background: rgba(12, 12, 12,0.6);
+border: 1px solid;
+border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+border-radius: 2px;
 }
