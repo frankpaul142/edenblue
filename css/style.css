@@ -122,6 +122,8 @@ body {
 	font-size: 14px;
 	cursor: pointer;
 	border-bottom-left-radius: 6px;
+	letter-spacing: -1px;
+	text-transform: lowercase;
 }
 .btn-login:hover {
 	background-color: #f79221;
@@ -143,6 +145,8 @@ body {
 	font-size: 14px;
 	cursor: pointer;
 	border-bottom-right-radius: 6px;
+	letter-spacing: -1px;
+	text-transform: lowercase;
 }
 .btn-regis:hover {
 	background-color: #009bdf;
@@ -1415,6 +1419,14 @@ p.ng-binding{
 	background-color: white;
 	line-height: 15px;
 	text-align: justify;}	
+.cont1-perfil{
+	font-family: quattro;
+	font-size: 12px;
+	padding:15px;
+	height:auto;
+	background-color: white;
+	line-height: 15px;
+	text-align: justify;}		
 .fotorama__thumb-border{
 	border-color: #FFFFFF !important;}	
 .hover-menu1{background-image: url(../images/600pxmenu2/menu600px-01.png);background-repeat: no-repeat;}
