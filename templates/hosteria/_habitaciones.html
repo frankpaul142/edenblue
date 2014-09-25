@@ -1,4 +1,5 @@
 <div class="overlay">
+	<div ng-show="loading">Cargando...</div>
     <div class="texto-hab1" ng-repeat="room in rooms">
         <div class="texto-hab-tit" id="{{room.id}}">{{ room.name}}</div>
         <div class="texto-hab-cont">

@@ -1,6 +1,7 @@
 <div class="cont1-excur">
     <div class="breadcrumbs"><a href="#servicios" ng-bind="breadcrumbs"></a></div>
     <div class="texto-excur-cont">
+        <div ng-show="loading">Cargando...</div>
         <div app-view-segment="1">
             <ul ng-repeat="service in services">
                 <p><a href="#servicios/{{ service.title}}">{{ service.title}}</a></p>
