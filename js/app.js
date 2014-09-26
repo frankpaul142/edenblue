@@ -1,4 +1,4 @@
-var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment', 'myApp.directives']);
+var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment', 'myApp.directives', 'ngSanitize']);
 
 app.config(function($routeSegmentProvider, $routeProvider) {
     $routeSegmentProvider.
@@ -71,7 +71,9 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         templateUrl: 'templates/_cuenta.html',
         controller: 'cuentaController'
     });
-    $routeProvider.otherwise({redirectTo: '/'}); 
+    $routeProvider.otherwise({
+        redirectTo: '/'
+    });
 });
 
 var $fotoramaDiv;
@@ -82,10 +84,50 @@ var services2;
 var galleryRoom;
 var galleryService;
 
-app.controller('reservarController', function() {
+app.controller('reservarController', function($scope, $http, $compile, $sce) {
     checkGallery();
     fotorama.show(0);
     activeMenu(1);
+    $scope.subtotal = 0;
+    $scope.impuestos = 0;
+    $scope.total = 0;
+    $scope.numero = 1;
+    if (typeof rooms === 'undefined') {
+        $http.get('site/loadTypeRooms').success(function(response) {
+            $scope.rooms = response;
+            rooms = $scope.rooms;
+        });
+    } else {
+        $scope.rooms = rooms;
+    }
+    $scope.calcular = function() {
+        $scope.subtotal = 0;
+        for (var i = 1; i <= $scope.numero; i++) {
+            if (typeof $scope.habitacion[i] !== 'undefined') {
+                $scope.subtotal += parseFloat($scope.habitacion[i].price);
+            }
+        }
+        $scope.impuestos = $scope.subtotal * 0.12;
+        $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+    }
+    $scope.habitaciones = function() {
+        if ($scope.numero >= 1 && $scope.numero <= 5) {
+            $scope.subtotal = 0;
+            if (typeof $scope.habitacion !== 'undefined') {
+                for (var i = 1; i <= $scope.numero; i++) {
+                    if (typeof $scope.habitacion[i] !== 'undefined') {
+                        $scope.subtotal += parseFloat($scope.habitacion[i].price);
+                    }
+                }
+            }
+            $scope.impuestos = $scope.subtotal * 0.12;
+            $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+        } else {
+            $scope.subtotal = 0;
+            $scope.impuestos = 0;
+            $scope.total = 0;
+        }
+    }
 });
 
 app.controller('hosteriaController', function() {
@@ -102,7 +144,7 @@ app.controller('entornoController', function($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
     $scope.$parent.ancla = '';
 });
-app.controller('habitacionesController', function($scope, $http, $routeParams, $location, $anchorScroll, $sce) {
+app.controller('habitacionesController', function($scope, $http, $routeParams, $sce) {
     $scope.loading = true;
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
     var html = '<div class="anchor-select">';
@@ -255,7 +297,7 @@ app.controller('registroController', function($scope, $routeParams) {
     fotorama.show(6);
     activeMenu(7);
     if (typeof $routeParams.error !== 'undefined') {
-        switch($routeParams.error){
+        switch ($routeParams.error) {
             case 'nocoinciden':
                 $scope.errors = 'No coinciden las contraseñas';
                 break;
@@ -388,4 +430,5 @@ $(document).ready(function() {
         $('body').append(form);
         $(form).submit();
     });
+
 });

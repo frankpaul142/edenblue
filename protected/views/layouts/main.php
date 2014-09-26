@@ -20,7 +20,8 @@ $currentLang = Yii::app()->language;
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- 33 KB -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <link  href="//fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"/> <!-- 3 KB -->
         <script src="//fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -69,6 +70,7 @@ $currentLang = Yii::app()->language;
 
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+        <script src="https://code.angularjs.org/1.2.23/angular-sanitize.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.3.0/angular-route-segment.min.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/directives.js"></script>

@@ -2,51 +2,91 @@
     <div class="reserv-tit">RESERVACIONES</div>
     <div class="reserv-inout">
         <div class="reserv-in">
-            <div class="reserv-in-txt">LLEGADA</div>
-            <div class="reserv-in-btn"><img src="images/btn-cal-01.png" width="15" height="15" /></div>
+            <div class="reserv-in-txt">
+                <input type="text" placeholder="LLEGADA" id="datepickerl" />
+            </div>
         </div>
         <div class="reserv-out">
-            <div class="reserv-out-txt">SALIDA</div>
-            <div class="reserv-out-btn"><img src="images/btn-cal-01.png" width="15" height="15" /></div>
+            <div class="reserv-out-txt">
+                <input type="text" placeholder="SALIDA" id="datepickers" />
+            </div>
         </div>
     </div>
 
     <div class="fondodeg-reserv">
         <div class="reserv-coti">
             <div class="reserv-numhab">
-                <div class="reserv-numhab-txt">HABITACIONES</div>          	
-                <input type="number" name="quantity" min="1" max="5" class="reserv-numhab-btn"  value="2" />
-
-            </div>
-            <div class="reserv-tipohab">
-                <div class="reserv-tipohab-top">
-                    <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
-                    <select class="reserv-tipohab-top-btn"name="habitacion"><option selected>-Elija Tipo-</option>
-                        <option>Simple</option>
-                        <option>Doble</option></select>
-                </div>
                 <div class="reserv-tipohab-bot">
                     <div class="reserv-tipohab-bot-ninos">
                         <div class="reserv-tipohab-bot-ninos-txt">Niños</div>
-                        <input type="number" name="quantity" min="1" max="5" class="reserv-tipohab-bot-ninos-btn"  value="2">
+                        <input type="number" name="quantity" min="0" max="15" class="reserv-tipohab-bot-ninos-btn" value="0">
                     </div>
                     <div class="reserv-tipohab-bot-adult">
                         <div class="reserv-tipohab-bot-adult-txt">Adultos</div>
-                        <input type="number" name="quantity" min="1" max="5" class="reserv-tipohab-bot-adult-btn"  value="2">
+                        <input type="number" name="quantity" min="1" max="15" class="reserv-tipohab-bot-adult-btn" value="1">
                     </div>
-                </div>    
-            </div>            
+                </div>
+                <div class="reserv-numhab-txt">HABITACIONES</div>
+                <input type="number" name="quantity" min="1" max="5" class="reserv-numhab-btn" value="1" ng-model="numero" ng-change="habitaciones()" />
+            </div>
+            <div>
+                <div class="reserv-tipohab" ng-show="numero>=1">
+                    <div class="reserv-tipohab-top">
+                        <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
+                        <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[1]" ng-change="calcular()">
+                        </select>
+                    </div>
+                </div>
+                <div class="reserv-tipohab" ng-show="numero>=2">
+                    <div class="reserv-tipohab-top">
+                        <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
+                        <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[2]" ng-change="calcular()">
+                        </select>
+                    </div>
+                </div>
+                <div class="reserv-tipohab" ng-show="numero>=3">
+                    <div class="reserv-tipohab-top">
+                        <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
+                        <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[3]" ng-change="calcular()">
+                        </select>
+                    </div>
+                </div>
+                <div class="reserv-tipohab" ng-show="numero>=4">
+                    <div class="reserv-tipohab-top">
+                        <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
+                        <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[4]" ng-change="calcular()">
+                        </select>
+                    </div>
+                </div>
+                <div class="reserv-tipohab" ng-show="numero>=5">
+                    <div class="reserv-tipohab-top">
+                        <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
+                        <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[5]" ng-change="calcular()">
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="subtot">
                 <div class="subtot-cont">_________</div>
                 <div class="subtot-cont">
                     <div class="subtot-center-top">SUBTOTAL</div>
-                    <div class="subtot-center-mid"><label>$72</label></div>
-                    <div class="subtot-center-bot">+ $15 (SERV) +$ 25 (IMP)</div>
+                    <div class="subtot-center-mid">
+                        <label>{{ subtotal | currency }}</label>
+                    </div>
+                    <div class="subtot-center-bot">+ {{ impuestos | currency }} (IMP)</div>
                 </div>
                 <div class="subtot-cont">_________</div>
-            </div>                        
-        </div>  
-    </div>      
-    <div class="reserv-total">TOTAL=<label>$154,76</label></div>
-    <div class="reserv-btn">&#8226;  Reservar   &#8226;</div>   
+            </div>
+        </div>
+    </div>
+    <div class="reserv-total">TOTAL=
+        <label>{{ total | currency }}</label>
+    </div>
+    <div class="reserv-btn">&#8226; Reservar &#8226;</div>
 </div>
+<script>
+$(function() {
+    $("#datepickerl").datepicker();
+    $("#datepickers").datepicker();
+});
+</script>
