@@ -88,10 +88,12 @@ app.controller('reservarController', function($scope, $http, $compile, $sce) {
     checkGallery();
     fotorama.show(0);
     activeMenu(1);
-    $scope.subtotal = 0;
-    $scope.impuestos = 0;
-    $scope.total = 0;
     $scope.numero = 1;
+    $scope.ninos = 0;
+    $scope.adultos = 1;
+    $scope.subtotal = $scope.ninos * 10 + $scope.adultos * 12;
+    $scope.impuestos = $scope.subtotal * 0.12;
+    $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
     if (typeof rooms === 'undefined') {
         $http.get('site/loadTypeRooms').success(function(response) {
             $scope.rooms = response;
@@ -101,10 +103,12 @@ app.controller('reservarController', function($scope, $http, $compile, $sce) {
         $scope.rooms = rooms;
     }
     $scope.calcular = function() {
-        $scope.subtotal = 0;
-        for (var i = 1; i <= $scope.numero; i++) {
-            if (typeof $scope.habitacion[i] !== 'undefined') {
-                $scope.subtotal += parseFloat($scope.habitacion[i].price);
+        $scope.subtotal = $scope.ninos * 10 + $scope.adultos * 12;
+        if (typeof $scope.habitacion !== 'undefined') {
+            for (var i = 1; i <= $scope.numero; i++) {
+                if (typeof $scope.habitacion[i] !== 'undefined') {
+                    $scope.subtotal += parseFloat($scope.habitacion[i].price);
+                }
             }
         }
         $scope.impuestos = $scope.subtotal * 0.12;
@@ -112,16 +116,7 @@ app.controller('reservarController', function($scope, $http, $compile, $sce) {
     }
     $scope.habitaciones = function() {
         if ($scope.numero >= 1 && $scope.numero <= 5) {
-            $scope.subtotal = 0;
-            if (typeof $scope.habitacion !== 'undefined') {
-                for (var i = 1; i <= $scope.numero; i++) {
-                    if (typeof $scope.habitacion[i] !== 'undefined') {
-                        $scope.subtotal += parseFloat($scope.habitacion[i].price);
-                    }
-                }
-            }
-            $scope.impuestos = $scope.subtotal * 0.12;
-            $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+            $scope.calcular();
         } else {
             $scope.subtotal = 0;
             $scope.impuestos = 0;
@@ -153,7 +148,7 @@ app.controller('habitacionesController', function($scope, $http, $routeParams, $
             $scope.rooms = response;
             rooms = $scope.rooms;
             rooms.forEach(function(room) {
-                html += '<a href="#hosteria/habitaciones#' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
+                html += '<a href="#hosteria/habitaciones#h' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
             });
             html += '</div>';
             $scope.$parent.ancla = $sce.trustAsHtml(html);
@@ -162,7 +157,7 @@ app.controller('habitacionesController', function($scope, $http, $routeParams, $
     } else {
         $scope.rooms = rooms;
         rooms.forEach(function(room) {
-            html += '<a href="#hosteria/habitaciones#' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
+            html += '<a href="#hosteria/habitaciones#h' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
         });
         html += '</div>';
         $scope.$parent.ancla = $sce.trustAsHtml(html);

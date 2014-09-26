@@ -19,11 +19,11 @@
                 <div class="reserv-tipohab-bot">
                     <div class="reserv-tipohab-bot-ninos">
                         <div class="reserv-tipohab-bot-ninos-txt">Niños</div>
-                        <input type="number" name="quantity" min="0" max="15" class="reserv-tipohab-bot-ninos-btn" value="0">
+                        <input type="number" name="quantity" min="0" max="15" class="reserv-tipohab-bot-ninos-btn" value="0" ng-model="ninos" ng-change="calcular()" />
                     </div>
                     <div class="reserv-tipohab-bot-adult">
                         <div class="reserv-tipohab-bot-adult-txt">Adultos</div>
-                        <input type="number" name="quantity" min="1" max="15" class="reserv-tipohab-bot-adult-btn" value="1">
+                        <input type="number" name="quantity" min="1" max="15" class="reserv-tipohab-bot-adult-btn" value="1" ng-model="adultos" ng-change="calcular()" />
                     </div>
                 </div>
                 <div class="reserv-numhab-txt">HABITACIONES</div>
