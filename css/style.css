@@ -106,7 +106,7 @@ body {
 	background-color: #242527;
 	width: 200px;
 	height: 25px;
-	line-height: 23px;
+	line-height: 25px;
 	text-align: left;
 	border-bottom-right-radius: 6px;
 	border-bottom-left-radius: 6px;
@@ -167,7 +167,7 @@ body {
 	font-family: quattro;
 	cursor: pointer;
 	margin-right: 5px;
-	line-height: 23px;
+	line-height: 25px;
 	border-bottom-right-radius: 6px;
 	border-bottom-left-radius: 6px;
 }
