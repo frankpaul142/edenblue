@@ -810,17 +810,18 @@ body {
 	line-height: 37px;
 }
 .reserv-inout {
-	width: 100%;
+	width: 250px;
 	height: 25px;
 	color: #FFF;
 	font-size: 16px;
 	font-family: quattro;
 	text-align: center;
 	line-height: 37px;
-	margin-top: 2px;
+	padding-top: 15px;
+	margin-left:auto;
+	margin-right:auto;
 }
 .reserv-in {
-	width: 149px;
 	height: 25px;
 	color: #FFF;
 	font-size: 16px;
@@ -830,7 +831,7 @@ body {
 	float: left;
 }
 .reserv-in-txt {
-	width: 118px;
+	width: 100%;
 	float: left;
 	height: 25px;
 	background-color: #FFF;
@@ -851,7 +852,6 @@ body {
 	cursor: pointer;
 }
 .reserv-out {
-	width: 149px;
 	height: 25px;
 	color: #FFF;
 	font-size: 16px;
@@ -862,7 +862,7 @@ body {
 	margin-left: 2px;
 }
 .reserv-out-txt {
-	width: 118px;
+	width: 100%;
 	float: left;
 	height: 25px;
 	background-color: #FFF;
@@ -886,11 +886,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	width: 250px;
-	height: 200px;
+	height: auto;
 }
 .reserv-numhab {
 	width: 100%;
-	height: 65px;
+	height: 88px;
 	margin-top: 2px;
 	border-bottom: inset #FFF;
 	border-bottom-width: 1px;
@@ -924,7 +924,7 @@ body {
 }
 .reserv-tipohab {
 	width: 250px;
-	height: 52px;
+	height: auto;
 	margin-top: 20px;
 }
 .reserv-tipohab-top {
@@ -958,7 +958,7 @@ body {
 .reserv-tipohab-bot {
 	width: 100%;
 	height: 25px;
-	margin-top: 2px;
+	margin-top: 20px;
 }
 .reserv-tipohab-bot-ninos {
 	width: 48%;
@@ -977,7 +977,7 @@ body {
 	color: #333;
 }
 .reserv-tipohab-bot-ninos-btn {
-	width: 20%;
+	width: 30%;
 	height: 20px;
 	float: right;
 	font-size: 15px;
@@ -1002,7 +1002,7 @@ body {
 	color: #333;
 }
 .reserv-tipohab-bot-adult-btn {
-	width: 20%;
+	width: 30%;
 	height: 20px;
 	float: right;
 	font-size: 15px;
@@ -1085,7 +1085,7 @@ body {
 }
 .fondodeg-reserv {
 	width: 100%;
-	height: 230px;
+	height: auto;
  -webkit-linear-gradient(rgba(0,41,253,0.2), #009bdf); /* For Safari 5.1 to 6.0 */
  -o-linear-gradient(rgba(0,41,253,0.2), #009bdf); /* For Opera 11.1 to 12.0 */
  -moz-linear-gradient(rgba(0,41,253,0.2), #009bdf); /* For Firefox 3.6 to 15 */
@@ -1577,7 +1577,7 @@ border-radius: 2px;
 }
 
 input[type="tel"] {
-    margin: -3px;  padding: 0 10px;  width: 200px;  height: 30px;  color: #fff;  background: rgba(12, 12, 12,0.6);  border: 1px solid;  border-color: #c4c4c4 #d1d1d1 #d4d4d4;  border-radius: 2px;
+    margin: -3px;  padding: 0 10px;  width: 200px;  height: 30px;  color: #fff;  background: rgba(12, 12, 12,0.6);  border: 1px solid;  border-color: #c4c4c4 #d1d1d1 #d4d4d4;  border-radius: 2px; text-align: center;
 }
 input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email {
 margin: -3px;
@@ -1589,6 +1589,7 @@ background: rgba(12, 12, 12,0.6);
 border: 1px solid;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 border-radius: 2px;
+text-align: center;
 }
 /*botonlogin*/
 input[type="submit"] {
@@ -1613,3 +1614,33 @@ width: 60%;
 margin: 0px auto;
 font-size: 12px;
 }
+div#ui-datepicker-div{
+	position: absolute;
+	top: 264px;
+	left: 198px;
+	z-index: 1;
+	display: block;
+	background-color: white;
+	border-radius: 1px;
+	padding: 15px;
+	box-shadow: 1px 0px 6px rgba(89, 89, 89, 0.8);
+	font-family: quattro;
+	font-size: 15px;
+	display:none;
+	}
+span.ui-icon.ui-icon-circle-triangle-e{
+	float: right;
+	color: #fff;
+	cursor: pointer;
+	padding: 2px;
+	background-color:  #ef4425;
+	border-radius: 5px;
+}	
+span.ui-icon.ui-icon-circle-triangle-w {
+	float: left;
+	color: #fff;
+	cursor: pointer;
+	padding: 2px;
+	background-color:  #ef4425;
+	border-radius: 5px;
+	}
