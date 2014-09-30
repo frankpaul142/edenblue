@@ -1,9 +1,10 @@
-var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment', 'myApp.directives', 'ngSanitize']);
+var app = angular.module('EdenBlue', ['ngRoute', 'route-segment', 'view-segment', 'myApp.directives']);
 
 app.config(function($routeSegmentProvider, $routeProvider) {
     $routeSegmentProvider.
     when('/', 'hosteria').
     when('/reservar', 'reservar').
+    when('/reservar/pagar', 'reservar.pagar').
     when('/hosteria', 'hosteria').
     when('/hosteria/infraestructura', 'hosteria.infraestructura').
     when('/hosteria/entorno', 'hosteria.entorno').
@@ -22,6 +23,12 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         templateUrl: 'templates/_reservar.html',
         controller: 'reservarController'
     }).
+    within().
+    segment('pagar',{
+        templateUrl: 'templates/reservar/_pagar.html',
+        controller: 'pagarController'
+    }).
+    up().
     segment('hosteria', {
         templateUrl: 'templates/_hosteria.html',
         controller: 'hosteriaController'
@@ -84,14 +91,16 @@ var services2;
 var galleryRoom;
 var galleryService;
 
-app.controller('reservarController', function($scope, $http, $compile, $sce) {
+app.controller('reservarController', function($scope, $http) {
+    var vNinos = 10;
+    var vAdultos = 12;
     checkGallery();
     fotorama.show(0);
     activeMenu(1);
     $scope.numero = 1;
     $scope.ninos = 0;
     $scope.adultos = 1;
-    $scope.subtotal = $scope.ninos * 10 + $scope.adultos * 12;
+    $scope.subtotal = $scope.ninos * vNinos + $scope.adultos * vAdultos;
     $scope.impuestos = $scope.subtotal * 0.12;
     $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
     if (typeof rooms === 'undefined') {
@@ -103,7 +112,7 @@ app.controller('reservarController', function($scope, $http, $compile, $sce) {
         $scope.rooms = rooms;
     }
     $scope.calcular = function() {
-        $scope.subtotal = $scope.ninos * 10 + $scope.adultos * 12;
+        $scope.subtotal = $scope.ninos * vNinos + $scope.adultos * vAdultos;
         if (typeof $scope.habitacion !== 'undefined') {
             for (var i = 1; i <= $scope.numero; i++) {
                 if (typeof $scope.habitacion[i] !== 'undefined') {
@@ -124,6 +133,9 @@ app.controller('reservarController', function($scope, $http, $compile, $sce) {
         }
     }
 });
+app.controller('pagarController', function(){
+    
+});
 
 app.controller('hosteriaController', function() {
     checkGallery();
@@ -139,7 +151,7 @@ app.controller('entornoController', function($scope) {
     $scope.$parent.breadcrumbs = 'Hostería / Entorno';
     $scope.$parent.ancla = '';
 });
-app.controller('habitacionesController', function($scope, $http, $routeParams, $sce) {
+app.controller('habitacionesController', function($scope, $http, $anchorScroll) {
     $scope.loading = true;
     $scope.$parent.breadcrumbs = 'Hostería / Habitaciones';
     var html = '<div class="anchor-select">';
@@ -148,10 +160,10 @@ app.controller('habitacionesController', function($scope, $http, $routeParams, $
             $scope.rooms = response;
             rooms = $scope.rooms;
             rooms.forEach(function(room) {
-                html += '<a href="#hosteria/habitaciones#h' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
+                html += '<div class="anchor" ng-click="goTo(\'h'+room.id+'\')">' + room.name + '</div>';
             });
             html += '</div>';
-            $scope.$parent.ancla = $sce.trustAsHtml(html);
+            $scope.$parent.ancla = html;
             $scope.loading = false;
         });
     } else {
@@ -159,8 +171,9 @@ app.controller('habitacionesController', function($scope, $http, $routeParams, $
         rooms.forEach(function(room) {
             html += '<a href="#hosteria/habitaciones#h' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
         });
-        html += '</div>';
-        $scope.$parent.ancla = $sce.trustAsHtml(html);
+        //html += '</div>';
+        //$scope.$parent.ancla = $sce.trustAsHtml(html);
+        $scope.$parent.ancla = html;
         $scope.loading = false;
     }
     $scope.viewGallery = function(id) {
@@ -305,9 +318,6 @@ app.controller('registroController', function($scope, $routeParams) {
                 break;
         }
     }
-});
-app.controller('registro', function() {
-
 });
 
 app.controller('cuentaController', function() {

@@ -136,6 +136,11 @@ class SiteController extends Controller {
         }
     }
 
+    public function actionBook()
+    {
+        $this->redirect(Yii::app()->request->baseUrl.'#reservar/pagar');
+    }
+
     public function actionLoadServices() {
         $services = Service::model()->findAll(array("condition" => "status='ACTIVE'"));
         $return = [];
