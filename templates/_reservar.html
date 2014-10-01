@@ -1,61 +1,69 @@
 <div class="cont1-reserv">
-    <div app-view-segment="1">
-        <form action="site/book" method="post">
-            <div class="reserv-tit">RESERVACIONES</div>
-            <div class="fondodeg-reserv">
-                <div class="reserv-inout">
-                    <div class="reserv-in">
-                        <div class="reserv-in-txt">
-                            <input type="text" placeholder="LLEGADA" id="datepickerl" required />
-                        </div>
-                    </div>
-                    <div class="reserv-out">
-                        <div class="reserv-out-txt">
-                            <input type="text" placeholder="SALIDA" id="datepickers" />
-                        </div>
+    <form action="site/book" method="post">
+        <div class="reserv-tit">RESERVACIONES</div>
+        <div class="fondodeg-reserv">
+            <div class="reserv-inout">
+                <div class="reserv-in">
+                    <div class="reserv-in-txt">
+                        <input type="text" name="llegada" placeholder="LLEGADA" id="datepickerl" ng-model="llegada" ng-change="calcular()" required />
                     </div>
                 </div>
-                <div class="reserv-coti">
-                    <div class="reserv-numhab">
-                        <div class="reserv-tipohab-bot">
-                            <div class="reserv-tipohab-bot-ninos">
-                                <div class="reserv-tipohab-bot-ninos-txt">Niños</div>
-                                <input type="number" name="quantity" min="0" max="15" class="reserv-tipohab-bot-ninos-btn" value="0" ng-model="ninos" ng-change="calcular()" />
-                            </div>
-                            <div class="reserv-tipohab-bot-adult">
-                                <div class="reserv-tipohab-bot-adult-txt">Adultos</div>
-                                <input type="number" name="quantity" min="1" max="15" class="reserv-tipohab-bot-adult-btn" value="1" ng-model="adultos" ng-change="calcular()" required />
-                            </div>
-                        </div>
-                        <div class="reserv-numhab-txt">HABITACIONES</div>
-                        <input type="number" name="quantity" min="1" max="5" class="reserv-numhab-btn" value="1" ng-model="numero" ng-change="habitaciones()" required />
-                    </div>
-                    <div compileroom="hab"></div>
-                    <div class="subtot">
-                        <div class="subtot-cont">_________</div>
-                        <div class="subtot-cont">
-                            <div class="subtot-center-top">SUBTOTAL</div>
-                            <div class="subtot-center-mid">
-                                <label>{{ subtotal | currency }}</label>
-                            </div>
-                            <div class="subtot-center-bot">+ {{ impuestos | currency }} (IMP)</div>
-                        </div>
-                        <div class="subtot-cont">_________</div>
+                <div class="reserv-out">
+                    <div class="reserv-out-txt">
+                        <input type="text" name="salida" placeholder="SALIDA" id="datepickers" ng-model="salida" ng-change="calcular()" required />
                     </div>
                 </div>
             </div>
-            <div class="reserv-total">TOTAL=
-                <label>{{ total | currency }}</label>
+            <div class="reserv-coti">
+                <div class="reserv-numhab">
+                    <div class="reserv-tipohab-bot">
+                        <div class="reserv-tipohab-bot-ninos">
+                            <div class="reserv-tipohab-bot-ninos-txt">Niños</div>
+                            <input type="number" name="ninos" min="0" max="15" class="reserv-tipohab-bot-ninos-btn" value="0" ng-model="ninos" ng-change="calcular()" />
+                        </div>
+                        <div class="reserv-tipohab-bot-adult">
+                            <div class="reserv-tipohab-bot-adult-txt">Adultos</div>
+                            <input type="number" name="adultos" min="1" max="15" class="reserv-tipohab-bot-adult-btn" value="1" ng-model="adultos" ng-change="calcular()" required />
+                        </div>
+                    </div>
+                    <div class="reserv-numhab-txt">HABITACIONES</div>
+                    <input type="number" name="habitaciones" min="1" max="5" class="reserv-numhab-btn" value="1" ng-model="numero" ng-change="habitaciones()" required />
+                </div>
+                <div compileroom="hab"></div>
+                <div class="subtot">
+                    <div class="subtot-cont">_________</div>
+                    <div class="subtot-cont">
+                        <div class="subtot-center-top">SUBTOTAL</div>
+                        <div class="subtot-center-mid">
+                            <label>{{ subtotal | currency }}</label>
+                        </div>
+                        <div class="subtot-center-bot">+ {{ impuestos | currency }} (IMP)</div>
+                    </div>
+                    <div class="subtot-cont">_________</div>
+                </div>
             </div>
-            <div class="reserv-btn">
-                <input type="submit" value="&#8226; Reservar &#8226;" />
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="reserv-total">TOTAL=
+            <label>{{ total | currency }}</label>
+            <input type="hidden" name="total" value="{{ total }}" />
+        </div>
+        <div class="reserv-btn">
+            <input type="submit" value="&#8226; Reservar &#8226;" />
+        </div>
+    </form>
 </div>
 <script>
 $(function() {
-    $("#datepickerl").datepicker();
-    $("#datepickers").datepicker();
+    $("#datepickerl").datepicker({
+        minDate: 0,
+        onClose: function(selectedDate) {
+            $("#datepickers").datepicker("option", "minDate", selectedDate);
+        }
+    });
+    $("#datepickers").datepicker({
+        onClose: function(selectedDate) {
+            $("#datepickerl").datepicker("option", "maxDate", selectedDate);
+        }
+    });
 });
 </script>

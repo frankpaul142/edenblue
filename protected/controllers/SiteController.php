@@ -78,13 +78,16 @@ class SiteController extends Controller {
             else
                 $model->rememberMe = 0;
             // validate user input and redirect to the previous page if valid
-            if ($model->validate() && $model->login())
-                $this->redirect(Yii::app()->user->returnUrl);
+            if ($model->validate() && $model->login()){
+                $url=Yii::app()->user->returnUrl;
+                if(isset($_POST['redirect']) && $_POST['redirect']=="rp"){
+                    $url.='#pagar';
+                }
+                $this->redirect($url);
+            }
             else
                 $this->redirect(Yii::app()->user->returnUrl.'#login/error');
         }
-        // display the login form
-        //$this->render('login', array('model' => $model));
     }
 
     /**
@@ -116,7 +119,11 @@ class SiteController extends Controller {
                         $model->username=$user->email;
                         $model->password=$_POST['password'];
                         if($model->login()){
-                            $this->redirect(Yii::app()->request->baseUrl);
+                            $url=Yii::app()->user->returnUrl;
+                            if(isset($_POST['redirect']) && substr($_POST['redirect'],1,2)=='rr'){
+                                $url.='#pagar';
+                            }
+                            $this->redirect($url);
                         }
                         else{
                             $this->redirect(Yii::app()->request->baseUrl.'#registro/errorlogin');
@@ -138,7 +145,24 @@ class SiteController extends Controller {
 
     public function actionBook()
     {
-        $this->redirect(Yii::app()->request->baseUrl.'#reservar/pagar');
+        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['ninos']) && isset($_POST['adultos']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total'])){
+            Yii::app()->session['llegada']=$_POST['llegada'];
+            Yii::app()->session['salida']=$_POST['salida'];
+            Yii::app()->session['ninos']=$_POST['ninos'];
+            Yii::app()->session['adultos']=$_POST['adultos'];
+            Yii::app()->session['habitaciones']=$_POST['habitaciones'];
+            Yii::app()->session['habitacion']=$_POST['habitacion'];
+            Yii::app()->session['total']=$_POST['total'];
+            if(isset(Yii::app()->user->id)){
+                $this->redirect(Yii::app()->request->baseUrl.'#pagar');
+            }
+            else{
+                $this->redirect(Yii::app()->request->baseUrl.'#login/rp');
+            }
+        }
+        else{
+            $this->redirect(Yii::app()->request->baseUrl.'#reservar');
+        }
     }
 
     public function actionLoadServices() {

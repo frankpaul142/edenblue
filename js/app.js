@@ -4,7 +4,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     $routeSegmentProvider.
     when('/', 'hosteria').
     when('/reservar', 'reservar').
-    when('/reservar/pagar', 'reservar.pagar').
+    when('/pagar', 'pagar').
     when('/hosteria', 'hosteria').
     when('/hosteria/infraestructura', 'hosteria.infraestructura').
     when('/hosteria/entorno', 'hosteria.entorno').
@@ -15,7 +15,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     when('/ubicacion', 'ubicacion').
     when('/contacto', 'contacto').
     when('/login', 'login').
-    when('/login/:error', 'login').
+    when('/login/:param', 'login').
     when('/registro', 'registro').
     when('/registro/:error', 'registro').
     when('/cuenta', 'cuenta').
@@ -23,12 +23,10 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         templateUrl: 'templates/_reservar.html',
         controller: 'reservarController'
     }).
-    within().
     segment('pagar', {
-        templateUrl: 'templates/reservar/_pagar.html',
+        templateUrl: 'templates/_pagar.php',
         controller: 'pagarController'
     }).
-    up().
     segment('hosteria', {
         templateUrl: 'templates/_hosteria.html',
         controller: 'hosteriaController'
@@ -95,6 +93,7 @@ app.controller('reservarController', function($scope, $http) {
     var vNinos = 10;
     var vAdultos = 12;
     var maxHabitaciones = 5;
+    var dias = 1;
     checkGallery();
     fotorama.show(0);
     activeMenu(1);
@@ -105,7 +104,17 @@ app.controller('reservarController', function($scope, $http) {
     $scope.impuestos = $scope.subtotal * 0.12;
     $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
     $scope.calcular = function() {
-        $scope.subtotal = $scope.ninos * vNinos + $scope.adultos * vAdultos;
+        if (typeof $scope.llegada !== 'undefined' && typeof $scope.salida !== 'undefined') {
+            var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+            var a = new Date($scope.llegada);
+            var b = new Date($scope.salida);
+            var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+            var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+            dias = Math.floor((utc2 - utc1) / _MS_PER_DAY);
+        } else {
+            dias = 1;
+        }
+        $scope.subtotal = ($scope.ninos * vNinos + $scope.adultos * vAdultos) * dias;
         if (typeof $scope.habitacion !== 'undefined') {
             for (var i = 1; i <= $scope.numero; i++) {
                 if (typeof $scope.habitacion[i] !== 'undefined') {
@@ -123,8 +132,9 @@ app.controller('reservarController', function($scope, $http) {
                 html += '<div class="reserv-tipohab">' +
                     '<div class="reserv-tipohab-top">' +
                     '<div class="reserv-tipohab-top-txt">Tipo de Habitación</div>' +
-                    '<select class="reserv-tipohab-top-btn" name="habitacion" ng-init="habitacion['+i+']=rooms[0]" ng-options="room.name for room in rooms | orderBy: \'price\'" ng-model="habitacion[' + i + ']" ng-change="calcular()" required>' +
+                    '<select class="reserv-tipohab-top-btn" ng-init="habitacion[' + i + ']=rooms[0]" ng-options="room.name for room in rooms | orderBy: \'price\'" ng-model="habitacion[' + i + ']" ng-change="calcular()" required>' +
                     '</select>' +
+                    '<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />'+
                     '</div>' +
                     '</div>';
             }
@@ -309,8 +319,12 @@ app.controller('loginController', function($scope, $routeParams) {
     checkGallery();
     fotorama.show(5);
     activeMenu(6);
-    if (typeof $routeParams.error !== 'undefined') {
-        $scope.errors = 'Combinación de Email y Contraseña incorrecta';
+    if (typeof $routeParams.param !== 'undefined') {
+        if ($routeParams.param == 'error') {
+            $scope.errors = 'Combinación de Email y Contraseña incorrecta';
+        } else if ($routeParams.param == 'rp') {
+            $scope.redirect = $routeParams.param;
+        }
     }
 });
 
