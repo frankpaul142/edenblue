@@ -29,4 +29,19 @@ angular.module('myApp.directives', [])
                 );
             }
         }
+    }).directive('compileroom', function($compile) {
+        return {
+            link: function(scope, element, attrs) {
+                scope.$watch(
+                    function(scope) {
+                        return scope.$eval(attrs.compileroom);
+                    },
+                    function(value) {
+                        var content = $compile(value)(scope);
+                        element.html(content);
+                        scope.calcular();
+                    }
+                );
+            }
+        }
     });

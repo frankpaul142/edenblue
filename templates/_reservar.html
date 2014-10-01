@@ -2,20 +2,19 @@
     <div app-view-segment="1">
         <form action="site/book" method="post">
             <div class="reserv-tit">RESERVACIONES</div>
-            <div class="reserv-inout">
-                <div class="reserv-in">
-                    <div class="reserv-in-txt">
-                        <input type="text" placeholder="LLEGADA" id="datepickerl" required />
-                    </div>
-                </div>
-                <div class="reserv-out">
-                    <div class="reserv-out-txt">
-                        <input type="text" placeholder="SALIDA" id="datepickers" />
-                    </div>
-                </div>
-            </div>
-
             <div class="fondodeg-reserv">
+                <div class="reserv-inout">
+                    <div class="reserv-in">
+                        <div class="reserv-in-txt">
+                            <input type="text" placeholder="LLEGADA" id="datepickerl" required />
+                        </div>
+                    </div>
+                    <div class="reserv-out">
+                        <div class="reserv-out-txt">
+                            <input type="text" placeholder="SALIDA" id="datepickers" />
+                        </div>
+                    </div>
+                </div>
                 <div class="reserv-coti">
                     <div class="reserv-numhab">
                         <div class="reserv-tipohab-bot">
@@ -31,43 +30,7 @@
                         <div class="reserv-numhab-txt">HABITACIONES</div>
                         <input type="number" name="quantity" min="1" max="5" class="reserv-numhab-btn" value="1" ng-model="numero" ng-change="habitaciones()" required />
                     </div>
-                    <div>
-                        <div class="reserv-tipohab" ng-show="numero>=1">
-                            <div class="reserv-tipohab-top">
-                                <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
-                                <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[1]" ng-change="calcular()" required>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="reserv-tipohab" ng-show="numero>=2">
-                            <div class="reserv-tipohab-top">
-                                <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
-                                <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[2]" ng-change="calcular()">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="reserv-tipohab" ng-show="numero>=3">
-                            <div class="reserv-tipohab-top">
-                                <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
-                                <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[3]" ng-change="calcular()">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="reserv-tipohab" ng-show="numero>=4">
-                            <div class="reserv-tipohab-top">
-                                <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
-                                <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[4]" ng-change="calcular()">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="reserv-tipohab" ng-show="numero>=5">
-                            <div class="reserv-tipohab-top">
-                                <div class="reserv-tipohab-top-txt">Tipo de Habitación</div>
-                                <select class="reserv-tipohab-top-btn" name="habitacion" ng-options="room.name for room in rooms | orderBy: 'price'" ng-model="habitacion[5]" ng-change="calcular()">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <div compileroom="hab"></div>
                     <div class="subtot">
                         <div class="subtot-cont">_________</div>
                         <div class="subtot-cont">

@@ -24,7 +24,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         controller: 'reservarController'
     }).
     within().
-    segment('pagar',{
+    segment('pagar', {
         templateUrl: 'templates/reservar/_pagar.html',
         controller: 'pagarController'
     }).
@@ -94,6 +94,7 @@ var galleryService;
 app.controller('reservarController', function($scope, $http) {
     var vNinos = 10;
     var vAdultos = 12;
+    var maxHabitaciones = 5;
     checkGallery();
     fotorama.show(0);
     activeMenu(1);
@@ -103,14 +104,6 @@ app.controller('reservarController', function($scope, $http) {
     $scope.subtotal = $scope.ninos * vNinos + $scope.adultos * vAdultos;
     $scope.impuestos = $scope.subtotal * 0.12;
     $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
-    if (typeof rooms === 'undefined') {
-        $http.get('site/loadTypeRooms').success(function(response) {
-            $scope.rooms = response;
-            rooms = $scope.rooms;
-        });
-    } else {
-        $scope.rooms = rooms;
-    }
     $scope.calcular = function() {
         $scope.subtotal = $scope.ninos * vNinos + $scope.adultos * vAdultos;
         if (typeof $scope.habitacion !== 'undefined') {
@@ -124,7 +117,18 @@ app.controller('reservarController', function($scope, $http) {
         $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
     }
     $scope.habitaciones = function() {
-        if ($scope.numero >= 1 && $scope.numero <= 5) {
+        if ($scope.numero >= 1 && $scope.numero <= maxHabitaciones) {
+            var html = '';
+            for (var i = 1; i <= $scope.numero; i++) {
+                html += '<div class="reserv-tipohab">' +
+                    '<div class="reserv-tipohab-top">' +
+                    '<div class="reserv-tipohab-top-txt">Tipo de Habitación</div>' +
+                    '<select class="reserv-tipohab-top-btn" name="habitacion" ng-init="habitacion['+i+']=rooms[0]" ng-options="room.name for room in rooms | orderBy: \'price\'" ng-model="habitacion[' + i + ']" ng-change="calcular()" required>' +
+                    '</select>' +
+                    '</div>' +
+                    '</div>';
+            }
+            $scope.hab = html;
             $scope.calcular();
         } else {
             $scope.subtotal = 0;
@@ -132,9 +136,20 @@ app.controller('reservarController', function($scope, $http) {
             $scope.total = 0;
         }
     }
+    if (typeof rooms === 'undefined') {
+        $http.get('site/loadTypeRooms').success(function(response) {
+            $scope.rooms = response;
+            rooms = $scope.rooms;
+            $scope.habitaciones();
+
+        });
+    } else {
+        $scope.rooms = rooms;
+        $scope.habitaciones();
+    }
 });
-app.controller('pagarController', function(){
-    
+app.controller('pagarController', function() {
+
 });
 
 app.controller('hosteriaController', function() {
@@ -160,7 +175,7 @@ app.controller('habitacionesController', function($scope, $http, $anchorScroll) 
             $scope.rooms = response;
             rooms = $scope.rooms;
             rooms.forEach(function(room) {
-                html += '<div class="anchor" ng-click="goTo(\'h'+room.id+'\')">' + room.name + '</div>';
+                html += '<div class="anchor" ng-click="goTo(\'h' + room.id + '\')">' + room.name + '</div>';
             });
             html += '</div>';
             $scope.$parent.ancla = html;
@@ -169,10 +184,9 @@ app.controller('habitacionesController', function($scope, $http, $anchorScroll) 
     } else {
         $scope.rooms = rooms;
         rooms.forEach(function(room) {
-            html += '<a href="#hosteria/habitaciones#h' + room.id + '"><div class="anchor">' + room.name + '</div></a>';
+            html += '<div class="anchor" ng-click="goTo(\'h' + room.id + '\')">' + room.name + '</div>';
         });
-        //html += '</div>';
-        //$scope.$parent.ancla = $sce.trustAsHtml(html);
+        html += '</div>';
         $scope.$parent.ancla = html;
         $scope.loading = false;
     }
