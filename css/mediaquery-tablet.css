@@ -21,6 +21,10 @@
 	height: auto;}
 .breadcrumbs {
 	width:180px;}
+.anchor {
+	width: 100%;
+	display: block;
+	}	
 .menu-lateral ul {
 	padding:25px;}	
 .borde-inferior {

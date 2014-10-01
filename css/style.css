@@ -831,7 +831,6 @@ body {
 	float: left;
 }
 .reserv-in-txt {
-	width: 100%;
 	float: left;
 	height: 25px;
 	background-color: #FFF;
@@ -862,7 +861,6 @@ body {
 	margin-left: 2px;
 }
 .reserv-out-txt {
-	width: 100%;
 	float: left;
 	height: 25px;
 	background-color: #FFF;
@@ -1475,11 +1473,11 @@ p.ng-binding{
     width: 65%;
     height: 7%;
     right: 0%;
-    display: flex;
+   
 }
 .anchor {
     margin-top: 8px;
-    width: 100%;
+    width: 18%;
     height: 16px;
     background-color: #009bdf;
     color: #fff;
@@ -1493,6 +1491,7 @@ p.ng-binding{
     transition: all 0.2s;
     cursor: pointer;
 	box-shadow: 2px 2px 1px -1px #666 inset;
+	display: inline-block;
 }
 .anchor:hover {
     background-color: white;
@@ -1635,6 +1634,7 @@ span.ui-icon.ui-icon-circle-triangle-e{
 	padding: 2px;
 	background-color:  #ef4425;
 	border-radius: 5px;
+	font-size: 11px;
 }	
 span.ui-icon.ui-icon-circle-triangle-w {
 	float: left;
@@ -1643,4 +1643,17 @@ span.ui-icon.ui-icon-circle-triangle-w {
 	padding: 2px;
 	background-color:  #ef4425;
 	border-radius: 5px;
+	font-size: 11px;
 	}
+input[type='number']::-webkit-outer-spin-button, form input[type='number']::-webkit-inner-spin-button {
+-webkit-appearance: button;
+-moz-appearance:button;
+margin: 0;
+}	
+.ui-datepicker-title {
+font-size: 12px;
+text-align: center;
+}
+th {
+font-size: 10px;
+}
