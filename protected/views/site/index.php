@@ -18,5 +18,6 @@ $this->pageTitle = Yii::app()->name;
 
 </div>
 <div class="contenidos">
+<div id="regresar">Regresar</div>
     <div app-view-segment="0"></div>
 </div>	

@@ -24,6 +24,7 @@ body {
 	margin: 0;
 	width: auto;
 	height: 0;
+	zoom: 97%;
 	}
 .menu-lateral ul {
 	list-style-type: none;
@@ -364,7 +365,7 @@ body {
 	margin-right: auto;
 	/*background-color:#fff;*/
 	width: 300px;
-	height: 400px;
+	height: auto;
 }
 .cont1-reg {
 	margin-top: 2px;
@@ -1182,18 +1183,15 @@ body {
 .footer {
 	width: 100%;
 	height: auto;
-	position: fixed;
+	position: relative;
 	bottom: 2%;
 	z-index: 999;
 }
 .footer-reserv {
-	margin-top: 100px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 250px;
+	width: 100%;
 	height: auto;
-	/*background-color:#0F0;*/
-	position: inherit;
+	position: relative;
+	bottom: 2%;
 	z-index: 999;
 }
 .footer-reg {
@@ -1626,11 +1624,7 @@ width: 60%;
 margin: 0px auto;
 font-size: 12px;
 }
-.ng-binding {
-font-family: quattro;
-color: white;
-text-align: center;
-}
+
 div#ui-datepicker-div{
 	position: absolute;
 	top: 264px;
@@ -1674,4 +1668,30 @@ text-align: center;
 }
 th {
 font-size: 10px;
+}
+#regresar {
+position: fixed;
+bottom: 18%;
+margin-left: auto;
+left: 0;
+right: 0;
+margin-right: auto;
+width: 60px;
+background: #ef4425;
+border-radius: 4px;
+-webkit-transition: all 0.2s ease-in-out;
+-moz-transition: all 0.2s ease-in-out;
+-o-transition: all 0.2s ease-in-out;
+-ms-transition: all 0.2s ease-in-out;
+transition: all 0.2s ease-in-out;
+padding: 2px 25px 2px 25px;
+text-align: center;
+font-family: quattro;
+font-size: 12px;
+color: #fff;
+cursor: pointer;
+}
+#regresar:hover {
+background: #f79221;
+border-color: #ffc835;
 }
