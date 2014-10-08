@@ -356,10 +356,12 @@ app.controller('cuentaController', function() {
 
 
 function toggleGallery() {
+	$("#regresar").hide();
     $(".boton-index2").hide();
     $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function() {
         $(this).hide();
+		$("#regresar").fadeTo("fast",1);
         $(".boton-index2").show();
         var height = $("#content").height();
         $("#content").animate({
@@ -369,8 +371,21 @@ function toggleGallery() {
             top: '-25px'
         }, 'fast');
     });
+	 $("#regresar").click(function() {
+        $(this).fadeTo("fast",0);
+		$(".top").animate({
+            top: '0px'
+        }, 'fast');
+        $(".boton-index2").hide();
+        $(".boton-index").show();
+        $("#content").animate({
+            bottom: '0px'
+        }, 'fast');
+        $(".fotorama__nav-wrap").fadeOut();
+		 });
     $(".boton-index2").click(function() {
-        $(".top").animate({
+        $("#regresar").fadeTo("fast",0);
+		$(".top").animate({
             top: '0px'
         }, 'fast');
         $(this).hide();
