@@ -1690,6 +1690,7 @@ font-family: quattro;
 font-size: 12px;
 color: #fff;
 cursor: pointer;
+display:none;
 }
 #regresar:hover {
 background: #f79221;
