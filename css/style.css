@@ -1504,7 +1504,7 @@ label.ng-binding{
     margin-right: 3px;
     transition: all 0.2s;
     cursor: pointer;
-	box-shadow: 2px 2px 1px -1px #666 inset;
+	
 	display: inline-block;
 }
 .anchor:hover {
