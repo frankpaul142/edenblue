@@ -208,6 +208,13 @@ class SiteController extends Controller {
         echo CJSON::encode($return);
     }
 
+    public function actionLoadEcosystem() {
+        $ecosystem=[];
+        $ecosystem['title']=Yii::t('static','static_Ecosistema_title');
+        $ecosystem['description']=Yii::t('static','static_Ecosistema_description');
+        echo json_encode($ecosystem);
+    }
+
     public function actionSetLanguage()
     {
         if (isset($_POST['language']))

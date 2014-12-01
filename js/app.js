@@ -19,6 +19,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     when('/registro', 'registro').
     when('/registro/:error', 'registro').
     when('/cuenta', 'cuenta').
+    when('/ecosistema', 'ecosistema').
     segment('reservar', {
         templateUrl: 'templates/_reservar.html',
         controller: 'reservarController'
@@ -75,6 +76,10 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     segment('cuenta', {
         templateUrl: 'templates/_cuenta.html',
         controller: 'cuentaController'
+    }).
+    segment('ecosistema', {
+        templateUrl: 'templates/_ecosistema.html',
+        controller: 'ecosistemaController'
     });
     $routeProvider.otherwise({
         redirectTo: '/'
@@ -134,7 +139,7 @@ app.controller('reservarController', function($scope, $http) {
                     '<div class="reserv-tipohab-top-txt">Tipo de Habitación</div>' +
                     '<select class="reserv-tipohab-top-btn" ng-init="habitacion[' + i + ']=rooms[0]" ng-options="room.name for room in rooms | orderBy: \'price\'" ng-model="habitacion[' + i + ']" ng-change="calcular()" required>' +
                     '</select>' +
-                    '<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />'+
+                    '<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />' +
                     '</div>' +
                     '</div>';
             }
@@ -354,14 +359,23 @@ app.controller('cuentaController', function() {
     activeMenu(6);
 });
 
+app.controller('ecosistemaController', function($scope, $http) {
+    $scope.title = '...';
+    $scope.description = '...';
+    $http.get('site/loadEcosystem').success(function(response) {
+        $scope.title = response['title'];
+        $scope.description = response['description'];
+    });
+});
+
 
 function toggleGallery() {
-	$("#regresar").hide();
+    $("#regresar").hide();
     $(".boton-index2").hide();
     $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function() {
         $(this).hide();
-		$("#regresar").fadeTo("fast",1);
+        $("#regresar").fadeTo("fast", 1);
         $(".boton-index2").show();
         var height = $("#content").height();
         $("#content").animate({
@@ -371,9 +385,9 @@ function toggleGallery() {
             top: '-25px'
         }, 'fast');
     });
-	 $("#regresar").click(function() {
-        $(this).fadeTo("fast",0);
-		$(".top").animate({
+    $("#regresar").click(function() {
+        $(this).fadeTo("fast", 0);
+        $(".top").animate({
             top: '0px'
         }, 'fast');
         $(".boton-index2").hide();
@@ -382,10 +396,10 @@ function toggleGallery() {
             bottom: '0px'
         }, 'fast');
         $(".fotorama__nav-wrap").fadeOut();
-		 });
+    });
     $(".boton-index2").click(function() {
-        $("#regresar").fadeTo("fast",0);
-		$(".top").animate({
+        $("#regresar").fadeTo("fast", 0);
+        $(".top").animate({
             top: '0px'
         }, 'fast');
         $(this).hide();
@@ -398,18 +412,87 @@ function toggleGallery() {
 }
 
 var interval;
-
+var latlong;
 function loadMap() {
     if (document.getElementById('map') !== null) {
+        var directionsService1 = new google.maps.DirectionsService();
+        var directionsService2 = new google.maps.DirectionsService();
+        var directionsService3 = new google.maps.DirectionsService();
+        var directionsService4 = new google.maps.DirectionsService();
+        var directionsDisplay1 = new google.maps.DirectionsRenderer({
+            polylineOptions: {
+                strokeColor: "yellow"
+            }
+        });
+        var directionsDisplay2 = new google.maps.DirectionsRenderer({
+            polylineOptions: {
+                strokeColor: "red"
+            }
+        });
+        var directionsDisplay3 = new google.maps.DirectionsRenderer({
+            polylineOptions: {
+                strokeColor: "blue"
+            }
+        });
+        var directionsDisplay4 = new google.maps.DirectionsRenderer({
+            polylineOptions: {
+                strokeColor: "green"
+            }
+        });
         var mapDiv = document.getElementById('map');
-        var latlong = new google.maps.LatLng(0.287006, -80.030862);
-        var centerll = new google.maps.LatLng(0.224522, -79.901086);
+        latlong = new google.maps.LatLng(0.287006, -80.030862);
+        //var centerll = new google.maps.LatLng(0.224522, -79.901086);
+        var centerll = new google.maps.LatLng(0.044262, -79.288416);
         var options = {
             center: centerll,
-            zoom: 11,
+            zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var mapa = new google.maps.Map(mapDiv, options);
+        directionsDisplay1.setMap(mapa);
+        directionsDisplay2.setMap(mapa);
+        directionsDisplay3.setMap(mapa);
+        directionsDisplay4.setMap(mapa);
+        var request1 = calcRoute('Quito',[
+            [-0.466769, -78.586492],
+            [-0.233375, -79.166847],
+            [-0.003184, -79.391026],
+            [0.070625, -80.053612]
+        ]);
+        var request2 = calcRoute('Quito',[
+            [-0.002935, -78.513786],
+            [-0.003184, -79.391026],
+            [0.070625, -80.053612]
+        ]);
+        var request3 = calcRoute('Bahía de Caráquez',[
+            [0.070625, -80.053612]
+        ]);
+        var request4 = calcRoute('Quito',[
+            [-0.466769, -78.586492],
+            [-0.233375, -79.166847],
+            [-0.271499, -79.464447],
+            [0.070625, -80.053612]
+        ]);
+        directionsService1.route(request1, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay1.setDirections(response);
+            }
+        });
+        directionsService2.route(request2, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay2.setDirections(response);
+            }
+        });
+        directionsService3.route(request3, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay3.setDirections(response);
+            }
+        });
+        directionsService4.route(request4, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay4.setDirections(response);
+            }
+        });
         var marker = new google.maps.Marker({
             position: latlong,
             map: mapa,
@@ -417,6 +500,42 @@ function loadMap() {
         });
         clearInterval(interval);
     }
+}
+
+function calcRoute(start, points) {
+    var end = latlong;
+    var waypts = [];
+    for (p in points) {
+        waypts.push({
+            location: new google.maps.LatLng(points[p][0], points[p][1]),
+            stopover: false
+        });
+    }
+    /*waypts.push({
+        location: new google.maps.LatLng(-0.466769, -78.586492),
+        stopover: false
+    });
+    waypts.push({
+        location: new google.maps.LatLng(-0.233375, -79.166847),
+        stopover: false
+    });
+    waypts.push({
+        location: new google.maps.LatLng(-0.003184, -79.391026),
+        stopover: false
+    });
+    waypts.push({
+        location: new google.maps.LatLng(0.070625, -80.053612),
+        stopover: false
+    });*/
+
+    var request = {
+        origin: start,
+        destination: end,
+        waypoints: waypts,
+        optimizeWaypoints: true,
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+    return request;
 }
 
 function checkGallery() {
