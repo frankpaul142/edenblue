@@ -511,23 +511,6 @@ function calcRoute(start, points) {
             stopover: false
         });
     }
-    /*waypts.push({
-        location: new google.maps.LatLng(-0.466769, -78.586492),
-        stopover: false
-    });
-    waypts.push({
-        location: new google.maps.LatLng(-0.233375, -79.166847),
-        stopover: false
-    });
-    waypts.push({
-        location: new google.maps.LatLng(-0.003184, -79.391026),
-        stopover: false
-    });
-    waypts.push({
-        location: new google.maps.LatLng(0.070625, -80.053612),
-        stopover: false
-    });*/
-
     var request = {
         origin: start,
         destination: end,
@@ -547,7 +530,7 @@ function checkGallery() {
     }
     if (galleryService) {
         fotorama.splice(2, 1, {
-            img: 'images/fondo2.jpg'
+            img: 'images/12 con libros.jpg'
         });
         galleryService = false;
     }
@@ -572,15 +555,15 @@ $(document).ready(function() {
     }, {
         img: 'images/fondo.jpg'
     }, {
-        img: 'images/fondo2.jpg'
+        img: 'images/12 con libros.jpg'
     }, {
         html: '<div id="map" style="height:100%"></div>'
     }, {
-        img: 'images/fondo3.jpg'
+        img: 'images/11.jpg'
     }, {
-        img: 'images/fondo2.jpg'
+        img: 'images/13.jpg'
     }, {
-        img: 'images/fondo5.jpg'
+        img: 'images/19.jpg'
     }]).setOptions({
         arrows: false,
         click: false,

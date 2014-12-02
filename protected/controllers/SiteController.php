@@ -178,8 +178,10 @@ class SiteController extends Controller {
             $service['description'] = Yii::t('services',$d);
             $service['photos'] = [];
             foreach ($s->photos as $photo) {
-                $photos['source'] = $photo->source;
-                array_push($service['photos'], $photos);
+                if($photo->status=='ACTIVE'){
+                    $photos['source'] = $photo->source;
+                    array_push($service['photos'], $photos);
+                }
             }
             array_push($return, $service);
         }
@@ -200,8 +202,10 @@ class SiteController extends Controller {
             $room['price']=$r->price;
             $room['photos'] = [];
             foreach ($r->photos as $photo) {
-                $photos['source'] = $photo->source;
-                array_push($room['photos'], $photos);
+                if($photo->status=='ACTIVE'){
+                    $photos['source'] = $photo->source;
+                    array_push($room['photos'], $photos);
+                }
             }
             array_push($return, $room);
         }
