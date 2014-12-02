@@ -375,6 +375,8 @@ function toggleGallery() {
     $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function() {
         $(this).hide();
+        
+        $(".footer").fadeOut("fast");        
         $("#regresar").fadeTo("fast", 1);
         $(".boton-index2").show();
         var height = $("#content").height();
@@ -399,6 +401,7 @@ function toggleGallery() {
     });
     $(".boton-index2").click(function() {
         $("#regresar").fadeTo("fast", 0);
+        $(".footer").fadeIn("fast");
         $(".top").animate({
             top: '0px'
         }, 'fast');
