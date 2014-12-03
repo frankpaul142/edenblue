@@ -1,11 +1,12 @@
 <div class="overlay">
-	<div ng-show="loading">
-		<div class="spinner"></div>
-	</div>
+    <div ng-show="loading">
+        <div class="spinner"></div>
+    </div>
     <div class="texto-hab1" ng-repeat="room in rooms">
         <div class="texto-hab-tit" id="h{{room.id}}">{{ room.name}}</div>
         <div class="texto-hab-cont">
-            <p>{{ room.description}}</p>
+            <p>{{ room.description}}<br>
+            Tarifa: {{ room.price | currency }}</p>
         </div>
         <div class="boton-vermas" ng-if="room.photos[0] != null" ng-click="viewGallery(room.id)">Ver galería</div>
     </div>

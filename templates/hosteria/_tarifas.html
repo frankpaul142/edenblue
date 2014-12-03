@@ -1,0 +1,44 @@
+<div class="texto-tit">Tarifas</div>
+<div class="texto-cont">
+    <div class="texto-subtit"><a>Habitaciones</a>
+    </div>
+    <div ng-show="loading">
+        <div class="spinner"></div>
+    </div>
+    <p>
+        <table>
+            <tr ng-repeat="room in rooms">
+                <td>{{ room.name }}</td>
+                <td>{{ room.price | currency }}</td>
+            </tr>
+        </table>
+    </p>
+    <p style="font-size:9px">*Las tarifas no incluyen IVA ni el Impuesto Hotelero.</p>
+    <div class="texto-subtit"><a>Excursiones</a>
+    </div>
+    <p>
+        <table>
+            <tr>
+                <td>Caminatas o cabalgatas</td>
+                <td>$35.00</td>
+            </tr>
+            <tr>
+                <td>Tours en lancha o bote por las Islas</td>
+                <td>$45.00</td>
+            </tr>
+            <tr>
+                <td>Pesca Deportiva frente a Cojimíes</td>
+                <td>$45.00</td>
+            </tr>
+            <tr>
+                <td>Avistamiento de Ballenas Jorobadas</td>
+                <td>$50.00</td>
+            </tr>
+            <tr>
+                <td>Visita a Reserva Ecológica Mache Chindul</td>
+                <td>$50.00</td>
+            </tr>
+        </table>
+    </p>
+    <p style="font-size:9px">*La tarifa incluye los costos como refrigerio y bebida, y los costos del guía turístico. No incluyen IVA.</p>
+</div>

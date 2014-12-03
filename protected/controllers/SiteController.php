@@ -199,7 +199,7 @@ class SiteController extends Controller {
             $d='room_'.$r->name.'_description';
             $room['name']=Yii::t('rooms',$n);
             $room['description']=Yii::t('rooms',$d);
-            $room['price']=$r->price;
+            $room['price']=$r->price1;
             $room['photos'] = [];
             foreach ($r->photos as $photo) {
                 if($photo->status=='ACTIVE'){

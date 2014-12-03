@@ -10,6 +10,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     when('/hosteria/entorno', 'hosteria.entorno').
     when('/hosteria/habitaciones', 'hosteria.habitaciones').
     when('/hosteria/habitaciones/:id', 'hosteria.habitaciones').
+    when('/hosteria/tarifas', 'hosteria.tarifas').
     when('/servicios', 'servicios').
     when('/servicios/:name', 'servicios.servicio').
     when('/ubicacion', 'ubicacion').
@@ -45,6 +46,10 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     segment('habitaciones', {
         templateUrl: 'templates/hosteria/_habitaciones.html',
         controller: 'habitacionesController'
+    }).
+    segment('tarifas', {
+        templateUrl: 'templates/hosteria/_tarifas.html',
+        controller: 'tarifasController'
     }).
     up().
     segment('servicios', {
@@ -95,8 +100,8 @@ var galleryRoom;
 var galleryService;
 
 app.controller('reservarController', function($scope, $http) {
-    var vNinos = 10;
-    var vAdultos = 12;
+    var vNinos = 0;
+    var vAdultos = 0;
     var maxHabitaciones = 5;
     var dias = 1;
     checkGallery();
@@ -232,6 +237,21 @@ app.controller('habitacionesController', function($scope, $http, $anchorScroll) 
             top: '-25px'
         }, 'fast');
     };
+});
+app.controller('tarifasController', function($scope, $http) {
+    $scope.loading = true;
+    $scope.$parent.breadcrumbs = 'Hostería / Tarifas';
+    $scope.$parent.ancla = '';
+    if (typeof rooms === 'undefined') {
+        $http.get('site/loadTypeRooms').success(function(response) {
+            $scope.rooms = response;
+            rooms = $scope.rooms;
+            $scope.loading = false;
+        });
+    } else {
+        $scope.rooms = rooms;
+        $scope.loading = false;
+    }
 });
 
 app.controller('serviciosController', function($scope, $http) {
