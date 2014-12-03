@@ -389,6 +389,7 @@ function toggleGallery() {
     });
     $("#regresar").click(function() {
         $(this).fadeTo("fast", 0);
+        $(".footer").fadeIn("fast");
         $(".top").animate({
             top: '0px'
         }, 'fast');
