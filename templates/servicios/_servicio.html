@@ -1,9 +1,9 @@
 <div>
     <div class="texto-tit">{{ service.title }}</div>
     <div class="overlay" ng-if="service.description.substr(0,8)!='service_'">
-        <p style="white-space: pre-line;">{{ service.description }}</p>
+        <p style="white-space: pre-line;">{{ service.description }}
         <a href="#ecosistema" style="text-align: right" ng-if="service.id==9">Conoce más sobre el Ecosistema</a>
-        <a href="/images/EdenBlue-carta.pdf" style="text-align: right" ng-if="service.id==1" download>Descarga la carta</a>
+        <a href="images/EdenBlue-carta.pdf" style="text-align: right" ng-if="service.id==1" download>Descarga la carta</a></p>
     </div>
     <div class="boton-vermas" ng-if="service.photos[0] != null" ng-click="viewGallery(service.id)">Ver galería</div>
 </div>
