@@ -324,7 +324,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	background-image: url(../images/600pxmenu2/menu600px-05.png); background-repeat: no-repeat;
 }
 .cont1 {
-	margin-top: 2px;
+	
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #fff;
@@ -335,7 +335,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	min-height: 286px;
 }
 .cont1-hab {
-	margin-top: 2px;
+	
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #fff;
@@ -344,7 +344,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	min-height: 300px;
 }
 .cont1-excur {
-	margin-top: 2px;
+	
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #fff;
@@ -354,7 +354,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 }
 .cont1-serv {
-	margin-top: 2px;
+	
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #fff;
