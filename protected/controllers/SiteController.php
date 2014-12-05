@@ -145,11 +145,10 @@ class SiteController extends Controller {
 
     public function actionBook()
     {
-        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['ninos']) && isset($_POST['adultos']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total'])){
+        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['personas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total'])){
             Yii::app()->session['llegada']=$_POST['llegada'];
             Yii::app()->session['salida']=$_POST['salida'];
-            Yii::app()->session['ninos']=$_POST['ninos'];
-            Yii::app()->session['adultos']=$_POST['adultos'];
+            Yii::app()->session['personas']=$_POST['personas'];
             Yii::app()->session['habitaciones']=$_POST['habitaciones'];
             Yii::app()->session['habitacion']=$_POST['habitacion'];
             Yii::app()->session['total']=$_POST['total'];

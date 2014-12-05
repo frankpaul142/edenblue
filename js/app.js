@@ -100,39 +100,44 @@ var galleryRoom;
 var galleryService;
 
 app.controller('reservarController', function($scope, $http) {
-    var vNinos = 0;
-    var vAdultos = 0;
-    var maxHabitaciones = 5;
+    var maxHabitaciones = 6;
+    var vImp=0.12;
     var dias = 1;
     checkGallery();
     fotorama.show(0);
     activeMenu(1);
     $scope.numero = 1;
-    $scope.ninos = 0;
-    $scope.adultos = 1;
-    $scope.subtotal = $scope.ninos * vNinos + $scope.adultos * vAdultos;
-    $scope.impuestos = $scope.subtotal * 0.12;
+    $scope.personas = 1;
+    $scope.subtotal = 0;
+    $scope.impuestos = $scope.subtotal * vImp;
     $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+    $scope.range = function(n) {
+        return new Array(n);
+    };
+    $scope.numpersonas=function () {
+    	console.log($scope.personas);
+    	
+    };
     $scope.calcular = function() {
         if (typeof $scope.llegada !== 'undefined' && typeof $scope.salida !== 'undefined') {
             var _MS_PER_DAY = 1000 * 60 * 60 * 24;
             var a = new Date($scope.llegada);
             var b = new Date($scope.salida);
             var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-            var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-            dias = Math.floor((utc2 - utc1) / _MS_PER_DAY);
+            var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate())+1;
+            dias = Math.ceil((utc2 - utc1) / _MS_PER_DAY);
         } else {
             dias = 1;
         }
-        $scope.subtotal = ($scope.ninos * vNinos + $scope.adultos * vAdultos) * dias;
+        $scope.subtotal = 0;
         if (typeof $scope.habitacion !== 'undefined') {
             for (var i = 1; i <= $scope.numero; i++) {
                 if (typeof $scope.habitacion[i] !== 'undefined') {
-                    $scope.subtotal += parseFloat($scope.habitacion[i].price);
+                    $scope.subtotal += parseFloat($scope.habitacion[i].price)*dias;
                 }
             }
         }
-        $scope.impuestos = $scope.subtotal * 0.12;
+        $scope.impuestos = $scope.subtotal * vImp;
         $scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
     }
     $scope.habitaciones = function() {
@@ -227,6 +232,7 @@ app.controller('habitacionesController', function($scope, $http, $anchorScroll) 
                 return;
             }
         });
+        $('.footer').fadeOut('fast');
         $('.boton-index').hide();
         $(".boton-index2").show();
         var height = $("#content").height();
@@ -315,6 +321,7 @@ app.controller('servicioController', function($scope, $routeParams, $timeout) {
                 return;
             }
         });
+        $('.footer').fadeOut('fast');
         $('.boton-index').hide();
         $(".boton-index2").show();
         var height = $("#content").height();

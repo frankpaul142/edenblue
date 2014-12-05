@@ -18,18 +18,15 @@
             <div class="reserv-numhab">
                 <div class="reserv-tipohab-bot">
                     <div class="reserv-tipohab-bot-ninos">
-                        <div class="reserv-tipohab-bot-ninos-txt">Niños: <?php if(isset($_SESSION['ninos'])) echo $_SESSION['ninos']; ?></div>
-                    </div>
-                    <div class="reserv-tipohab-bot-adult">
-                        <div class="reserv-tipohab-bot-adult-txt">Adultos: <?php if(isset($_SESSION['adultos'])) echo $_SESSION['adultos']; ?></div>
+                        <div class="reserv-tipohab-bot-ninos-txt">Nº Personas: <?php if(isset($_SESSION['personas'])) echo $_SESSION['personas']; ?></div>
                     </div>
                 </div>
-                <div class="reserv-numhab-txt">HABITACIONES: <?php if(isset($_SESSION['habitaciones'])) echo $_SESSION['habitaciones']; ?></div>
+                <div class="reserv-numhab-txt">Habitaciones: <?php if(isset($_SESSION['habitaciones'])) echo $_SESSION['habitaciones']; ?></div>
             </div>
             <div>
             	<?php if(isset($_SESSION['habitacion'])){
             		foreach ($_SESSION['habitacion'] as $i => $habitacion) {
-            			echo $habitacion;
+            			echo $habitacion.'<br>';
             		}
             	} ?>
             </div>
