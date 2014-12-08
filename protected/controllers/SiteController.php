@@ -45,8 +45,11 @@ class SiteController extends Controller {
      */
     public function actionContact() {
         $model = new ContactForm;
-        if (isset($_POST['ContactForm'])) {
-            $model->attributes = $_POST['ContactForm'];
+        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['body'])) {
+            $model->name = $_POST['name'];
+            $model->email = $_POST['email'];
+            $model->subject = $_POST['subject'];
+            $model->body = $_POST['body'];
             if ($model->validate()) {
                 $name = '=?UTF-8?B?' . base64_encode($model->name) . '?=';
                 $subject = '=?UTF-8?B?' . base64_encode($model->subject) . '?=';
@@ -56,11 +59,15 @@ class SiteController extends Controller {
                         "Content-Type: text/plain; charset=UTF-8";
 
                 mail(Yii::app()->params['adminEmail'], $subject, $model->body, $headers);
-                Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
-                $this->refresh();
+                $this->redirect(Yii::app()->request->baseUrl.'#contacto/enviado');
+            }
+            else{
+                $this->redirect(Yii::app()->request->baseUrl.'#contacto/error');
             }
         }
-        $this->render('contact', array('model' => $model));
+        else{
+            $this->redirect(Yii::app()->request->baseUrl.'#contacto/error');
+        }
     }
 
     /**

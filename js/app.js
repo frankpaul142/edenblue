@@ -15,6 +15,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
     when('/servicios/:name', 'servicios.servicio').
     when('/ubicacion', 'ubicacion').
     when('/contacto', 'contacto').
+    when('/contacto/:param', 'contacto').
     when('/login', 'login').
     when('/login/:param', 'login').
     when('/registro', 'registro').
@@ -341,10 +342,18 @@ app.controller('ubicacionController', function() {
     toggleGallery();
 });
 
-app.controller('contactoController', function() {
+app.controller('contactoController', function($scope, $routeParams) {
     checkGallery();
     fotorama.show(4);
     activeMenu(5);
+    toggleGallery();
+    if (typeof $routeParams.param !== 'undefined') {
+        if ($routeParams.param == 'error') {
+            $scope.mensaje = 'Hubo un error al enviar. Intente de nuevo por favor.';
+        } else if ($routeParams.param == 'enviado') {
+            $scope.mensaje = 'Gracias por contactarnos. En seguida procesaremos su solicitud';
+        }
+    }
 });
 
 app.controller('loginController', function($scope, $routeParams) {

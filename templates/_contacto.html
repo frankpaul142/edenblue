@@ -1,15 +1,31 @@
 <div class="cont1-contacto">
-    <p>Al noroeste de Manabí está situada la Península de Cojimíes con una longitud de 34 km y separada del Noreste de Manabí por una gran extensión de agua denominada Ensenada de Cojimíes, 
-        la misma que por su desembocadura, la separa por el Norte de la Provincia de Esmeraldas.</p>
-    <p>EdenBlue está ubicada en la Península de Cojimíes que pertenece a la Parroquia Cojimíes del Cantón Pedernales en la Provincia de Manabí.  
-        Está asentada en el Sector El Carrizal, Vía Pedernales-Cojimíes km 25.</p>
-    <p>La Hostería se encuentra 25 km al norte de Pedernales, a 115 km de El Carmen (1 hora 10 minutos de viaje), a 145 km de Santo Domingo de los Tsáchilas (2 horas, 10 minutos de viaje), 
-        a 273 km de la ciudad de Quito (4 horas de viaje) y a 136 km de Bahía de Caráquez (1 hora, 55 minutos de viaje).</p>
-    <p>Nueve kilómetros al Norte se encuentra el pintoresco pueblo pesquero de Cojimíes, en la punta de la Península.</p>
-    <p>Desde Mayo de 2011, Cojimíes y Pedernales están conectados por una Vía de 34 km de longitud y de 10 metros de ancho de calzada que ofrece a los viajeros un seguro y placentero 
-        viaje de 25 a 30 minutos desde Cojimíes a Pedernales.</p>
+    <p>{{mensaje}}</p>
+    <p>Si tiene alguna pregunta escríbanos</p>
+    <form method="post" action="site/contact" name="fContact">
+        <p>
+            <input type="text" name="name" ng-model="nombre" placeholder="Nombre Apellido" required />
+            <span style="color:red" ng-show="fContact.nombre.$dirty && fContact.nombre.$invalid">*</span>
+        </p>
+        <p>
+            <input type="email" name="email" ng-model="email" placeholder="Email" required />
+            <span style="color:red" ng-show="fContact.email.$dirty && fContact.email.$invalid">*</span>
+        </p>
+        <p>
+            <input type="text" name="subject" ng-model="asunto" placeholder="Asunto" required />
+            <span style="color:red" ng-show="fContact.asunto.$dirty && fContact.asunto.$invalid">*</span>
+        </p>
+        <p>
+            <textarea name="body" ng-model="texto" required rows="5"></textarea>
+            <span style="color:red" ng-show="fContact.texto.$dirty && fContact.texto.$invalid">*</span>
+        </p>
+        <div class="login-btn">
+            <input type="submit" value="&#8226; Enviar &#8226;" />
+        </div>
+    </form>
 </div>
 <div class="borde-inferior">
-    <div class="boton-index"><img src="images/boton-08.png" width="21" height="21"></div>
-    <div class="boton-index2" style="display: none;"><img src="images/boton-08-2.png" width="21" height="21"></div>
+    <div class="boton-index"><img src="images/boton-08.png" width="21" height="21">
+    </div>
+    <div class="boton-index2" style="display: none;"><img src="images/boton-08-2.png" width="21" height="21">
+    </div>
 </div>
