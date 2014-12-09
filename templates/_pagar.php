@@ -21,9 +21,9 @@
                         <div class="reserv-tipohab-bot-ninos-txt">Nº Personas: <?php if(isset($_SESSION['personas'])) echo $_SESSION['personas']; ?></div>
                     </div>
                 </div>
-                <div class="reserv-numhab-txt">Habitaciones: <?php if(isset($_SESSION['habitaciones'])) echo $_SESSION['habitaciones']; ?></div>
+                <div class="reserv-numhab-1">Habitaciones: <?php if(isset($_SESSION['habitaciones'])) echo $_SESSION['habitaciones']; ?></div>
             </div>
-            <div>
+            <div class="habitaciones-pay">
             	<?php if(isset($_SESSION['habitacion'])){
             		foreach ($_SESSION['habitacion'] as $i => $habitacion) {
             			echo $habitacion.'<br>';
