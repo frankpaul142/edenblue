@@ -26,14 +26,14 @@
                             <input type="number" name="adultos" min="1" max="15" class="reserv-tipohab-bot-adult-btn" value="1" ng-model="adultos" ng-change="calcular()" required />
                         </div>
                     </div>-->
-                    <div class="reserv-numhab-txt">Nº Personas</div>
-                    <select name="personas" ng-model="personas" ng-change="numpersonas()" required>
+                    <div id="people"><div class="reserv-numhab-txt">Nº Personas</div>
+                    <select id="floatright" name="personas" ng-model="personas" ng-change="numpersonas()" required>
                         <option ng-repeat="a in range(15) track by $index" value="{{ $index+1 }}">{{ $index+1 }}</option>
-                    </select>
-                    <div class="reserv-numhab-txt">Habitaciones</div>
-                    <select name="habitaciones" ng-model="numero" ng-change="habitaciones()" required>
+                        </select></div>
+                    <div id="rooms"><div class="reserv-numhab-txt">Habitaciones</div>
+                    <select id="floatright" name="habitaciones" ng-model="numero" ng-change="habitaciones()" required>
                         <option ng-repeat="a in range(6) track by $index" value="{{ $index+1 }}">{{ $index+1 }}</option>
-                    </select>
+                        </select></div>
                     <!-- <input type="number" name="habitaciones" min="1" max="6" class="reserv-numhab-btn" value="1" ng-model="numero" ng-change="habitaciones()" required /> -->
                 </div>
                 <div compileroom="hab"></div>

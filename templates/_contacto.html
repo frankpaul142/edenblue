@@ -1,7 +1,7 @@
 <div class="cont1-contacto">
     <p>{{mensaje}}</p>
-    <p>Si tiene alguna pregunta escríbanos</p>
-    <form method="post" action="site/contact" name="fContact">
+    <p id="tit-contact">Si tiene alguna pregunta escríbanos</p>
+    <form id="form-contact" method="post" action="site/contact" name="fContact">
         <p>
             <input type="text" name="name" ng-model="nombre" placeholder="Nombre Apellido" required />
             <span style="color:red" ng-show="fContact.nombre.$dirty && fContact.nombre.$invalid">*</span>
@@ -15,7 +15,7 @@
             <span style="color:red" ng-show="fContact.asunto.$dirty && fContact.asunto.$invalid">*</span>
         </p>
         <p>
-            <textarea name="body" ng-model="texto" required rows="5"></textarea>
+            <textarea id="text-contact" placeholder="Escribe algo" name="body" ng-model="texto" required rows="5"></textarea>
             <span style="color:red" ng-show="fContact.texto.$dirty && fContact.texto.$invalid">*</span>
         </p>
         <div class="login-btn">

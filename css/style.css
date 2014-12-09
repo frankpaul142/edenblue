@@ -827,6 +827,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 .reserv-in {
 	height: 25px;
+	width: 120px;
 	color: #FFF;
 	font-size: 16px;
 	font-family: quattro;
@@ -856,6 +857,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 .reserv-out {
 	height: 25px;
+	width: 120px;
 	color: #FFF;
 	font-size: 16px;
 	font-family: quattro;
@@ -900,14 +902,14 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 .reserv-numhab-txt {
 	width: 78%;
 	height: 25px;
-	background-color: #FFF;
+	
 	font-size: 16px;
 	font-family: quattro;
 	text-align: center;
 	line-height: 25px;
-	color: #333;
+	color: #fff;
 	float: left;
-	margin-top: 20px;
+	
 	margin-bottom: 20px;
 }
 .reserv-numhab-btn {
@@ -936,12 +938,12 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 .reserv-tipohab-top-txt {
 	width: 60%;
 	height: 25px;
-	background-color: #FFF;
+	
 	font-size: 16px;
 	font-family: quattro;
 	text-align: center;
 	line-height: 25px;
-	color: #333;
+	color: #fff;
 	float: left;
 }
 .reserv-tipohab-top-btn {
@@ -1048,7 +1050,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 .reserv-total {
 	width: 300px;
-	height: 40px;
+	height: auto;
 	background-color: #FFF;
 	font-size: 20px;
 	font-family: quattro;
@@ -1594,11 +1596,11 @@ input[type="tel"] {
 }
 input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email {
 margin: -3px;
-padding: 0 10px;
-width: 200px;
+/*padding: 0 10px;*/
+width: 100%;
 height: 30px;
 color: #fff;
-background: rgba(12, 12, 12,0.6);
+/*background: rgba(12, 12, 12,0.6);*/
 border: 1px solid;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 border-radius: 2px;
@@ -1699,3 +1701,35 @@ display:none;
 background: #f79221;
 border-color: #ffc835;
 }
+p#tit-contact {
+    font-family: satisfy;
+    color: #009bdf;
+    font-size: 20px;
+    text-align: center;
+}
+form#form-contact {
+    width: 70%;
+    margin: 0 auto;
+}
+textarea#text-contact{
+    width: 100%;
+	border: 1px solid rgb(210, 210, 210);
+	margin: 0px;
+	height: 50px;
+	font-family: quattro;
+	font-size: 14px;
+	color: rgb(255, 255, 255) !important;
+	text-align: center;
+	max-width: 390px;
+}
+#people{
+	margin-top: 20px;
+	}
+#floatright{
+	float: right;
+	border: 0;
+	width: 50px;
+	height: 25px;
+	font-family: quattro;
+	font-size: 15px;
+	}
