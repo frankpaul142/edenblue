@@ -1,27 +1,29 @@
 <div class="cont1-contacto">
     <p>{{mensaje}}</p>
-    <p id="tit-contact">Si tiene alguna pregunta escríbanos</p>
-    <form id="form-contact" method="post" action="site/contact" name="fContact">
-        <p>
-            <input type="text" name="name" ng-model="nombre" placeholder="Nombre Apellido" required />
-            <span style="color:red" ng-show="fContact.nombre.$dirty && fContact.nombre.$invalid">*</span>
-        </p>
-        <p>
-            <input type="email" name="email" ng-model="email" placeholder="Email" required />
-            <span style="color:red" ng-show="fContact.email.$dirty && fContact.email.$invalid">*</span>
-        </p>
-        <p>
-            <input type="text" name="subject" ng-model="asunto" placeholder="Asunto" required />
-            <span style="color:red" ng-show="fContact.asunto.$dirty && fContact.asunto.$invalid">*</span>
-        </p>
-        <p>
-            <textarea id="text-contact" placeholder="Escribe algo" name="body" ng-model="texto" required rows="5"></textarea>
-            <span style="color:red" ng-show="fContact.texto.$dirty && fContact.texto.$invalid">*</span>
-        </p>
-        <div class="login-btn">
-            <input type="submit" value="&#8226; Enviar &#8226;" />
-        </div>
-    </form>
+    <div ng-show="!enviado">
+        <p id="tit-contact">Si tiene alguna pregunta escríbanos</p>
+        <form id="form-contact" method="post" action="site/contact" name="fContact">
+            <p>
+                <input type="text" name="name" ng-model="nombre" placeholder="Nombre Apellido" required />
+                <span style="color:red" ng-show="fContact.nombre.$dirty && fContact.nombre.$invalid">*</span>
+            </p>
+            <p>
+                <input type="email" name="email" ng-model="email" placeholder="Email" required />
+                <span style="color:red" ng-show="fContact.email.$dirty && fContact.email.$invalid">*</span>
+            </p>
+            <p>
+                <input type="text" name="subject" ng-model="asunto" placeholder="Asunto" required />
+                <span style="color:red" ng-show="fContact.asunto.$dirty && fContact.asunto.$invalid">*</span>
+            </p>
+            <p>
+                <textarea id="text-contact" placeholder="Escribe algo" name="body" ng-model="texto" required rows="5"></textarea>
+                <span style="color:red" ng-show="fContact.texto.$dirty && fContact.texto.$invalid">*</span>
+            </p>
+            <div class="login-btn">
+                <input type="submit" value="&#8226; Enviar &#8226;" />
+            </div>
+        </form>
+    </div>
 </div>
 <div class="borde-inferior">
     <div class="boton-index"><img src="images/boton-08.png" width="21" height="21">

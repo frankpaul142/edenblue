@@ -102,7 +102,7 @@ var galleryService;
 
 app.controller('reservarController', function($scope, $http) {
     var maxHabitaciones = 6;
-    var vImp=0.12;
+    var vImp = 0.12;
     var dias = 1;
     checkGallery();
     fotorama.show(0);
@@ -115,9 +115,9 @@ app.controller('reservarController', function($scope, $http) {
     $scope.range = function(n) {
         return new Array(n);
     };
-    $scope.numpersonas=function () {
-    	console.log($scope.personas);
-    	
+    $scope.numpersonas = function() {
+        console.log($scope.personas);
+
     };
     $scope.calcular = function() {
         if (typeof $scope.llegada !== 'undefined' && typeof $scope.salida !== 'undefined') {
@@ -125,7 +125,7 @@ app.controller('reservarController', function($scope, $http) {
             var a = new Date($scope.llegada);
             var b = new Date($scope.salida);
             var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-            var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate())+1;
+            var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) + 1;
             dias = Math.ceil((utc2 - utc1) / _MS_PER_DAY);
         } else {
             dias = 1;
@@ -134,7 +134,7 @@ app.controller('reservarController', function($scope, $http) {
         if (typeof $scope.habitacion !== 'undefined') {
             for (var i = 1; i <= $scope.numero; i++) {
                 if (typeof $scope.habitacion[i] !== 'undefined') {
-                    $scope.subtotal += parseFloat($scope.habitacion[i].price)*dias;
+                    $scope.subtotal += parseFloat($scope.habitacion[i].price) * dias;
                 }
             }
         }
@@ -343,6 +343,7 @@ app.controller('ubicacionController', function() {
 });
 
 app.controller('contactoController', function($scope, $routeParams) {
+    $scope.enviado = false;
     checkGallery();
     fotorama.show(4);
     activeMenu(5);
@@ -351,7 +352,8 @@ app.controller('contactoController', function($scope, $routeParams) {
         if ($routeParams.param == 'error') {
             $scope.mensaje = 'Hubo un error al enviar. Intente de nuevo por favor.';
         } else if ($routeParams.param == 'enviado') {
-            $scope.mensaje = 'Gracias por contactarnos. En seguida procesaremos su solicitud';
+            $scope.mensaje = 'Gracias por contactarnos. En seguida procesaremos su solicitud.';
+            $scope.enviado = true;
         }
     }
 });
@@ -411,8 +413,8 @@ function toggleGallery() {
     $(".fotorama__nav-wrap").hide();
     $(".boton-index").click(function() {
         $(this).hide();
-        
-        $(".footer").fadeOut("fast");        
+
+        $(".footer").fadeOut("fast");
         $("#regresar").fadeTo("fast", 1);
         $(".boton-index2").show();
         var height = $("#content").height();
@@ -453,6 +455,7 @@ function toggleGallery() {
 
 var interval;
 var latlong;
+
 function loadMap() {
     if (document.getElementById('map') !== null) {
         var directionsService1 = new google.maps.DirectionsService();
@@ -493,22 +496,22 @@ function loadMap() {
         directionsDisplay2.setMap(mapa);
         directionsDisplay3.setMap(mapa);
         directionsDisplay4.setMap(mapa);
-        var request1 = calcRoute('Quito',[
+        var request1 = calcRoute('Quito', [
             [-0.466769, -78.586492],
             [-0.233375, -79.166847],
             [-0.003184, -79.391026],
             [0.070625, -80.053612]
         ]);
-        var request2 = calcRoute('Quito',[
+        var request2 = calcRoute('Quito', [
             [-0.002935, -78.513786],
             [0.116637, -79.258513],
             [-0.003184, -79.391026],
             [0.070625, -80.053612]
         ]);
-        var request3 = calcRoute('Bahía de Caráquez',[
+        var request3 = calcRoute('Bahía de Caráquez', [
             [0.070625, -80.053612]
         ]);
-        var request4 = calcRoute('Quito',[
+        var request4 = calcRoute('Quito', [
             [-0.466769, -78.586492],
             [-0.233375, -79.166847],
             [-0.271499, -79.464447],
