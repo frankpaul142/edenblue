@@ -23,8 +23,8 @@ $currentLang = Yii::app()->language;
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.ui.datepicker-es.js"></script>
-        <link  href="//fotorama.s3.amazonaws.com/4.6.2/fotorama.css" rel="stylesheet"/> <!-- 3 KB -->
-        <script src="//fotorama.s3.amazonaws.com/4.6.2/fotorama.js"></script>
+        <link  href="//cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet"/> <!-- 3 KB -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
     </head>
