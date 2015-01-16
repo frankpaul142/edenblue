@@ -16,11 +16,6 @@
 		</div>
 		<div class="reserv-coti">
             <div class="reserv-numhab">
-                <div class="reserv-tipohab-bot">
-                    <div class="reserv-tipohab-bot-ninos">
-                        <div class="reserv-tipohab-bot-ninos-txt">Nº Personas: <?php if(isset($_SESSION['personas'])) echo $_SESSION['personas']; ?></div>
-                    </div>
-                </div>
                 <div class="reserv-numhab-1">Habitaciones: <?php if(isset($_SESSION['habitaciones'])) echo $_SESSION['habitaciones']; ?></div>
             </div>
             <div class="habitaciones-pay">
@@ -29,6 +24,11 @@
             			echo $habitacion.'<br>';
             		}
             	} ?>
+            </div>
+            <div class="reserv-tipohab-bot">
+                <div class="reserv-tipohab-bot-ninos">
+                    <div class="reserv-tipohab-bot-ninos-txt">Nº Máximo Personas: <?php if(isset($_SESSION['maxPersonas'])) echo $_SESSION['maxPersonas']; ?></div>
+                </div>
             </div>
         </div>
 	</div>

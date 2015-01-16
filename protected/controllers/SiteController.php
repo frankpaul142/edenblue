@@ -152,15 +152,25 @@ class SiteController extends Controller {
 
     public function actionBook()
     {
-        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['personas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total'])){
+        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['maxPersonas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total'])){
             Yii::app()->session['llegada']=$_POST['llegada'];
             Yii::app()->session['salida']=$_POST['salida'];
-            Yii::app()->session['personas']=$_POST['personas'];
+            Yii::app()->session['maxPersonas']=$_POST['maxPersonas'];
             Yii::app()->session['habitaciones']=$_POST['habitaciones'];
             Yii::app()->session['habitacion']=$_POST['habitacion'];
             Yii::app()->session['total']=$_POST['total'];
             if(isset(Yii::app()->user->id)){
-                $this->redirect(Yii::app()->request->baseUrl.'#pagar');
+            	$reservation=new Reservation;
+            	$reservation->user_id=Yii::app()->user->id;
+            	$reservation->arrival_date=date('Y-m-d',strtotime($_POST['llegada']));
+            	$reservation->departure_date=date('Y-m-d',strtotime($_POST['salida']));
+            	$reservation->number_people=$_POST['maxPersonas'];
+            	$reservation->booked_date=date('Y-m-d H:i:s');
+            	$reservation->status='CREATED';
+            	$reservation->total=$_POST['total'];
+            	if($reservation->save()){
+	                $this->redirect(Yii::app()->request->baseUrl.'#pagar');
+	            }
             }
             else{
                 $this->redirect(Yii::app()->request->baseUrl.'#login/rp');
@@ -206,6 +216,7 @@ class SiteController extends Controller {
             $room['name']=Yii::t('rooms',$n);
             $room['description']=Yii::t('rooms',$d);
             $room['price']=$r->price1;
+            $room['capacity']=$r->capacity;
             $room['photos'] = [];
             foreach ($r->photos as $photo) {
                 if($photo->status=='ACTIVE'){
@@ -223,6 +234,16 @@ class SiteController extends Controller {
         $ecosystem['title']=Yii::t('static','static_Ecosistema_title');
         $ecosystem['description']=Yii::t('static','static_Ecosistema_description');
         echo json_encode($ecosystem);
+    }
+
+    public function actionLoadAccount() {
+    	$user=User::model()->findByPk(Yii::app()->user->id);
+    	if(isset($user)){
+    		$account=[];
+    		$account['name']=$user->name;
+    		$account['lastname']=$user->lastname;
+    		echo json_encode($account);
+    	}
     }
 
     public function actionSetLanguage()
