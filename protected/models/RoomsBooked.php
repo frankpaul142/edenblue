@@ -1,30 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "reservation".
+ * This is the model class for table "rooms_booked".
  *
- * The followings are the available columns in table 'reservation':
- * @property integer $id
- * @property integer $user_id
- * @property string $arrival_date
- * @property string $departure_date
- * @property integer $number_people
- * @property string $booked_date
- * @property string $status
- * @property double $total
- *
- * The followings are the available model relations:
- * @property User $user
- * @property TypeRoom[] $typeRooms
+ * The followings are the available columns in table 'rooms_booked':
+ * @property integer $reservation_id
+ * @property integer $type_room_id
+ * @property integer $quantity
  */
-class Reservation extends CActiveRecord
+class RoomsBooked extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'reservation';
+		return 'rooms_booked';
 	}
 
 	/**
@@ -35,14 +26,11 @@ class Reservation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, arrival_date, number_people, booked_date, status', 'required'),
-			array('user_id, number_people', 'numerical', 'integerOnly'=>true),
-			array('total', 'numerical'),
-			array('status', 'length', 'max'=>8),
-			array('departure_date', 'safe'),
+			array('reservation_id, type_room_id, quantity', 'required'),
+			array('reservation_id, type_room_id, quantity', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, arrival_date, departure_date, number_people, booked_date, status, total', 'safe', 'on'=>'search'),
+			array('reservation_id, type_room_id, quantity', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,8 +42,6 @@ class Reservation extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'typeRooms' => array(self::MANY_MANY, 'TypeRoom', 'rooms_booked(reservation_id, type_room_id)'),
 		);
 	}
 
@@ -65,14 +51,9 @@ class Reservation extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'user_id' => 'User',
-			'arrival_date' => 'Arrival Date',
-			'departure_date' => 'Departure Date',
-			'number_people' => 'Number People',
-			'booked_date' => 'Booked Date',
-			'status' => 'Status',
-			'total' => 'Total',
+			'reservation_id' => 'Reservation',
+			'type_room_id' => 'Type Room',
+			'quantity' => 'Quantity',
 		);
 	}
 
@@ -94,14 +75,9 @@ class Reservation extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('arrival_date',$this->arrival_date,true);
-		$criteria->compare('departure_date',$this->departure_date,true);
-		$criteria->compare('number_people',$this->number_people);
-		$criteria->compare('booked_date',$this->booked_date,true);
-		$criteria->compare('status',$this->status,true);
-		$criteria->compare('total',$this->total);
+		$criteria->compare('reservation_id',$this->reservation_id);
+		$criteria->compare('type_room_id',$this->type_room_id);
+		$criteria->compare('quantity',$this->quantity);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -112,7 +88,7 @@ class Reservation extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Reservation the static model class
+	 * @return RoomsBooked the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

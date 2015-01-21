@@ -152,7 +152,7 @@ class SiteController extends Controller {
 
     public function actionBook()
     {
-        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['maxPersonas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total'])){
+        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['maxPersonas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total']) && isset($_POST['room'])){
             Yii::app()->session['llegada']=$_POST['llegada'];
             Yii::app()->session['salida']=$_POST['salida'];
             Yii::app()->session['maxPersonas']=$_POST['maxPersonas'];
@@ -169,7 +169,32 @@ class SiteController extends Controller {
             	$reservation->status='CREATED';
             	$reservation->total=$_POST['total'];
             	if($reservation->save()){
-	                $this->redirect(Yii::app()->request->baseUrl.'#pagar');
+                    $error=false;
+                    $rooms=[];
+                    foreach (TypeRoom::model()->findAll() as $i => $type) {
+                    	$rooms[$type->id]=0;
+                    }
+                    foreach ($_POST['room'] as $i => $room) {
+                    	$rooms[$room]++;
+                    }
+                    foreach ($rooms as $i => $room) {
+                    	if($room>0){
+	                    	$rooms_booked=new RoomsBooked;
+	                        $rooms_booked->reservation_id=$reservation->id;
+	                        $rooms_booked->type_room_id=$i;
+	                        $rooms_booked->quantity=$room;
+	                        if(!$rooms_booked->save()){
+	                            $error=true;
+	                            break;
+	                        }
+	                    }
+                    }
+                    if(!$error){
+    	                $this->redirect(Yii::app()->request->baseUrl.'#pagar');
+                    }
+                    else{
+                    	$this->redirect(Yii::app()->request->baseUrl.'#reservar');
+                    }
 	            }
             }
             else{
@@ -179,6 +204,32 @@ class SiteController extends Controller {
         else{
             $this->redirect(Yii::app()->request->baseUrl.'#reservar');
         }
+    }
+
+    public function actionPay($id)
+    {
+    	$reservation=Reservation::model()->findByPk($id);
+    	if (isset($reservation)) {
+    		Yii::app()->session['llegada']=$reservation->arrival_date;
+            Yii::app()->session['salida']=$reservation->departure_date;
+            Yii::app()->session['maxPersonas']=$reservation->number_people;
+            Yii::app()->session['total']=$reservation->total;
+            $count=0;
+            $habitacion=[];
+            foreach (RoomsBooked::model()->findAllByAttributes(array('reservation_id'=>$reservation->id)) as $i => $rb) {
+            	$count+=$rb->quantity;
+            	for ($i=0; $i < $rb->quantity; $i++) { 
+            		$n='room_'.TypeRoom::model()->findByPk($rb->type_room_id)->name.'_name';
+            		array_push($habitacion, Yii::t('rooms',$n));
+            	}
+            }
+            Yii::app()->session['habitacion']=$habitacion;
+            Yii::app()->session['habitaciones']=$count;
+    		$this->redirect(Yii::app()->request->baseUrl.'#pagar');
+    	}
+    	else{
+    		$this->redirect(Yii::app()->request->baseUrl.'#cuenta');
+    	}
     }
 
     public function actionLoadServices() {
@@ -240,8 +291,38 @@ class SiteController extends Controller {
     	$user=User::model()->findByPk(Yii::app()->user->id);
     	if(isset($user)){
     		$account=[];
+    		$account['id']=$user->id;
     		$account['name']=$user->name;
     		$account['lastname']=$user->lastname;
+            $reservations=[];
+            foreach ($user->reservations as $i => $reservation) {
+                $r=[];
+                $r['id']=$reservation->id;
+                $r['arrival_date']=$reservation->arrival_date;
+                $r['departure_date']=$reservation->departure_date;
+                $r['number_people']=$reservation->number_people;
+                $r['booked_date']=$reservation->booked_date;
+                $r['total']=$reservation->total;
+                switch ($reservation->status) {
+                    case 'CREATED':
+                        $r['status']='Creada.';
+                        break;
+                    case 'CANCELED':
+                        $r['status']='Cancelada.';
+                        break;
+                    case 'CONSUMED':
+                        $r['status']='Consumida: Gracias por preferirnos.';
+                        break;
+                    case 'PAID':
+                        $r['status']='Pagada: Ahora puedes dirigirte a nuestras instalaciones.';
+                        break;
+                    case 'ERROR':
+                        $r['status']='Error: Lo sentimos, inténtalo nuevamente.';
+                        break;
+                }
+                array_push($reservations, $r);
+            }
+            $account['reservations']=$reservations;
     		echo json_encode($account);
     	}
     }

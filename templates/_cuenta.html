@@ -1,10 +1,32 @@
 <div class="cont1-perfil">
-    <p>Cuenta</p>
-    <div>
-    	<p>{{ name+' '+lastname }}</p>
-    </div>
+	<div ng-show="loading">
+		<div class="spinner"></div>
+	</div>
+	<div ng-show="!loading">
+		<p>Cuenta</p>
+		<p>{{ name+' '+lastname }}</p>
+		<p>Tus reservaciones</p>
+		<table>
+			<thead>
+				<th>Fecha Llegada</th>
+				<th>Fecha Salida</th>
+				<th>Nº Max Personas</th>
+				<th>Estado</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="(i, reservation) in reservations">
+					<td>{{ reservation.arrival_date }}</td>
+					<td>{{ reservation.departure_date }}</td>
+					<td>{{ reservation.number_people }}</td>
+					<td>{{ reservation.status }} <a ng-if="reservation.status=='Creada.'" href="site/pay/{{ reservation.id }}">Paga aquí</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 <div class="borde-inferior">
-    <div class="boton-index"><img src="images/boton-08.png" width="21" height="21"></div>
-    <div class="boton-index2" style="display: none;"><img src="images/boton-08-2.png" width="21" height="21"></div>
+	<div class="boton-index"><img src="images/boton-08.png" width="21" height="21">
+	</div>
+	<div class="boton-index2" style="display: none;"><img src="images/boton-08-2.png" width="21" height="21">
+	</div>
 </div>

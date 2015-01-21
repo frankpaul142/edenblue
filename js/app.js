@@ -166,6 +166,7 @@ app.controller('reservarController', function($scope, $http) {
 					'<select class="reserv-tipohab-top-btn" ng-init="habitacion[' + i + ']=rooms[0]" ng-options="room.name for room in rooms | orderBy: \'price\'" ng-model="habitacion[' + i + ']" ng-change="calcular()" required>' +
 					'</select>' +
 					'<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />' +
+					'<input type="hidden" name="room[' + i + ']" value="{{ habitacion[' + i + '].id }}" />' +
 					'</div>' +
 					'</div>';
 			}
@@ -414,13 +415,15 @@ app.controller('registroController', function($scope, $routeParams) {
 });
 
 app.controller('cuentaController', function($scope, $http) {
+	$scope.loading = true;
 	checkGallery();
 	fotorama.show(5);
 	activeMenu(6);
 	$http.get('site/loadAccount').success(function(response) {
-		console.log('loadAccount');
 		$scope.name = response['name'];
 		$scope.lastname = response['lastname'];
+		$scope.reservations=response['reservations'];
+		$scope.loading = false;
 	});
 });
 
