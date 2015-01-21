@@ -21,7 +21,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
 	when('/registro', 'registro').
 	when('/registro/:error', 'registro').
 	when('/cuenta', 'cuenta').
-	when('/ecosistema', 'ecosistema').
+	when('/ecosistema/:from', 'ecosistema').
 	segment('reservar', {
 		templateUrl: 'templates/_reservar.html',
 		controller: 'reservarController'
@@ -111,7 +111,7 @@ app.controller('reservarController', function($scope, $http) {
 	//$scope.end = 1;
 	$scope.numero = 1;
 	//$scope.personas = 1;
-	$scope.maxPersonas=2;
+	$scope.maxPersonas = 2;
 	$scope.subtotal = 0;
 	$scope.impuestos = $scope.subtotal * vImp;
 	$scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
@@ -145,11 +145,11 @@ app.controller('reservarController', function($scope, $http) {
 		}
 		$scope.subtotal = 0;
 		if (typeof $scope.habitacion !== 'undefined') {
-			$scope.maxPersonas=0;
+			$scope.maxPersonas = 0;
 			for (var i = 1; i <= $scope.numero; i++) {
 				if (typeof $scope.habitacion[i] !== 'undefined') {
 					$scope.subtotal += parseFloat($scope.habitacion[i].price) * dias;
-					$scope.maxPersonas+=parseInt($scope.habitacion[i].capacity);
+					$scope.maxPersonas += parseInt($scope.habitacion[i].capacity);
 				}
 			}
 		}
@@ -419,21 +419,55 @@ app.controller('cuentaController', function($scope, $http) {
 	checkGallery();
 	fotorama.show(5);
 	activeMenu(6);
+	toggleGallery();
 	$http.get('site/loadAccount').success(function(response) {
 		$scope.name = response['name'];
 		$scope.lastname = response['lastname'];
-		$scope.reservations=response['reservations'];
+		$scope.reservations = response['reservations'];
 		$scope.loading = false;
 	});
 });
 
-app.controller('ecosistemaController', function($scope, $http) {
+app.controller('ecosistemaController', function($scope, $http, $routeParams) {
+	toggleGallery();
 	$scope.title = '...';
 	$scope.description = '...';
+	//$scope.from=$routeParams.from;
 	$http.get('site/loadEcosystem').success(function(response) {
 		$scope.title = response['title'];
 		$scope.description = response['description'];
+		$scope.photos = response['photos'];
 	});
+	$scope.viewGallery = function() {
+		if ($routeParams.from == 'en') {
+			fotorama.splice(1, 1, {
+				html: '<div id="fotoramag" data-auto="false" data-nav="thumbs" data-width="100%" data-height="100%" data-fit="cover"></div>'
+			});
+			galleryRoom = true;
+		} else {
+			fotorama.splice(2, 1, {
+				html: '<div id="fotoramag" data-auto="false" data-nav="thumbs" data-width="100%" data-height="100%" data-fit="cover"></div>'
+			});
+			galleryService = true;
+		}
+		var $fotoramagDiv = $('#fotoramag').fotorama();
+		var fotoramag = $fotoramagDiv.data('fotorama');
+		$scope.photos.forEach(function(photo) {
+			fotoramag.push({
+				img: 'images/' + photo.source
+			});
+		});
+		$('.footer').fadeOut('fast');
+		$('.boton-index').hide();
+		$(".boton-index2").show();
+		var height = $("#content").height();
+		$("#content").animate({
+			bottom: height - 65
+		}, 'fast');
+		$(".top").animate({
+			top: '-25px'
+		}, 'fast');
+	}
 });
 
 
@@ -468,7 +502,7 @@ function toggleGallery() {
 		}, 'fast');
 		$(".fotorama__nav-wrap").fadeOut();
 	});
-	$(".boton-index2").click(function() {
+	$(".boton-index2").click(function() {console.log('click');
 		$("#regresar").fadeTo("fast", 0);
 		$(".footer").fadeIn("fast");
 		$(".top").animate({

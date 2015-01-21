@@ -284,6 +284,15 @@ class SiteController extends Controller {
         $ecosystem=[];
         $ecosystem['title']=Yii::t('static','static_Ecosistema_title');
         $ecosystem['description']=Yii::t('static','static_Ecosistema_description');
+		$photos=[];
+        foreach (Photo::model()->findAllByAttributes(array('service_id'=>10)) as $i => $photo) {
+        	$p=[];
+        	if($photo->status=='ACTIVE'){
+                $p['source'] = $photo->source;
+                array_push($photos, $p);
+            }
+        }
+        $ecosystem['photos']=$photos;
         echo json_encode($ecosystem);
     }
 

@@ -1,6 +1,7 @@
 <div class="cont1-perfil">
     <div class="texto-tit">{{ title }}</div>
     <div class="overlay"><p style="white-space: pre-line;">{{ description }}</p></div>
+    <div class="boton-vermas" ng-if="photos[0] != null" ng-click="viewGallery()">Ver galería</div>
 </div>
 <div class="borde-inferior">
     <div class="boton-index"><img src="images/boton-08.png" width="21" height="21"></div>
