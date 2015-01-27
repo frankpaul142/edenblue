@@ -100,7 +100,7 @@ class SiteController extends Controller {
 		            	if($reservation->save()){
 		                    $error=false;
 		                    $rooms=[];
-		                    foreach (TypeRoom::model()->findAll() as $i => $type) {
+		                    foreach (TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE')) as $i => $type) {
 		                    	$rooms[$type->id]=0;
 		                    }
 		                    foreach (Yii::app()->session['room'] as $i => $room) {
@@ -220,7 +220,7 @@ class SiteController extends Controller {
             	if($reservation->save()){
                     $error=false;
                     $rooms=[];
-                    foreach (TypeRoom::model()->findAll() as $i => $type) {
+                    foreach (TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE')) as $i => $type) {
                     	$rooms[$type->id]=0;
                     }
                     foreach ($_POST['room'] as $i => $room) {
@@ -432,7 +432,7 @@ class SiteController extends Controller {
     }
 
     public function actionLoadTypeRooms() {
-        $rooms = TypeRoom::model()->findAll();
+        $rooms = TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE'));
         $return = [];
         $room = [];
         $photos = [];
@@ -521,7 +521,7 @@ class SiteController extends Controller {
 
     public function actionTranslate()
     {
-        $rooms = TypeRoom::model()->findAll();
+        $rooms = TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE'));
         $sqlsm="";
         $sqlm="";
         $i=0;
