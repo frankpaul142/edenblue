@@ -12,6 +12,8 @@
  * @property string $booked_date
  * @property string $status
  * @property double $total
+ * @property string $payment_date
+ * @property string $note
  *
  * The followings are the available model relations:
  * @property User $user
@@ -35,14 +37,14 @@ class Reservation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, arrival_date, number_people, booked_date, status', 'required'),
+			array('user_id, arrival_date, number_people, booked_date, status, total', 'required'),
 			array('user_id, number_people', 'numerical', 'integerOnly'=>true),
 			array('total', 'numerical'),
 			array('status', 'length', 'max'=>8),
-			array('departure_date', 'safe'),
+			array('departure_date, payment_date, note', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, arrival_date, departure_date, number_people, booked_date, status, total', 'safe', 'on'=>'search'),
+			array('id, user_id, arrival_date, departure_date, number_people, booked_date, status, total, payment_date, note', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +75,8 @@ class Reservation extends CActiveRecord
 			'booked_date' => 'Booked Date',
 			'status' => 'Status',
 			'total' => 'Total',
+			'payment_date' => 'Payment Date',
+			'note' => 'Note',
 		);
 	}
 
@@ -102,6 +106,8 @@ class Reservation extends CActiveRecord
 		$criteria->compare('booked_date',$this->booked_date,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('total',$this->total);
+		$criteria->compare('payment_date',$this->payment_date,true);
+		$criteria->compare('note',$this->note,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -357,6 +357,19 @@ class SiteController extends Controller {
 						}
 						if($reservation->save()){
 							$log->description.="reservation saved\n";
+			                $subject = 'Reservación';
+			                $name=$reservation->user->name." ".$reservation->user->lastname;
+			                $body="$name ha hecho una reservación y ha pagado exitosamente.\n".
+			                	"Fecha llegada: ".$reservation->arrival_date."\n".
+			                	"Fecha salida: ".$reservation->departure_date."\n".
+			                	"Max # personas: ".$reservation->number_people."\n".
+			                	"Total: $".$reservation->total;
+			                $headers = "From: $name <no-reply@eden-blue.com>\r\n" .
+			                        //"Reply-To: {$model->email}\r\n" .
+			                        "MIME-Version: 1.0\r\n" .
+			                        "Content-Type: text/plain; charset=UTF-8";
+			                mail(Yii::app()->params['adminEmail'], $subject, $body, $headers);
+			                $log->description.="email sent\n";
 						}
 						else{
 							$log->description.="reservation no saved\n";
