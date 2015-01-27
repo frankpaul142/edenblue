@@ -34,6 +34,8 @@
 	</div>
     <div class="reserv-total">TOTAL: <?php if(isset($_SESSION['total'])) echo $_SESSION['total']; ?></div>
     <div class="reserv-btn">
-        <input type="submit" value="&#8226; Pagar con PayPal &#8226;" />
+        <?php if(isset($_SESSION['button'])){
+            echo $_SESSION['button'];
+        } ?>
     </div>
 </div>

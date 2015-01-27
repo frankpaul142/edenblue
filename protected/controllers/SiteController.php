@@ -59,14 +59,14 @@ class SiteController extends Controller {
                         "Content-Type: text/plain; charset=UTF-8";
 
                 mail(Yii::app()->params['adminEmail'], $subject, $model->body, $headers);
-                $this->redirect(Yii::app()->request->baseUrl.'#contacto/enviado');
+                $this->redirect(Yii::app()->request->getBaseUrl(true).'#contacto/enviado');
             }
             else{
-                $this->redirect(Yii::app()->request->baseUrl.'#contacto/error');
+                $this->redirect(Yii::app()->request->getBaseUrl(true).'#contacto/error');
             }
         }
         else{
-            $this->redirect(Yii::app()->request->baseUrl.'#contacto/error');
+            $this->redirect(Yii::app()->request->getBaseUrl(true).'#contacto/error');
         }
     }
 
@@ -86,14 +86,62 @@ class SiteController extends Controller {
                 $model->rememberMe = 0;
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()){
-                $url=Yii::app()->user->returnUrl;
+                $url=Yii::app()->request->getBaseUrl(true).'#cuenta';
                 if(isset($_POST['redirect']) && $_POST['redirect']=="rp"){
-                    $url.='#pagar';
+                    if(isset(Yii::app()->session['llegada']) && isset(Yii::app()->session['salida']) && isset(Yii::app()->session['maxPersonas']) && isset(Yii::app()->session['habitaciones']) && isset(Yii::app()->session['habitacion']) && isset(Yii::app()->session['total']) && isset(Yii::app()->session['room'])){
+			            $reservation=new Reservation;
+		            	$reservation->user_id=Yii::app()->user->id;
+		            	$reservation->arrival_date=date('Y-m-d',strtotime(Yii::app()->session['llegada']));
+		            	$reservation->departure_date=date('Y-m-d',strtotime(Yii::app()->session['salida']));
+		            	$reservation->number_people=Yii::app()->session['maxPersonas'];
+		            	$reservation->booked_date=date('Y-m-d H:i:s');
+		            	$reservation->status='CREATED';
+		            	$reservation->total=Yii::app()->session['total'];
+		            	if($reservation->save()){
+		                    $error=false;
+		                    $rooms=[];
+		                    foreach (TypeRoom::model()->findAll() as $i => $type) {
+		                    	$rooms[$type->id]=0;
+		                    }
+		                    foreach (Yii::app()->session['room'] as $i => $room) {
+		                    	$rooms[$room]++;
+		                    }
+		                    foreach ($rooms as $i => $room) {
+		                    	if($room>0){
+			                    	$rooms_booked=new RoomsBooked;
+			                        $rooms_booked->reservation_id=$reservation->id;
+			                        $rooms_booked->type_room_id=$i;
+			                        $rooms_booked->quantity=$room;
+			                        if(!$rooms_booked->save()){
+			                            $error=true;
+			                            break;
+			                        }
+			                    }
+		                    }
+		                    if(!$error){
+		    	                $this->redirect(Yii::app()->request->getBaseUrl(true).'/site/pay/'.$reservation->id);
+		                    }
+		                    else{
+		                    	$this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
+		                    }
+			            }
+			            else{
+			                $this->redirect(Yii::app()->request->getBaseUrl(true).'#login/rp');
+			            }
+			        }
+			        else{
+			            $this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
+			        }
                 }
                 $this->redirect($url);
             }
-            else
-                $this->redirect(Yii::app()->user->returnUrl.'#login/error');
+            else{
+            	$url=Yii::app()->request->getBaseUrl(true).'#login/error';
+                if(isset($_POST['redirect']) && ($_POST['redirect']=="rp" || $_POST['redirect']=="errorrp")){
+                    $url.='rp';
+                }
+                $this->redirect($url);
+            }
         }
     }
 
@@ -133,19 +181,19 @@ class SiteController extends Controller {
                             $this->redirect($url);
                         }
                         else{
-                            $this->redirect(Yii::app()->request->baseUrl.'#registro/errorlogin');
+                            $this->redirect(Yii::app()->request->getBaseUrl(true).'#registro/errorlogin');
                         }
                     }
                     else{
-                        $this->redirect(Yii::app()->request->baseUrl.'#registro/error');
+                        $this->redirect(Yii::app()->request->getBaseUrl(true).'#registro/error');
                     }
                 }
                 else{
-                    $this->redirect(Yii::app()->request->baseUrl.'#registro/yaexiste');
+                    $this->redirect(Yii::app()->request->getBaseUrl(true).'#registro/yaexiste');
                 }
             }
             else{
-                $this->redirect(Yii::app()->request->baseUrl.'#registro/nocoinciden');
+                $this->redirect(Yii::app()->request->getBaseUrl(true).'#registro/nocoinciden');
             }
         }
     }
@@ -159,6 +207,7 @@ class SiteController extends Controller {
             Yii::app()->session['habitaciones']=$_POST['habitaciones'];
             Yii::app()->session['habitacion']=$_POST['habitacion'];
             Yii::app()->session['total']=$_POST['total'];
+            Yii::app()->session['room']=$_POST['room'];
             if(isset(Yii::app()->user->id)){
             	$reservation=new Reservation;
             	$reservation->user_id=Yii::app()->user->id;
@@ -190,19 +239,19 @@ class SiteController extends Controller {
 	                    }
                     }
                     if(!$error){
-    	                $this->redirect(Yii::app()->request->baseUrl.'#pagar');
+    	                $this->redirect(Yii::app()->request->getBaseUrl(true).'/site/pay/'.$reservation->id);
                     }
                     else{
-                    	$this->redirect(Yii::app()->request->baseUrl.'#reservar');
+                    	$this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
                     }
 	            }
             }
             else{
-                $this->redirect(Yii::app()->request->baseUrl.'#login/rp');
+                $this->redirect(Yii::app()->request->getBaseUrl(true).'#login/rp');
             }
         }
         else{
-            $this->redirect(Yii::app()->request->baseUrl.'#reservar');
+            $this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
         }
     }
 
@@ -225,11 +274,125 @@ class SiteController extends Controller {
             }
             Yii::app()->session['habitacion']=$habitacion;
             Yii::app()->session['habitaciones']=$count;
-    		$this->redirect(Yii::app()->request->baseUrl.'#pagar');
+
+            /* paypal */
+            require_once('paypal/PPBootStrap.php');
+            $buttonVar = array(
+            	"item_name=reservacion",
+            	"item_number=".$this->generateRandomString(3).$reservation->id.$this->generateRandomString(1),
+				"return=".Yii::app()->request->getBaseUrl(true)."#cuenta",
+				"business=marisaloorv-facilitator@yahoo.com",
+				//"business=marisaloorv@yahoo.com",
+				"amount=".$reservation->total,
+				"notify_url=".Yii::app()->request->getBaseUrl(true)."/site/ipn",
+				"no_shipping=1",
+				"cancel_return=".Yii::app()->request->getBaseUrl(true)."#cuenta",
+				);
+            $createButtonRequest = new BMCreateButtonRequestType();
+            $createButtonRequest->ButtonCode = "ENCRYPTED";
+            $createButtonRequest->ButtonType = "BUYNOW";
+            $createButtonRequest->ButtonSubType='SERVICES';
+			$createButtonRequest->BuyNowText='PAYNOW';
+			$createButtonRequest->ButtonLanguage='es';
+            $createButtonRequest->ButtonVar = $buttonVar;
+            $createButtonReq = new BMCreateButtonReq();
+			$createButtonReq->BMCreateButtonRequest = $createButtonRequest;
+			$paypalService = new PayPalAPIInterfaceServiceService(Configuration::getAcctAndConfig());
+			try {
+				$createButtonResponse = $paypalService->BMCreateButton($createButtonReq);
+				//print_r($createButtonResponse);die();
+				if($createButtonResponse->Ack=='Success'){
+					Yii::app()->session['button']=$createButtonResponse->Website;
+				}
+				else{
+					$this->redirect(Yii::app()->request->getBaseUrl(true).'#cuenta');
+					//print_r($createButtonResponse);die();
+				}
+			} catch (Exception $ex) {
+				print_r($ex);
+				die();
+			}
+            /* --- */
+
+    		$this->redirect(Yii::app()->request->getBaseUrl(true).'#pagar');
     	}
     	else{
-    		$this->redirect(Yii::app()->request->baseUrl.'#cuenta');
+    		$this->redirect(Yii::app()->request->getBaseUrl(true).'#cuenta');
     	}
+    }
+
+    private function generateRandomString($length = 10) {
+    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < $length; $i++) {
+	        $randomString .= $characters[rand(0, $charactersLength - 1)];
+	    }
+	    return $randomString;
+	}
+
+    public function actionIpn()
+    {
+    	require_once('paypal/PPBootStrap.php');
+    	$log=new Log;
+    	$log->description="";
+		$ipnMessage = new PPIPNMessage(null, Configuration::getConfig());
+		foreach($ipnMessage->getRawData() as $key => $value) {
+			$log->description.="IPN: $key => $value\n";
+		}
+
+		if($ipnMessage->validate()) {
+			$log->description.="Success: Got valid IPN data\n";
+			if($ipnMessage->getRawData()['business']=='marisaloorv-facilitator@yahoo.com') {
+				$reservation=Reservation::model()->findByPk(substr($ipnMessage->getRawData()['item_number'],3,-1));
+				if (isset($reservation)) {
+					if($ipnMessage->getRawData()['mc_gross']==$reservation->total){
+						if($ipnMessage->getRawData()['payment_status']=='Completed'){
+							$reservation->status='PAID';
+							$reservation->payment_date=date('Y-m-d H:i:s',strtotime($ipnMessage->getRawData()['payment_date']));
+							$reservation->note=$ipnMessage->getRawData()['memo'];
+						}
+						else{
+							$reservation->status='ERROR';
+						}
+						if($reservation->save()){
+							$log->description.="reservation saved\n";
+						}
+						else{
+							$log->description.="reservation no saved\n";
+						}
+					}
+					else{
+						$log->description.="bad total amount\n";
+					}
+				}
+				else{
+					$log->description.="reservation not found\n";
+				}
+			}
+			else{
+				$log->description.="bad receiver_id\n";
+			}
+		} else {
+			$log->description.="Error: Got invalid IPN data";	
+		}
+		$log->creation_date=date('Y-m-d H:i:s');
+		if($log->save()){
+			echo "saved";
+		}
+		else{
+			echo "no saved";
+		}
+    }
+
+    public function actionCancel($id)
+    {
+    	$reservation=Reservation::model()->findByPk($id);
+    	if (isset($reservation)) {
+    		$reservation->status='CANCELED';
+    		$reservation->save();
+    	}
+		$this->redirect(Yii::app()->request->getBaseUrl(true).'#cuenta');
     }
 
     public function actionLoadServices() {

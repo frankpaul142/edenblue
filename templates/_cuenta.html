@@ -18,7 +18,11 @@
 					<td>{{ reservation.arrival_date }}</td>
 					<td>{{ reservation.departure_date }}</td>
 					<td>{{ reservation.number_people }}</td>
-					<td>{{ reservation.status }} <a ng-if="reservation.status=='Creada.'" href="site/pay/{{ reservation.id }}">Paga aquí</a></td>
+					<td>
+						{{ reservation.status }}
+						<a ng-if="reservation.status=='Creada.'" href="site/pay/{{ reservation.id }}">Paga aquí.</a>
+						<a ng-if="reservation.status=='Creada.'" href="site/cancel/{{ reservation.id }}">Cancelar.</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

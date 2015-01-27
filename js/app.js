@@ -390,6 +390,9 @@ app.controller('loginController', function($scope, $routeParams) {
 			$scope.errors = 'Combinación de Email y Contraseña incorrecta';
 		} else if ($routeParams.param == 'rp') {
 			$scope.redirect = $routeParams.param;
+		} else if ($routeParams.param == 'errorrp') {
+			$scope.errors = 'Combinación de Email y Contraseña incorrecta';
+			$scope.redirect = 'rp';
 		}
 	}
 });
@@ -659,19 +662,19 @@ $(document).ready(function() {
 	$fotoramaDiv = $('.fotorama').fotorama();
 	fotorama = $fotoramaDiv.data('fotorama');
 	fotorama.load([{
-		img: 'images/fondo5.jpg'
+		img: 'images/fondo6.jpg'
 	}, {
-		img: 'images/fondo.jpg'
+		img: 'images/fondo9.jpg'
 	}, {
-		img: 'images/12 con libros.jpg'
+		img: 'images/fondo8.jpg'
 	}, {
 		html: '<div id="map" style="height:100%"></div>'
 	}, {
-		img: 'images/11.jpg'
+		img: 'images/fondo7.jpg'
 	}, {
-		img: 'images/13.jpg'
+		img: 'images/fondo11.jpg'
 	}, {
-		img: 'images/19.jpg'
+		img: 'images/fondo10.jpg'
 	}]).setOptions({
 		arrows: false,
 		click: false,
