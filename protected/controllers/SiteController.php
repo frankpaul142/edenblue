@@ -209,41 +209,59 @@ class SiteController extends Controller {
             Yii::app()->session['total']=$_POST['total'];
             Yii::app()->session['room']=$_POST['room'];
             if(isset(Yii::app()->user->id)){
-            	$reservation=new Reservation;
-            	$reservation->user_id=Yii::app()->user->id;
-            	$reservation->arrival_date=date('Y-m-d',strtotime($_POST['llegada']));
-            	$reservation->departure_date=date('Y-m-d',strtotime($_POST['salida']));
-            	$reservation->number_people=$_POST['maxPersonas'];
-            	$reservation->booked_date=date('Y-m-d H:i:s');
-            	$reservation->status='CREATED';
-            	$reservation->total=$_POST['total'];
-            	if($reservation->save()){
-                    $error=false;
-                    $rooms=[];
-                    foreach (TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE')) as $i => $type) {
-                    	$rooms[$type->id]=0;
+            	$error=false;
+                $errors=[];
+                $roomsToBook=[];
+                $roomsAvailable=[];
+                foreach (TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE')) as $i => $type) {
+                	$roomsToBook[$type->id]=0;
+                	$roomsAvailable[$type->id]=Room::model()->countByAttributes(array('type_id'=>$type->id,'status'=>'VACANT'));
+                }
+                foreach ($_POST['room'] as $i => $room) {
+                	$roomsToBook[$room]++;
+                }
+                foreach ($roomsToBook as $i => $roomToBook) {
+                	if($roomToBook>0 && $roomsAvailable[$i]<$roomToBook){
+                    	$errors[$i]='no available';
+                    	$error=true;
                     }
-                    foreach ($_POST['room'] as $i => $room) {
-                    	$rooms[$room]++;
-                    }
-                    foreach ($rooms as $i => $room) {
-                    	if($room>0){
-	                    	$rooms_booked=new RoomsBooked;
-	                        $rooms_booked->reservation_id=$reservation->id;
-	                        $rooms_booked->type_room_id=$i;
-	                        $rooms_booked->quantity=$room;
-	                        if(!$rooms_booked->save()){
-	                            $error=true;
-	                            break;
-	                        }
+                }
+                if($error){
+                	Yii::app()->session['noAvailable']=$errors;
+                	$this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
+                }
+                else{
+	            	$reservation=new Reservation;
+	            	$reservation->user_id=Yii::app()->user->id;
+	            	$reservation->arrival_date=date('Y-m-d',strtotime($_POST['llegada']));
+	            	$reservation->departure_date=date('Y-m-d',strtotime($_POST['salida']));
+	            	$reservation->number_people=$_POST['maxPersonas'];
+	            	$reservation->booked_date=date('Y-m-d H:i:s');
+	            	$reservation->status='CREATED';
+	            	$reservation->total=$_POST['total'];
+	            	if($reservation->save()){
+	                    foreach ($roomsToBook as $i => $roomToBook) {
+	                    	if($roomToBook>0){
+		                    	$rooms_booked=new RoomsBooked;
+		                        $rooms_booked->reservation_id=$reservation->id;
+		                        $rooms_booked->type_room_id=$i;
+		                        $rooms_booked->quantity=$roomToBook;
+		                        if(!$rooms_booked->save()){
+		                            $error=true;
+		                            break;
+		                        }
+		                    }
 	                    }
-                    }
-                    if(!$error){
-    	                $this->redirect(Yii::app()->request->getBaseUrl(true).'/site/pay/'.$reservation->id);
-                    }
-                    else{
-                    	$this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
-                    }
+	                    if(!$error){
+	    	                $this->redirect(Yii::app()->request->getBaseUrl(true).'/site/pay/'.$reservation->id);
+	                    }
+	                    else{
+	                    	$this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
+	                    }
+		            }
+		            else{
+	                	$this->redirect(Yii::app()->request->getBaseUrl(true).'#reservar');
+	                }
 	            }
             }
             else{
@@ -294,6 +312,7 @@ class SiteController extends Controller {
             $createButtonRequest->ButtonSubType='SERVICES';
 			$createButtonRequest->BuyNowText='PAYNOW';
 			$createButtonRequest->ButtonLanguage='es';
+			$createButtonRequest->ButtonImageURL=Yii::app()->request->getBaseUrl(true)."/images/paypal.png";
             $createButtonRequest->ButtonVar = $buttonVar;
             $createButtonReq = new BMCreateButtonReq();
 			$createButtonReq->BMCreateButtonRequest = $createButtonRequest;

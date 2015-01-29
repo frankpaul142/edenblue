@@ -23,7 +23,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
 	when('/cuenta', 'cuenta').
 	when('/ecosistema/:from', 'ecosistema').
 	segment('reservar', {
-		templateUrl: 'templates/_reservar.html',
+		templateUrl: 'templates/_reservar.php',
 		controller: 'reservarController'
 	}).
 	segment('pagar', {
@@ -111,7 +111,7 @@ app.controller('reservarController', function($scope, $http) {
 	//$scope.end = 1;
 	$scope.numero = 1;
 	//$scope.personas = 1;
-	$scope.maxPersonas = 2;
+	$scope.maxPersonas = 0;
 	$scope.subtotal = 0;
 	$scope.impuestos = $scope.subtotal * vImp;
 	$scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
@@ -505,7 +505,7 @@ function toggleGallery() {
 		}, 'fast');
 		$(".fotorama__nav-wrap").fadeOut();
 	});
-	$(".boton-index2").click(function() {console.log('click');
+	$(".boton-index2").click(function() {
 		$("#regresar").fadeTo("fast", 0);
 		$(".footer").fadeIn("fast");
 		$(".top").animate({

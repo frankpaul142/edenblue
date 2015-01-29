@@ -1,15 +1,8 @@
+<?php session_start(); ?>
 <div class="cont1-reserv">
 	<form action="site/book" method="post">
 		<div class="reserv-tit">RESERVACIONES</div>
 		<div class="fondodeg-reserv">
-			<div class="reserv-inout">Errores:
-				<?php if(isset($_SESSION['noAvailable'])){
-					print_r($_SESSION['noAvailable']);
-					/*foreach ($_SESSION['noAvailable'] as $i => $error) {
-						echo $error.'<br>';
-					}*/
-				} ?>
-			</div>
 			<div class="reserv-inout">
 				<div class="reserv-in">
 					<div class="reserv-in-txt">
@@ -21,6 +14,14 @@
 						<input type="text" name="salida" placeholder="SALIDA" id="datepickers" ng-model="salida" ng-change="calcular()" required />
 					</div>
 				</div>
+			</div>
+			<div class="reserv-inout">
+				<?php if(isset($_SESSION['noAvailable'])){
+					foreach ($_SESSION['noAvailable'] as $i => $error) {
+						echo $i.' '.$error.'<br>';
+					}
+					$_SESSION['noAvailable']=null;
+				} ?>
 			</div>
 			<div class="reserv-coti">
 				<div class="reserv-numhab">
