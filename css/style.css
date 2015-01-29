@@ -1829,3 +1829,5 @@ background-color: #fff !important;
 background-image: none;
 color: rgb(0, 0, 0);
 }
+.gmnoprint{
+display: none;}
