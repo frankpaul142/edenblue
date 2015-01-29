@@ -162,7 +162,7 @@ width: 115px;}
 width: 115px;}
 /*habitaciones*/
 .anchor-select {
-	display: block;
+	display: none;
 	width: 25%;
 	left: 4%;
 	top: 57%;

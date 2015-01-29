@@ -100,20 +100,17 @@
   font-size: 13px;
 }
 
-input {
- 	margin: -3px;
+input { 	
 	text-align: center;
-	width: 100%;
+	width: 200px;
 	height: 30px;
 	color: #000;
-	border: 1px solid;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	border-radius: 2px;
 	-moz-outline-radius: 3px;
 }
 	
-
-input[type=text], input[type=password] {
+p input[type=text], p input[type=password] {
 	margin: -3px;
 	text-align: center;
 	width: 100%;
@@ -124,13 +121,41 @@ input[type=text], input[type=password] {
 	border-radius: 2px;
   -moz-outline-radius: 3px;
 
-  &:focus {
+
+}
+p input[type=email]{
+    width: 100%;}
+input[type=text], input[type=password] {
+	margin: -3px;
+	text-align: center;
+	width: 200px;
+	height: 30px;
+	color: #000;
+	border: 1px solid;
+	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+	border-radius: 2px;
+  -moz-outline-radius: 3px;
+
+
+}
+.reserv-in-txt input[type=text],reserv-out-txt input[type=text] {
+    width: 100%;
+}
+input#datepickers {
+width: 100%;
+}
+p input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email{
+width: 100%}
+.txt input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email{
+width: 200px}
+input#remember_me{
+    width: 100%;
+}
+  input [type=text]:focus, input[type=password]:focus {
     border-color: #7dc9e2;
     outline-color: #dceefc;
     outline-offset: 0; // WebKit sets this to -1 by default
   }
-}
-
 input[type=submit] {
   
 padding: 0 18px;
@@ -145,13 +170,12 @@ border: 1px solid;
 border-color: #b4ccce #b3c0c8 #9eb9c2;
 border-radius: 0px !important;
 outline: 0;
-
-
-  &:active {
+}
+  input[type=submit]:active {
     background: #cde5ef;
     border-color: #9eb9c2 #b3c0c8 #b4ccce;
   }
-}
+
 input[type="submit"]:hover {
 background-color: #f79221 !important;
 }

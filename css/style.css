@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 /* CSS Document */
 @font-face {
@@ -25,6 +26,12 @@ body {
 	width: auto;
 	height: 0;
 	zoom: 97%;
+        -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    letter-spacing: -0.5px;
 	}
 .menu-lateral ul {
 	list-style-type: none;
@@ -894,7 +901,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 .reserv-numhab {
 	width: 100%;
-	height: 75px;
+	height: 50px;
 	margin-top: 2px;
 	border-bottom: inset #FFF;
 	border-bottom-width: 1px;
@@ -920,6 +927,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	color: #fff;
 	float: right;
 	margin-bottom: 20px;
+    margin-top: 20px;
 }
 .reserv-numhab-btn {
 	width: 15%;
@@ -1077,15 +1085,7 @@ color: #FFF;
 	line-height: 35px;
 	cursor: pointer;
 }
-.reserv-btn:hover {
-	background-color: #f79221;
-	-webkit-transition: all ease 0.3s;
-	-moz-transition: all ease 0.3s;
-	-o-transition: all ease 0.3s;
-	-ms-transition: all ease 0.3s;
-	transition: all ease 0.3s;
-	cursor: pointer;
-}
+
 .fondodeg {
 	width: 300px;
 	height: auto;
@@ -1440,20 +1440,22 @@ label.ng-binding{
 	
 .cont1-ubicacion{
 	font-family: quattro;
-	font-size: 12px;
+	font-size: 14px;
 	padding:15px;
 	height:auto;
 	background-color: white;
 	line-height: 15px;
-	text-align: justify;}	
+	text-align: justify;
+    line-height: 20px;}	
 .cont1-perfil{
-	font-family: quattro;
-	font-size: 12px;
-	padding:15px;
-	height:auto;
-	background-color: white;
-	line-height: 15px;
-	text-align: justify;}
+    font-family: quattro;
+    font-size: 12px;
+    padding: 15px;
+    height: 260px;
+    background-color: white;
+    line-height: 15px;
+    text-align: justify;
+    overflow: auto;}
 .cont1-contacto{
 	font-family: quattro;
 	font-size: 12px;
@@ -1502,7 +1504,7 @@ label.ng-binding{
 }
 .anchor {
     margin-top: 8px;
-    width: 18%;
+    width: 12%;
     height: 16px;
     background-color: #009bdf;
     color: #fff;
@@ -1606,7 +1608,7 @@ input[type="tel"] {
 input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email {
 margin: -3px;
 /*padding: 0 10px;*/
-width: 100%;
+width: 200px;
 height: 30px;
 color: #fff;
 /*background: rgba(12, 12, 12,0.6);*/
@@ -1748,3 +1750,82 @@ textarea#text-contact{
 	padding-top: 5%;
 	padding-bottom: 5%;
 	}	
+#rooms {
+    height: 25px;
+    margin-top: 10%;
+}
+
+.max-personas.ng-binding {
+    width: 100%;  height: 25px;  
+    font-size: 16px;  
+    font-family: quattro;  
+    text-align: center;  
+    line-height: 25px;  
+    color: #fff;  
+}
+.cont1-perfil table,  .texto-subtit table tr {
+   float: right;
+    width: 100%;
+}
+tr.ng-scope{
+    width: 25%; 
+}
+td.ng-binding{
+    width: auto;
+}
+.cont1-perfil table {
+    border-collapse: collapse;
+    width: 100%;
+    float: none;
+}
+.cont1-perfil th {
+    text-align: center;
+    padding: 1%;
+    background-color: #FFFFFF;
+    color: #009ADF;
+    border: 1px solid #009BDF;
+    font-size: 12px;
+    float: none;
+    width: 25%;
+}
+td.ng-binding, .texto-subtit table tr td {
+    padding: 2%;
+    color: #FFFFFF;
+    font-size: 12px;
+    background-color: rgb(0, 155, 223);
+    text-align: center;
+    width: 100%;
+    border: 1px solid;
+}
+p.tusreservaciones {
+font-family: satisfy;
+color: #009bdf;
+text-align: right;
+font-size: 30px;
+}
+p.cuenta {
+    float: left;
+    width: 50px;
+    margin: 0;
+    font-size: 14px;
+    color: #808080;
+}
+
+p.nombre.ng-binding {
+    float: left;
+    width: 150px;
+    margin: 0;
+    color: #009BDF;
+    font-size: 18px;
+}
+a.ng-scope{
+    color: #FFD018;
+}
+input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+padding: 1px 0px;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill,input:autofill, textarea:autofill, select:autofill {
+background-color: #fff !important;
+background-image: none;
+color: rgb(0, 0, 0);
+}
