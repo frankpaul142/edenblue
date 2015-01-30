@@ -1789,7 +1789,7 @@ td.ng-binding{
     width: 25%;
 }
 td.ng-binding, .texto-subtit table tr td {
-    padding: 2%;
+    padding: 2% 0 2% 0;
     color: #FFFFFF;
     font-size: 12px;
     background-color: rgb(0, 155, 223);
@@ -1831,3 +1831,7 @@ color: rgb(0, 0, 0);
 }
 .gmnoprint{
 display: none;}
+
+a.ng-scope:last-child {
+color: #FF0000;
+}

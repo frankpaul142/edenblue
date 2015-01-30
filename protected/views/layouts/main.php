@@ -37,7 +37,9 @@ $currentLang = Yii::app()->language;
                  data-nav="false"
                  data-width="100%"
                  data-height="100%"
-                 data-fit="cover">
+                 data-fit="cover"
+                 data-thumbfit='cover'
+                 >
             </div>
         </div>
 
