@@ -1077,7 +1077,7 @@ color: #FFF;
 .reserv-btn {
 	width: 300px;
 	height: 35px;
-	background-color: #ef4425;
+	background-color: #fff;
 	font-size: 20px;
 	font-family: quattro;
 	text-align: center;
@@ -1610,7 +1610,7 @@ margin: -3px;
 /*padding: 0 10px;*/
 width: 200px;
 height: 30px;
-color: #fff;
+color: #000;
 /*background: rgba(12, 12, 12,0.6);*/
 border: 1px solid;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
