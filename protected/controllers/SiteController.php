@@ -198,9 +198,32 @@ class SiteController extends Controller {
         }
     }
 
+    public function actionAvailable()
+    {
+    	if (isset($_POST['dateArrive']) && isset($_POST['dateDeparture'])) {
+    		$dateArrive=date('Y-m-d',strtotime($_POST['dateArrive']));
+    		$dateDeparture=date('Y-m-d',strtotime($_POST['dateDeparture']));
+            $roomsAvailable=[];
+            foreach (TypeRoom::model()->findAllByAttributes(array('status'=>'ACTIVE')) as $i => $type) {
+            	$roomsAvailable[$type->id]=intval(Room::model()->countByAttributes(array('type_id'=>$type->id,'status'=>'VACANT')));
+            }
+            foreach (Reservation::model()->findAll(array('condition'=>
+            	"status='PAID' && (".
+        		"(arrival_date>='$dateArrive' && arrival_date<='$dateDeparture' && departure_date>='$dateDeparture') ||".
+        		"(arrival_date<='$dateArrive' && departure_date>='$dateArrive' && departure_date<='$dateDeparture') ||".
+        		"(arrival_date<='$dateArrive' && departure_date>='$dateDeparture') ||".
+        		"(arrival_date>='$dateArrive' && departure_date<='$dateDeparture'))")) as $i => $reservation) {
+            	foreach (RoomsBooked::model()->findAllByAttributes(array('reservation_id'=>$reservation->id)) as $k => $rooms_booked) {
+            		$roomsAvailable[$rooms_booked->type_room_id]--;
+            	}
+            }
+            echo json_encode($roomsAvailable);
+    	}
+    }
+
     public function actionBook()
     {
-        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['maxPersonas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total']) && isset($_POST['room'])){
+        if(isset($_POST['llegada']) && isset($_POST['salida']) && isset($_POST['maxPersonas']) && isset($_POST['habitaciones']) && isset($_POST['habitacion']) && isset($_POST['total']) && isset($_POST['room']) && floatval($_POST['total'])>0){
             Yii::app()->session['llegada']=$_POST['llegada'];
             Yii::app()->session['salida']=$_POST['salida'];
             Yii::app()->session['maxPersonas']=$_POST['maxPersonas'];
@@ -382,6 +405,7 @@ class SiteController extends Controller {
 			                	"Fecha llegada: ".$reservation->arrival_date."\n".
 			                	"Fecha salida: ".$reservation->departure_date."\n".
 			                	"Max # personas: ".$reservation->number_people."\n".
+			                	"Nota: ".$reservation->note."\n".
 			                	"Total: $".$reservation->total;
 			                $headers = "From: $name <no-reply@eden-blue.com>\r\n" .
 			                        //"Reply-To: {$model->email}\r\n" .
@@ -389,6 +413,19 @@ class SiteController extends Controller {
 			                        "Content-Type: text/plain; charset=UTF-8";
 			                mail(Yii::app()->params['adminEmail'], $subject, $body, $headers);
 			                $log->description.="email sent\n";
+			                $subject = 'Reservación EdenBlue';
+			                $name=$reservation->user->name." ".$reservation->user->lastname;
+			                $body="Has hecho una reservación y ha pagado exitosamente. Ahora puedes dirigirte a nuestras instalaciones.\n".
+			                	"Fecha llegada: ".$reservation->arrival_date."\n".
+			                	"Fecha salida: ".$reservation->departure_date."\n".
+			                	"Max # personas: ".$reservation->number_people."\n".
+			                	"Total: $".$reservation->total;
+			                $headers = "From: EdenBlue <no-reply@eden-blue.com>\r\n" .
+			                        //"Reply-To: {$model->email}\r\n" .
+			                        "MIME-Version: 1.0\r\n" .
+			                        "Content-Type: text/plain; charset=UTF-8";
+			                mail($ipnMessage->getRawData()['payer_email'], $subject, $body, $headers);
+			                $log->description.="email sent to payer\n";
 						}
 						else{
 							$log->description.="reservation no saved\n";

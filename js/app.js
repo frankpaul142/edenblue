@@ -23,7 +23,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
 	when('/cuenta', 'cuenta').
 	when('/ecosistema/:from', 'ecosistema').
 	segment('reservar', {
-		templateUrl: 'templates/_reservar.php',
+		templateUrl: 'templates/_reservar.html',
 		controller: 'reservarController'
 	}).
 	segment('pagar', {
@@ -101,47 +101,66 @@ var galleryRoom;
 var galleryService;
 
 app.controller('reservarController', function($scope, $http) {
-	var maxHabitaciones = 6;
 	var vImp = 0.12;
 	var dias = 1;
 	checkGallery();
 	fotorama.show(0);
 	activeMenu(1);
+	$scope.loading = false;
+	$scope.first = true;
+	$scope.maxHabitaciones = 5;
 	//$scope.start = 1;
 	//$scope.end = 1;
 	$scope.numero = 1;
 	//$scope.personas = 1;
+	$scope.habitacion = [];
 	$scope.maxPersonas = 0;
-	$scope.subtotal = 0;
-	$scope.impuestos = $scope.subtotal * vImp;
-	$scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+	calcularTotal(0);
 	$scope.range = function(n) {
 		return new Array(n);
 	};
-	/*$scope.numpersonas = function() {
-		console.log($scope.personas);
-		if ($scope.personas > 4) {
-			$scope.start = Math.floor(((parseInt($scope.personas)+1)/4)+1);
-			if ($scope.personas > maxHabitaciones) {
-				$scope.end = maxHabitaciones;
-			} else {
-				$scope.end = $scope.personas;
-			}
-		} else {
-			$scope.start = 1;
-			$scope.end = $scope.personas;
-		}
-	};*/
-	$scope.calcular = function() {
+	$scope.fechas = function() {
 		if (typeof $scope.llegada !== 'undefined' && typeof $scope.salida !== 'undefined') {
-			var _MS_PER_DAY = 1000 * 60 * 60 * 24;
-			var a = new Date($scope.llegada);
-			var b = new Date($scope.salida);
-			var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-			var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) + 1;
-			dias = Math.ceil((utc2 - utc1) / _MS_PER_DAY);
-		} else {
-			dias = 1;
+			$scope.loading = true;
+			$scope.numero = 1;
+			calcularTotal(0);
+			var xsrf = $.param({
+				dateArrive: $scope.llegada,
+				dateDeparture: $scope.salida
+			});
+			$http({
+				method: 'POST',
+				url: 'site/available',
+				data: xsrf,
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).success(function(response) {
+				if (response != '') {
+					$scope.first = false;
+					$scope.loading = false;
+					$scope.disponibles = response;
+					var max = 0;
+					for (i in $scope.disponibles) {
+						if ($scope.disponibles[i] > max) {
+							max = $scope.disponibles[i];
+						}
+					}
+					$scope.maxHabitaciones = max;
+					$scope.habitaciones();
+				}
+			});
+		}
+	}
+	$scope.calcular = function() {
+		var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+		var a = new Date($scope.llegada);
+		var b = new Date($scope.salida);
+		var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+		var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) + 1;
+		dias = Math.ceil((utc2 - utc1) / _MS_PER_DAY);
+		if (dias > 1) {
+			dias--;
 		}
 		$scope.subtotal = 0;
 		if (typeof $scope.habitacion !== 'undefined') {
@@ -152,18 +171,36 @@ app.controller('reservarController', function($scope, $http) {
 					$scope.maxPersonas += parseInt($scope.habitacion[i].capacity);
 				}
 			}
+		} else {
+			console.log('undefined');
 		}
-		$scope.impuestos = $scope.subtotal * vImp;
-		$scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+		calcularTotal($scope.subtotal);
 	}
 	$scope.habitaciones = function() {
-		if ($scope.numero >= 1 && $scope.numero <= maxHabitaciones) {
+		if ($scope.numero >= 1 && $scope.numero <= $scope.maxHabitaciones) {
 			var html = '';
+			$scope.disponiblesT = [];
 			for (var i = 1; i <= $scope.numero; i++) {
+				$scope.disponiblesT[i] = copy($scope.disponibles);
+				for (var j in $scope.disponiblesT[i]) {
+					$scope.disponiblesT[i][j] -= i - 1;
+				}
+				for (var k in rooms) {
+					if ($scope.disponiblesT[i][rooms[k].id] > 0) {
+						$scope.habitacion[i] = rooms[k];
+						break;
+					}
+				}
 				html += '<div class="reserv-tipohab">' +
 					'<div class="reserv-tipohab-top">' +
 					'<div class="reserv-tipohab-top-txt">Tipo de Habitación</div>' +
-					'<select class="reserv-tipohab-top-btn" ng-init="habitacion[' + i + ']=rooms[0]" ng-options="room.name for room in rooms | orderBy: \'price\'" ng-model="habitacion[' + i + ']" ng-change="calcular()" required>' +
+					'<select ' +
+					'class="reserv-tipohab-top-btn" ' +
+					'ng-model="habitacion[' + i + ']" ' +
+					'ng-options="room.name for room in rooms" ' +
+					'ng-change="calcular()" ' +
+					'options-disabled="disponiblesT[' + i + '][room.id]<1 for room in rooms"' +
+					'required>' +
 					'</select>' +
 					'<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />' +
 					'<input type="hidden" name="room[' + i + ']" value="{{ habitacion[' + i + '].id }}" />' +
@@ -173,29 +210,34 @@ app.controller('reservarController', function($scope, $http) {
 			$scope.hab = html;
 			$scope.calcular();
 		} else {
-			$scope.subtotal = 0;
-			$scope.impuestos = 0;
-			$scope.total = 0;
+			calcularTotal(0);
 		}
 	}
 	if (typeof rooms === 'undefined') {
 		$http.get('site/loadTypeRooms').success(function(response) {
 			$scope.rooms = response;
 			rooms = $scope.rooms;
-			$scope.habitaciones();
 
 		});
 	} else {
 		$scope.rooms = rooms;
-		$scope.habitaciones();
 	}
-	/*$scope.range2 = function(start, end) {
-		var retorno = [];
-		for (var i = start; i <= end; i++) {
-			retorno.push(i);
+
+	function calcularTotal(subtotal) {
+		$scope.subtotal = subtotal;
+		$scope.impuestos = $scope.subtotal * vImp;
+		$scope.total = parseFloat($scope.subtotal) + parseFloat($scope.impuestos);
+	}
+
+	function copy(o) {
+		var out, v, key;
+		out = Array.isArray(o) ? [] : {};
+		for (key in o) {
+			v = o[key];
+			out[key] = (typeof v === "object") ? copy(v) : v;
 		}
-		return retorno;
-	}*/
+		return out;
+	}
 });
 app.controller('pagarController', function() {
 

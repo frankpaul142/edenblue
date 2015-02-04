@@ -5,12 +5,14 @@
 		<div class="reserv-inout">
 			<div class="reserv-in">
 				<div class="reserv-in-txt">
-					Llegada: <?php if(isset($_SESSION['llegada'])) echo $_SESSION['llegada']; ?>
+					Llegada: <br>
+                    <?php if(isset($_SESSION['llegada'])) echo $_SESSION['llegada']; ?>
 				</div>
 			</div>
 			<div class="reserv-out">
 				<div class="reserv-out-txt">
-					Salida: <?php if(isset($_SESSION['salida'])) echo $_SESSION['salida']; ?>
+					Salida: <br>
+                    <?php if(isset($_SESSION['salida'])) echo $_SESSION['salida']; ?>
 				</div>
 			</div>
 		</div>
