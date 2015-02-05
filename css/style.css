@@ -820,6 +820,14 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	text-align: center;
 	line-height: 37px;
 }
+.reserv-tit2 {
+	width: 100%;
+	height: 40px;
+	color: #FFF;
+	font-size: 16px;
+	font-family: quattro;
+	text-align: center;
+	line-height: 37px;}
 .reserv-inout {
 	width: 250px;
 	height: 25px;
