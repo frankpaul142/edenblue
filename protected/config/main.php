@@ -57,6 +57,13 @@ return array(
 			'password' => 't(Lt0!3?7%,&',
 			'charset' => 'utf8',    
         ),
+        /*'db' => array(
+          'connectionString' => 'mysql:host=localhost;dbname=edenblue_base',
+            'emulatePrepare' => true,
+            'username' => 'edenblue_admin',
+            'password' => 't(Lt0!3?7%,&',
+            'charset' => 'utf8',    
+        ),*/
         'errorHandler' => array(
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
