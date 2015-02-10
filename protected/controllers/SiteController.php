@@ -322,8 +322,8 @@ class SiteController extends Controller {
             	"item_name=reservacion",
             	"item_number=".$this->generateRandomString(3).$reservation->id.$this->generateRandomString(1),
 				"return=".Yii::app()->request->getBaseUrl(true)."#cuenta",
-				"business=marisaloorv-facilitator@yahoo.com",
-				//"business=marisaloorv@yahoo.com",
+				//"business=marisaloorv-facilitator@yahoo.com",
+				"business=marisaloorv@yahoo.com",
 				"amount=".$reservation->total,
 				"notify_url=".Yii::app()->request->getBaseUrl(true)."/site/ipn",
 				"no_shipping=1",
@@ -342,13 +342,11 @@ class SiteController extends Controller {
 			$paypalService = new PayPalAPIInterfaceServiceService(Configuration::getAcctAndConfig());
 			try {
 				$createButtonResponse = $paypalService->BMCreateButton($createButtonReq);
-				//print_r($createButtonResponse);die();
 				if($createButtonResponse->Ack=='Success'){
 					Yii::app()->session['button']=$createButtonResponse->Website;
 				}
 				else{
 					$this->redirect(Yii::app()->request->getBaseUrl(true).'#cuenta');
-					//print_r($createButtonResponse);die();
 				}
 			} catch (Exception $ex) {
 				print_r($ex);
@@ -385,7 +383,8 @@ class SiteController extends Controller {
 
 		if($ipnMessage->validate()) {
 			$log->description.="Success: Got valid IPN data\n";
-			if($ipnMessage->getRawData()['business']=='marisaloorv-facilitator@yahoo.com') {
+            //if($ipnMessage->getRawData()['business']=='marisaloorv-facilitator@yahoo.com') {
+			if($ipnMessage->getRawData()['business']=='marisaloorv@yahoo.com') {
 				$reservation=Reservation::model()->findByPk(substr($ipnMessage->getRawData()['item_number'],3,-1));
 				if (isset($reservation)) {
 					if($ipnMessage->getRawData()['mc_gross']==$reservation->total){

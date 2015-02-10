@@ -7,7 +7,7 @@ class Configuration
     $config = array(
         // values: 'sandbox' for testing
         //       'live' for production
-        "mode" => "sandbox",
+        "mode" => "live",
         'log.LogEnabled' => true,
         'log.FileName' => '../PayPal.log',
         'log.LogLevel' => 'FINE'
@@ -29,12 +29,12 @@ class Configuration
         /*"acct1.UserName" => "jb-us-seller_api1.paypal.com",
         "acct1.Password" => "WX4WTU3S8MY44S7F",
         "acct1.Signature" => "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy",*/
-        "acct1.UserName" => "marisaloorv-facilitator_api1.yahoo.com",
+        /*"acct1.UserName" => "marisaloorv-facilitator_api1.yahoo.com",
         "acct1.Password" => "7HW4B4Q8UPA3NLJP",
-        "acct1.Signature" => "AFcWxV21C7fd0v3bYYYRCpSSRl31ABJgNexuTe6w-KwcbDm810-zWv1J",
-        /*"acct1.UserName" => "marisaloorv_api1.yahoo.com",
+        "acct1.Signature" => "AFcWxV21C7fd0v3bYYYRCpSSRl31ABJgNexuTe6w-KwcbDm810-zWv1J",*/
+        "acct1.UserName" => "marisaloorv_api1.yahoo.com",
         "acct1.Password" => "MBVQ44SWF8V9RDCC",
-        "acct1.Signature" => "An5ns1Kso7MWUdW4ErQKJJJ4qi4-A3kPGV6Sg1OPVFoAekvJVHUjL3JP",*/
+        "acct1.Signature" => "An5ns1Kso7MWUdW4ErQKJJJ4qi4-A3kPGV6Sg1OPVFoAekvJVHUjL3JP",
         // Subject is optional and is required only in case of third party authorization
     	//"acct1.Subject" => "",  
         
