@@ -847,7 +847,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	text-align: center;
 	line-height: 37px;
 	float: left;
-	border-bottom: 1px solid;
+	
 }
 .reserv-in-txt {
 	float: left;
@@ -878,7 +878,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	line-height: 37px;
 	float: right;
 	margin-left: 2px;
-	border-bottom: 1px solid;
+
 }
 .reserv-out-txt {
 	float: left;
