@@ -110,7 +110,7 @@ body {
 	float: right;
 	margin-right: 5px;
 	background-color: #242527;
-	width: 400px;
+    min-width: 17%;
 	height: 25px;
 	line-height: 25px;
 	text-align: left;
