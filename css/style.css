@@ -1838,6 +1838,8 @@ a.ng-scope:last-child {
 color: #FF0000;
 }
 
-p.txt input[type=email], p.txt input[type=password]{
+p.txt input[type=email], p.txt input[type=password], p.txt input[type=text]{
     width: 200px!important;
+    background: rgba(12, 12, 12,0.6);
+    color: #fff;
 }

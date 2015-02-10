@@ -107,6 +107,7 @@ input {
 	color: #000;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	border-radius: 2px;
+    border: 1px solid;
 	-moz-outline-radius: 3px;
 }
 	
