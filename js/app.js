@@ -677,13 +677,13 @@ function calcRoute(start, points) {
 function checkGallery() {
 	if (galleryRoom) {
 		fotorama.splice(1, 1, {
-			img: 'images/fondo.jpg'
+			img: 'images/fondo9.jpg'
 		});
 		galleryRoom = false;
 	}
 	if (galleryService) {
 		fotorama.splice(2, 1, {
-			img: 'images/12 con libros.jpg'
+			img: 'images/fondo8.jpg'
 		});
 		galleryService = false;
 	}
