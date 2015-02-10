@@ -26,13 +26,11 @@ body {
 	width: auto;
 	height: 0;
 	zoom: 97%;
-        -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     letter-spacing: -0.5px;
 	}
+::selection { background: #F69E39; color: #fff!important;}
+::-webkit-selection { background: #F69E39;color: #fff!important; }
+::-moz-selection { background: #F69E39;color: #fff!important; }
 .menu-lateral ul {
 	list-style-type: none;
 	margin: 0;
@@ -400,14 +398,13 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
     transition: all  0.3s;
 }
 .breadcrumbs {
-	/*background-color:#FF0;*/
-	padding: 10px;
-	border-bottom: thin dotted #CCC;
-	height: 15px;
-	width: 96%;
-	font-size: 14px;
-	font-family: quattro;
-	cursor: pointer;
+    padding: 5% 0% 5% 5%;
+    border-bottom: thin dotted #CCC;
+    width: 90%;
+    font-size: 14px;
+    font-family: quattro;
+    cursor: pointer;
+    margin: 0 auto;
 }
 .menu-lateral {
 	float: left;
@@ -975,7 +972,7 @@ transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 	width: 40%;
 	height: 25px;
 	background-color: #004d86;
-	font-size: 16px;
+	font-size: 12px;
 	font-family: quattro;
 	text-align: center;
 	line-height: 25px;
@@ -1489,9 +1486,9 @@ label.ng-binding{
 .gradbot {
     position: absolute;  
     background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));  
-    height: 6%;  width: 63%;
-    bottom: 16%;
-    right: 3%;
+    height: 6%;  width: 65%;
+    bottom: 15%;
+    right: 0%;
 }
 
 .gradbot2 {
@@ -1512,31 +1509,27 @@ label.ng-binding{
 }
 .anchor {
     margin-top: 8px;
-    width: 12%;
-    height: 16px;
     background-color: #009bdf;
     color: #fff;
-    padding: 2px;
+    padding: 5px;
     font-family: quattro;
-    font-size: 8px;
+    font-size: 12px;
     text-align: center;
     border-radius: 5px;
     line-height: 15px;
     margin-right: 3px;
     transition: all 0.2s;
     cursor: pointer;
-	
-	display: inline-block;
+    display: inline-block;
 }
 .anchor:hover {
     background-color: white;
     color: #009bdf;
-    box-shadow: 2px 2px 1px -1px #666 inset;
+    box-shadow: 0px 0px 3px -1px #009BDF inset;;
 }
 .anchor:active {
     background-color: rgb(247, 146, 33);
 	color: #FFF;
-	box-shadow: 1px 1px 0px -1px #000;
 }
 .anchor-select a {
  width: 25%; 
@@ -1582,12 +1575,12 @@ span.ng-hide {}
     /* color: rgb(255, 255, 255); */
     border: 1px red inset;
 	margin: -3px;
-padding: 0 10px;
+
 width: 200px;
 height: 30px;
 color: #fff;
 background: rgba(12, 12, 12,0.6);
-border: 1px solid;
+border: none;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 border-radius: 2px;;
 }
@@ -1600,18 +1593,18 @@ border-radius: 2px;;
 .txt .ng-invalid-required {
     border: 1px red inset;
 	margin: -3px;
-padding: 0 10px;
+
 width: 200px;
 height: 30px;
 color: #fff;
 background: rgba(12, 12, 12,0.6);
-border: 1px solid;
+border: none;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 border-radius: 2px;
 }
 
 input[type="tel"] {
-    margin: -3px;  padding: 0 10px;  width: 200px;  height: 30px;  color: #fff;  background: rgba(12, 12, 12,0.6);  border: 1px solid;  border-color: #c4c4c4 #d1d1d1 #d4d4d4;  border-radius: 2px; text-align: center;
+    margin: -3px;  width: 200px;  height: 30px;  color: #fff;  background: rgba(12, 12, 12,0.6);  border: none;  border-color: #c4c4c4 #d1d1d1 #d4d4d4;  border-radius: 2px; text-align: center;
 }
 input.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-email {
 margin: -3px;
@@ -1620,7 +1613,7 @@ width: 200px;
 height: 30px;
 color: #000;
 /*background: rgba(12, 12, 12,0.6);*/
-border: 1px solid;
+border: none;
 border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 border-radius: 2px;
 text-align: center;
