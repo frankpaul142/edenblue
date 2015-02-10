@@ -51,10 +51,10 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
         'db' => array(
-          'connectionString' => 'mysql:host=166.63.0.204;dbname=webcont_edenblue',
+          'connectionString' => 'mysql:host=166.63.0.204;dbname=edenblue_base',
 			'emulatePrepare' => true,
-			'username' => 'webcont_dba',
-			'password' => 'lN_Q*PR]FN[E',
+			'username' => 'edenblue_admin',
+			'password' => 't(Lt0!3?7%,&',
 			'charset' => 'utf8',    
         ),
         'errorHandler' => array(
@@ -84,7 +84,7 @@ return array(
     // using Yii::app()->params['paramName']
     'params' => array(
         // this is used in contact page
-        'adminEmail' => 'rodney.ledesma@share.com.ec',
+        'adminEmail' => 'info@eden-blue.com',
     ),
     'behaviors' => array('ApplicationConfigBehavior')
 );
