@@ -110,14 +110,14 @@ body {
 	float: right;
 	margin-right: 5px;
 	background-color: #242527;
-	width: 200px;
+	width: 400px;
 	height: 25px;
 	line-height: 25px;
 	text-align: left;
 	border-bottom-right-radius: 6px;
 	border-bottom-left-radius: 6px;
 }
-.btn-login {
+.btn-login, .btn-res, .btn-cont {
 	background-color: #242527;
 	color: #CCC;
 	width: 100px;
@@ -131,7 +131,8 @@ body {
 	letter-spacing: -1px;
 	text-transform: lowercase;
 }
-.btn-login:hover {
+
+.btn-login:hover, .btn-res:hover, .btn-cont:hover {
 	background-color: #f79221;
 	color: #FFF;
 	-webkit-transition: all ease 0.3s;

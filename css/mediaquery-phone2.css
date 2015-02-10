@@ -211,3 +211,9 @@ li {
 	width: 100%;}	
 /*footer*/
 .footer{position: static;}	
+.log-in{
+    width: 200px;
+}
+.btn-cont, .btn-res{
+    display: none;
+}

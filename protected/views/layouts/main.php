@@ -50,9 +50,13 @@ $currentLang = Yii::app()->language;
             </div>
             <div class="log-in">
                 <?php if (!isset(Yii::app()->user->id)) { ?>
-                <a href="#login"><div class="btn-login m6">INICIA SESIÓN</div></a>
                 <a href="#registro"><div class="btn-regis m7">REGÍSTRATE</div></a>
+                <a href="#reservar"><div class="btn-res">RESERVACIONES</div></a>
+                <a href="#contacto"><div class="btn-cont">CONTACTO</div></a>
+                <a href="#login"><div class="btn-login m6">INICIA SESIÓN</div></a>
+         
                 <?php } else { ?>
+               
                 <a href="#cuenta"><div class="btn-login m6"><?php echo Yii::app()->user->name; ?></div></a>
                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/site/logout"><div class="btn-regis">CERRAR SESIÓN</div></a>
                 <?php } ?>
