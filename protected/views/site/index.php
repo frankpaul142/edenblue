@@ -4,9 +4,9 @@
 $this->pageTitle = Yii::app()->name;
 ?>
 
-<div class="logo">
+<div class="logo" style="margin-top:-23px; width:240px">
     <a href="#">
-        <img src="<?php echo Yii::app()->request->getBaseUrl(true); ?>/images/logo-01.png" width="154" height="112" />
+        <img src="<?php echo Yii::app()->request->getBaseUrl(true); ?>/images/logo-01.png" width="248" height="156" />
     </a>
 </div>
 <div class="menu">

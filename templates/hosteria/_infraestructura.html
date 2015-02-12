@@ -1,8 +1,9 @@
-<div class="texto-tit">Infraestructura</div>
-<div class="texto-cont">
-    <p>EdenBlue Beachside Inn es una Hostería construida en un terreno de varias hectáreas frente al mar, ubicada en el Sector El Carrizal, en el km. 25 de la Vía Pedernales-Cojimíes, que pertenece a la Parroquia de Cojimíes y al Cantón Pedernales.</p>
-    <p>El diseño arquitectónico de esta Hostería se articula en áreas o zonas bien diferenciadas y complementarias que respetan el entorno natural de palmeras de coco, con un sistema constructivo combinado de hormigón armado y madera. Las zonas del Complejo son:</p>
-    <p>1. Zona de Hospedaje y Alojamiento, actualmente conformada por 16 habitaciones distribuidas en 4 villas y por un Loft con 2 habitaciones y sus respectivos baños completos, sala comedor y cocina.</p>
-    <p>2. Zona Administrativa, Bar-Restaurante y Servicios Generales. La infraestructura arquitectónica de Eden Blue permite disfrutar de una atmósfera fresca y natural, tanto en el área interior de las construcciones como en las exteriores. Sus modernas instalaciones contribuyen al confort y a la calidad de servicio que reciben los clientes.
-    </p>
+<div ng-show="loading" class="spinner"></div>
+<div ng-show="!loading">
+	<div class="texto-tit">{{ infr.title }}</div>
+	<div class="texto-cont">
+		<p style="white-space: pre-line;">{{ infr.description }}</p>
+		<div class="boton-vermas" ng-if="infr.photos[0] != null" ng-click="viewGallery()">Ver galería</div>
+		<p></p>
+	</div>
 </div>

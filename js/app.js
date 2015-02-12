@@ -99,6 +99,7 @@ var services;
 var services2;
 var galleryRoom;
 var galleryService;
+var infr;
 
 app.controller('reservarController', function($scope, $http) {
 	var vImp = 0.12;
@@ -249,9 +250,48 @@ app.controller('hosteriaController', function() {
 	fotorama.show(1);
 	activeMenu(2);
 });
-app.controller('infraestructuraController', function($scope) {
+app.controller('infraestructuraController', function($scope, $http) {
+	$scope.loading = true;
 	$scope.$parent.breadcrumbs = 'Hostería / Infraestructura';
 	$scope.$parent.ancla = '';
+	$scope.infr=[];
+	toggleGallery();
+	if (typeof(infr) === 'undefined') {
+		$http.get('site/loadInfrastructure').success(function(response) {
+			$scope.infr.title = response['title'];
+			$scope.infr.description = response['description'];
+			$scope.infr.photos = response['photos'];
+			infr=$scope.infr;
+			$scope.loading = false;
+		});
+	}
+	else{
+		$scope.infr=infr;
+		$scope.loading = false;
+	}
+	$scope.viewGallery = function() {
+		fotorama.splice(1, 1, {
+			html: '<div id="fotoramag" data-auto="false" data-nav="thumbs" data-width="100%" data-height="100%" data-fit="cover"></div>'
+		});
+		galleryRoom = true;
+		var $fotoramagDiv = $('#fotoramag').fotorama();
+		var fotoramag = $fotoramagDiv.data('fotorama');
+		$scope.infr.photos.forEach(function(photo) {
+			fotoramag.push({
+				img: 'images/' + photo.source
+			});
+		});
+		$('.footer').fadeOut('fast');
+		$('.boton-index').hide();
+		$(".boton-index2").show();
+		var height = $("#content").height();
+		$("#content").animate({
+			bottom: height - 65
+		}, 'fast');
+		$(".top").animate({
+			top: '-25px'
+		}, 'fast');
+	}
 });
 app.controller('entornoController', function($scope) {
 	$scope.$parent.breadcrumbs = 'Hostería / Entorno';

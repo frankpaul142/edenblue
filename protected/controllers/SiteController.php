@@ -527,6 +527,20 @@ class SiteController extends Controller {
         echo json_encode($ecosystem);
     }
 
+    public function actionLoadInfrastructure() {
+        $infr=[];
+        $infr['title']=Yii::t('static','static_Infraestructura_title');
+        $infr['description']=Yii::t('static','static_Infraestructura_description');
+		$photos=[];
+        foreach (Photo::model()->findAllByAttributes(array('service_id'=>11,'status'=>'ACTIVE')) as $i => $photo) {
+        	$p=[];
+            $p['source'] = $photo->source;
+            array_push($photos, $p);
+        }
+        $infr['photos']=$photos;
+        echo json_encode($infr);
+    }
+
     public function actionLoadAccount() {
     	$user=User::model()->findByPk(Yii::app()->user->id);
     	if(isset($user)){
