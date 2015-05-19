@@ -611,6 +611,7 @@ function loadMap() {
 		var directionsService2 = new google.maps.DirectionsService();
 		var directionsService3 = new google.maps.DirectionsService();
 		var directionsService4 = new google.maps.DirectionsService();
+		var directionsService5 = new google.maps.DirectionsService();
 		var directionsDisplay1 = new google.maps.DirectionsRenderer({
 			polylineOptions: {
 				strokeColor: "yellow"
@@ -631,13 +632,18 @@ function loadMap() {
 				strokeColor: "green"
 			}
 		});
+		var directionsDisplay5 = new google.maps.DirectionsRenderer({
+			polylineOptions: {
+				strokeColor: "orange"
+			}
+		});
 		var mapDiv = document.getElementById('map');
 		latlong = new google.maps.LatLng(0.287006, -80.030862);
-		//var centerll = new google.maps.LatLng(0.224522, -79.901086);
 		var centerll = new google.maps.LatLng(0.044262, -79.288416);
+		// var centerll = new google.maps.LatLng(0.044262, -292.288416);
 		var options = {
-			center: centerll,
-			zoom: 10,
+			//center: centerll,
+			zoom: 6,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		var mapa = new google.maps.Map(mapDiv, options);
@@ -645,6 +651,7 @@ function loadMap() {
 		directionsDisplay2.setMap(mapa);
 		directionsDisplay3.setMap(mapa);
 		directionsDisplay4.setMap(mapa);
+		directionsDisplay5.setMap(mapa);
 		var request1 = calcRoute('Quito', [
 			[-0.466769, -78.586492],
 			[-0.233375, -79.166847],
@@ -666,6 +673,9 @@ function loadMap() {
 			[-0.271499, -79.464447],
 			[0.070625, -80.053612]
 		]);
+		var request5 = calcRoute('Esmeraldas', [
+			[0.070625, -80.053612]
+		]);
 		directionsService1.route(request1, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				directionsDisplay1.setDirections(response);
@@ -684,6 +694,11 @@ function loadMap() {
 		directionsService4.route(request4, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				directionsDisplay4.setDirections(response);
+			}
+		});
+		directionsService5.route(request5, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay5.setDirections(response);
 			}
 		});
 		var marker = new google.maps.Marker({
