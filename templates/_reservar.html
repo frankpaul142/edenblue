@@ -1,5 +1,5 @@
 <div class="cont1-reserv">
-	<form action="site/book" method="post" onsubmit="return validate()">
+	<form action="site/book" method="post" ng-submit="validateForm($event)">
 		<div class="reserv-tit">RESERVACIONES</div>
 		<div class="fondodeg-reserv">
 			<div class="reserv-inout">
@@ -52,10 +52,15 @@
 		<input type="submit" value="&#8226; Reservar &#8226;" />
 	</form>
 </div>
+<div id="modalErrores" style="display:none;position: fixed;top: 400px;  left: 41%;">
+	<div id="textoErrores"></div>
+	<br><br>
+	<button id="btnOk">Ok</button>
+</div>
 <script>
 $(function() {
 	$("#datepickerl").datepicker({
-		minDate: 0,
+		minDate: 1,
 		onClose: function(selectedDate) {
 			$("#datepickers").datepicker("option", "minDate", selectedDate);
 		}
@@ -66,13 +71,8 @@ $(function() {
 		}
 	});
 	//$.datepicker.setDefaults( $.datepicker.regional[ "es" ] );
-
-
+	$("#btnOk").click(function() {
+		$("#modalErrores").hide();
+	});
 });
-
-function validate() {
-	if (parseFloat($('#htotal').val()) <= 0) {
-		return false;
-	}
-}
 </script>

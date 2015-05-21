@@ -109,11 +109,8 @@ app.controller('reservarController', function($scope, $http) {
 	activeMenu(1);
 	$scope.loading = false;
 	$scope.first = true;
-	$scope.maxHabitaciones = 5;
-	//$scope.start = 1;
-	//$scope.end = 1;
+	$scope.maxHabitaciones = 1;
 	$scope.numero = 1;
-	//$scope.personas = 1;
 	$scope.habitacion = [];
 	$scope.maxPersonas = 0;
 	calcularTotal(0);
@@ -143,9 +140,7 @@ app.controller('reservarController', function($scope, $http) {
 					$scope.disponibles = response;
 					var max = 0;
 					for (i in $scope.disponibles) {
-						if ($scope.disponibles[i] > max) {
-							max = $scope.disponibles[i];
-						}
+						max+=$scope.disponibles[i];
 					}
 					$scope.maxHabitaciones = max;
 					$scope.habitaciones();
@@ -180,9 +175,9 @@ app.controller('reservarController', function($scope, $http) {
 	$scope.habitaciones = function() {
 		if ($scope.numero >= 1 && $scope.numero <= $scope.maxHabitaciones) {
 			var html = '';
-			$scope.disponiblesT = [];
+			//$scope.disponiblesT = [];
 			for (var i = 1; i <= $scope.numero; i++) {
-				$scope.disponiblesT[i] = copy($scope.disponibles);
+				/*$scope.disponiblesT[i] = copy($scope.disponibles);
 				for (var j in $scope.disponiblesT[i]) {
 					$scope.disponiblesT[i][j] -= i - 1;
 				}
@@ -191,10 +186,25 @@ app.controller('reservarController', function($scope, $http) {
 						$scope.habitacion[i] = rooms[k];
 						break;
 					}
-				}
+				}*/
 				html += '<div class="reserv-tipohab">' +
 					'<div class="reserv-tipohab-top">' +
-					'<div class="reserv-tipohab-top-txt">Tipo de Habitación</div>' +
+					'<div class="reserv-tipohab-top-txt">Habitación '+i+'</div>' +
+					'<select ' +
+					'class="reserv-tipohab-top-btn" ' +
+					'ng-model="habitacion[' + i + ']" ' +
+					'ng-options="room.name for room in rooms" ' +
+					'ng-change="calcular()" ' +
+					'required>' +
+					'<option value="">Escoge el tipo de habitación</option>'+
+					'</select>' +
+					'<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />' +
+					'<input type="hidden" name="room[' + i + ']" value="{{ habitacion[' + i + '].id }}" />' +
+					'</div>' +
+					'</div>';
+				/*html += '<div class="reserv-tipohab">' +
+					'<div class="reserv-tipohab-top">' +
+					'<div class="reserv-tipohab-top-txt">Habitación '+i+'</div>' +
 					'<select ' +
 					'class="reserv-tipohab-top-btn" ' +
 					'ng-model="habitacion[' + i + ']" ' +
@@ -206,7 +216,7 @@ app.controller('reservarController', function($scope, $http) {
 					'<input type="hidden" name="habitacion[' + i + ']" value="{{ habitacion[' + i + '].name }}" />' +
 					'<input type="hidden" name="room[' + i + ']" value="{{ habitacion[' + i + '].id }}" />' +
 					'</div>' +
-					'</div>';
+					'</div>';*/
 			}
 			$scope.hab = html;
 			$scope.calcular();
@@ -214,11 +224,52 @@ app.controller('reservarController', function($scope, $http) {
 			calcularTotal(0);
 		}
 	}
+	$scope.validateForm=function(ev) {
+		ev.preventDefault();
+		if ($scope.total <= 0) {
+			ev.preventDefault();
+		}
+		console.log($scope.habitacion);
+		console.log($scope.disponibles);
+		var habitacionesEscogidas=[];
+		var errores=[];
+		for(i in $scope.rooms){
+			habitacionesEscogidas[$scope.rooms[i].id]=0;
+		}
+		for(i in $scope.habitacion){
+			habitacionesEscogidas[$scope.habitacion[i].id]++;
+		}
+		console.log(habitacionesEscogidas);
+		for(i in habitacionesEscogidas){
+			if(habitacionesEscogidas[i]>$scope.disponibles[i]){
+				errores.push(i);
+			}
+		}
+		console.log(errores);
+		console.log($scope.rooms);
+		if(errores.length>0){
+			var textoErrores='';
+			for(i in errores){
+				var nombreHabitacion='';
+				for(j in $scope.rooms){
+					if($scope.rooms[j].id==errores[i]){
+						nombreHabitacion=$scope.rooms[j].name;
+						break;
+					}
+				}
+				textoErrores+='Lamentablemente solo disponemos de '+$scope.disponibles[errores[i]]+' habitacion(es) '+nombreHabitacion+'<br>';
+			}
+			textoErrores+='<br>Corrija por favor e intente de nuevo.';
+			$('#textoErrores').html(textoErrores);
+			$('#modalErrores').show();
+			ev.preventDefault();
+		}
+	};
+
 	if (typeof rooms === 'undefined') {
 		$http.get('site/loadTypeRooms').success(function(response) {
 			$scope.rooms = response;
 			rooms = $scope.rooms;
-
 		});
 	} else {
 		$scope.rooms = rooms;
