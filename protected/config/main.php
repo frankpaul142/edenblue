@@ -51,10 +51,10 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
         'db' => array(
-          'connectionString' => 'mysql:host=166.63.0.204;dbname=edenblue_base',
+          'connectionString' => 'mysql:host=localhost;dbname=edenblue_base',
 			'emulatePrepare' => true,
-			'username' => 'edenblue_admin',
-			'password' => 't(Lt0!3?7%,&',
+			'username' => 'root',
+			'password' => '',
 			'charset' => 'utf8',    
         ),
         /*'db' => array(
